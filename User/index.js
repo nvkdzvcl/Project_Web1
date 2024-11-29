@@ -302,7 +302,7 @@ document.addEventListener('click', (event) => {
 });
 
 
-//  js cho form đăng nhập đăng kí
+//  js cho form đăng nhập đăng ký
 let loggedInUser = JSON.parse(localStorage.getItem('loggedInUser')); // Đọc trạng thái từ localStorage
 if (loggedInUser) {
     document.getElementById('loginLink').innerText = loggedInUser.username; // Hiển thị tên người dùng
@@ -417,18 +417,31 @@ document.querySelector('.btn--primary1').addEventListener('click', () => {
 
     // Lấy dữ liệu customers từ localStorage
     let customers = JSON.parse(localStorage.getItem('customers')) || [];
-
+    
+    // Kiểm tra user xem hợp lệ
+    const regex_username = /^[a-zA-Z0-9]+$/;
+    if (!regex_username.test(username)) {
+        alert("Tên người dùng chỉ được phép chứa kí tự chữ cái và số, vui lòng chọn tên khác !");
+        return;
+    }
     // Kiểm tra xem username đã tồn tại chưa
     let existingCustomer = customers.find(cust => cust.username === username);
     if (existingCustomer) {
         alert("Tên người dùng đã tồn tại, vui lòng chọn tên khác");
         return;
     }
+
+    //Kiểm tra email hợp lệ
+    const regex_email = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!regex_email.test(email)) {
+        alert("Sai cấu trúc emial, vui lòng nhập lại !");
+        return;
+    }
     
     // Kiểm tra định dạng số điện thoại
-    const phonePattern = /^[0-9]{10,11}$/;
+    const phonePattern = /^0\d{9,10}$/;
     if (!phonePattern.test(phone)) {
-        alert("Số điện thoại không hợp lệ. Vui lòng nhập 10 hoặc 11 chữ số.");
+        alert("Số điện thoại không hợp lệ. Vui lòng bắt đầu bằng 0 và chỉ chứa 10 hoặc 11 chữ số.");
         return;
     }
 
@@ -472,6 +485,7 @@ document.querySelector('.btn--primary1').addEventListener('click', () => {
 
 
 // Xử lý đăng xuất
+
 document.getElementById('logoutButton').addEventListener('click', () => { 
     
     document.getElementById('loginLink').innerText = 'Đăng nhập';
