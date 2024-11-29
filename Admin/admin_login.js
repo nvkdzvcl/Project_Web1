@@ -30,17 +30,17 @@ registerForm.addEventListener('submit', (e) => {
         return; 
     }
     
-        const userdata = JSON.parse(localStorage.getItem('userData')) || [];
+        const AdminData = JSON.parse(localStorage.getItem('AdminData')) || [];
     
-        const existingAccount = userdata.find(user => user.email === email)
+        const existingAccount = AdminData.find(user => user.email === email)
         if (existingAccount) {
             alert("Email đã được đăng ký");
             return;
         }
 
-        userdata.push({ email, password, username });
+        AdminData.push({ email, password, username });
 
-        localStorage.setItem("userData", JSON.stringify(userdata));
+        localStorage.setItem("AdminData", JSON.stringify(AdminData));
 
         alert('Đăng ký thành công'); 
         registerForm.reset(); 
@@ -57,7 +57,7 @@ loginForm.addEventListener('submit',(e)=>{
         alert('vui lòng nhập đầy đủ thông tin'); 
         return; 
     }
-    const listOfAccounts = JSON.parse(localStorage.getItem('userData')) || []; 
+    const listOfAccounts = JSON.parse(localStorage.getItem('AdminData')) || []; 
     const user = listOfAccounts.find(account => account.username === name && account.password === pass);
     if(user){
         localStorage.setItem('loggedInAdmin', JSON.stringify(user));
