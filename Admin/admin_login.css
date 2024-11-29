@@ -12,7 +12,7 @@ body {
     justify-content: center; /* Căn giữa theo chiều ngang */
     align-items: center; /* Căn giữa theo chiều dọc */
     min-height: 100vh; /* Chiều cao tối thiểu của body là 100% chiều cao của cửa sổ trình duyệt */
-    background: url('image/hero1.jpg'); /* Đặt nền là hình ảnh */
+    background: url('/image/hero1.jpg'); /* Đặt nền là hình ảnh */
     background-size: 50%; /* Tỉ lệ co giãn của ảnh nền là 50% */
 }
 
