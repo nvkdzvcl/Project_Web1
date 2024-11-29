@@ -31,10 +31,9 @@ function renderProductList(products) {
             <td>${product.type}</td>
             <td>${product.sizes.map(size => size.size).join(', ')}</td>
             <td>${product.sizes.map(size => size.price).join(', ')}</td>
-            <td>
-                <button onclick="openEditForm(${product.id})">Edit</button>
-                <button onclick="editImgProduct(${product.id})">Edit img</button>
-                <button onclick="deleteProduct(${product.id} )">Delete</button>
+            <td >
+                <button onclick="openEditForm(${product.id})"><i class="fa-solid fa-pen-to-square"></i> &nbsp;Edit </button>
+                <button onclick="deleteProduct(${product.id} )"><i class="fa-solid fa-delete-left"></i> &nbsp;Delete</button>
             </td>
         `;
         container.appendChild(productElement);
@@ -55,31 +54,7 @@ function deleteProduct(productId) {
     }
 }
 
-// Thay đổi ảnh sản phẩm
-function editImgProduct(productId) {
-    const products = getProducts();
-    const product = products.find(p => p.id === productId);
 
-    if (product) {
-        const fileInput = document.createElement('input');
-        fileInput.type = 'file';
-        fileInput.accept = 'image/*';
-
-        fileInput.addEventListener('change', function () {
-            const file = fileInput.files[0];
-            if (file) {
-                const newImage = URL.createObjectURL(file);
-                product.image = newImage;
-                saveToLocalStorage(products);
-                renderProductList(products);
-            }
-        });
-
-        fileInput.click();
-    } else {
-        alert("Product not found.");
-    }
-}
 
 // Thêm sản phẩm mới
 function handleAddProduct() {
@@ -302,3 +277,20 @@ function getProductById(productId) {
 function closeModal() {
     document.getElementById('editModal').style.display = "none";
 }
+function handleFileSelect(event) {
+    const file = event.target.files[0];  // Get the first selected file
+    if (file) {
+        const reader = new FileReader();  // Create a FileReader to read the file
+        
+        // Once the file is read, update the image source
+        reader.onload = function(e) {
+            document.getElementById('previewImage').src = e.target.result;  // Set the src attribute of the image
+        };
+
+        // Read the file as a data URL (base64)
+        reader.readAsDataURL(file);
+    }
+}
+
+// Add event listener for the input element
+document.getElementById('editProductImage').addEventListener('change', handleFileSelect);
