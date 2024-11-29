@@ -808,29 +808,32 @@ body {
     float: left; /* Cột nằm bên trái */
 }
 
-/* Phần tìm kiếm và thêm sản phẩm */
-.search,
 .add {
     margin-bottom: 10px; /* Khoảng cách dưới cùng của các phần */
     padding: 10px; /* Khoảng cách bên trong */
     border: 3px solid black; /* Viền dày xung quanh các phần này */
     background-color: white; /* Màu nền trắng */
-    /* overflow: auto; */
 }
 
-/* Nút trong form tìm kiếm và thêm sản phẩm */
-.search form button,
+/* Style for form button in .add */
 .add form button {
     cursor: pointer;
-    width: 25%; /* Đặt chiều rộng của nút là 25% của phần chứa */
-    margin: 10px auto; /* Tạo khoảng cách trên dưới và căn giữa nút */
     display: block; /* Hiển thị nút dưới dạng block */
-    /* overflow: auto; */
+    margin: 10px auto; /* Tạo khoảng cách trên dưới và căn giữa nút */
+    font-size: 25px; /* Cỡ chữ của nút */
+    font-weight: 600; /* Đậm chữ nút */
+    width: 100%; /* Nút chiếm toàn bộ chiều rộng */
+    height: 50px; /* Chiều cao của nút */
+    background-color: #3b8a3e; /* Màu nền của nút */
+}
+
+.add form button:hover {
+    background-color: #fffd82;
+    color: black;
 }
 
 /* Tiêu đề của form tìm kiếm và thêm sản phẩm */
-.add h1,
-.search h1 {
+.add h1 {
     text-align: center; /* Căn giữa tiêu đề */
     background-color: #3b8a3e; /* Màu nền của tiêu đề */
     margin-bottom: 10px; /* Khoảng cách phía dưới của tiêu đề */
@@ -840,15 +843,6 @@ body {
 .add input[type="file"] {
     margin-left: 30%; /* Đẩy trường chọn file sang bên phải */
     margin-top: 5%; /* Khoảng cách từ trên */
-}
-
-/* Nút thêm sản phẩm */
-.add form button {
-    font-size: 25px; /* Cỡ chữ của nút */
-    font-weight: 600; /* Đậm chữ nút */
-    width: 100%; /* Nút chiếm toàn bộ chiều rộng */
-    height: 50px; /* Chiều cao của nút */
-    background-color: #3b8a3e; /* Màu nền của nút */
 }
 
 /* Phần nhập giá sản phẩm */
@@ -884,6 +878,8 @@ body {
     justify-content: center; /* Căn giữa theo chiều ngang */
     padding-right: 10px; /* Khoảng cách bên phải */
 }
+
+
 
 
 
