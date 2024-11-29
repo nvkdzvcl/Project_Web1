@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <title>Trang chủ</title>
+    <link rel="stylesheet" href="index.css">
+    
+</head>
+<body>
+    <section id="header">
+        <a href=""><img src="../image/30 Drinks.jpg" class="logo" alt=""></a>
+
+        <div id="search-bar">
+            <input type="text" id="search-input" placeholder="Tìm kiếm sản phẩm...">
+            <input type="number" id="min-price" placeholder="Giá thấp nhất" min="0">
+            <input type="number" id="max-price" placeholder="Giá cao nhất" min="0">
+            <button id="search-button"><i class="fa-solid fa-magnifying-glass"></i></button>
+            <div id="search-suggestions" class="suggestions"></div>
+        </div>
+        
+
+        <div >
+            <ul id="navbar" class="logged-in">
+                <li><a class="active" href="index.html">Tất cả</a></li>
+                <li><a href="#">MilkTea</a></li>
+                <li><a href="#">FreshFruitTea</a></li>
+                <li><a href="#">Ice</a></li>
+                <li id="login-item" >
+                    <a href="#" id="loginLink">Đăng nhập
+                        
+                    </a>
+                    <ul id="account-info" class="account-info">
+                        <li id="fullnameItem"><strong>Họ và tên: </strong></li>
+                        <li id="emailItem"><strong>Email: </strong></li>
+                        <li id="phoneItem"><strong>Phone: </strong></li>
+                        
+                    </ul>
+                    
+                    <button id="logoutButton" >Logout</button>
+                    
+                </li>
+                <li id="lg-bag"><a href="#"><i class="fa-solid fa-basket-shopping"></i></a></li>
+                <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
+            </ul>      
+        </div>
+
+
+        <div id="mobile">
+            <!-- <a href="#"><i class="fa-solid fa-basket-shopping"></i></a> -->
+            <i id="bar" class="fas fa-outdent"></i>
+        </div>
+    </section>
+
+    <section id="hero"></section>
+
+    <section id="product1" class="section-p1">
+        <h2>Sản phẩm nổi bật</h2>
+        <div class="pro-container">
+            <!-- <div class="pro" data-category="MilkTea">
+                <img src="../image/products/Milktea/Tra-Sua-BoBa-Cheese.png" alt="">
+                <div class="des">
+                    <span>MilkTea</span>
+                    <h5>Trà Sữa BoBa Cheese</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h4>35.000 </h4>
+                </div>
+                <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+            </div>
+            <div class="pro" data-category="Ice">
+                <img src="image/products/ice/Kem-Tran-Chau-Hoang-Kim.jpg" alt="">
+                <div class="des">
+                    <span>Ice</span>
+                    <h5>Kem Trân Châu Hoàng Kim</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h4>35.000 </h4>
+                </div>
+                <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+            </div> -->
+        </div>
+    </section>
+
+    <section id="pagination" class="section-p1">
+        <button href="#">1</button>
+        <button href="#">2</button>
+        <button href="#">3</button>
+        <button href="#">4</button>
+        <button href="#"><i class="fa-solid fa-arrow-right"></i></button>
+    </section>
+
+    
+
+    
+
+    <footer class="section-p1">
+        <div class="col">
+            <img class="logo" src="./image/30 Drinks.jpg" alt="">
+            <h4>Contact</h4>
+            <p><b>Address:</b> 273 An Dương Vương, phường 3, quận 5, thành phố Hồ Chí Minh</p>
+            <p><b>Phone:</b> 0968 937 705 / 0345 491 247</p>
+            <p><b>Hours:</b> 08:00 - 22:00</p>
+            <div class="follow">
+                <h4>Follow Us</h4>
+                <div class="icon">
+                    <a href="https://www.facebook.com/"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.tiktok.com/"><i class="fa-brands fa-tiktok"></i></a>
+                </div>
+            </div>
+            
+        </div>
+        <div class="col">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.6686769186927!2d106.67966991068418!3d10.759997859452183!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f1c81c64183%3A0xd3109d7a7a8f753c!2zMjczIMSQLiBBbiBExrDGoW5nIFbGsMahbmcsIFBoxrDhu51uZyAzLCBRdeG6rW4gNSwgSOG7kyBDaMOtIE1pbmgsIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1731404358046!5m2!1svi!2s" width="450" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        
+
+        <div class="copyright">
+            <p>2024 © Copyright 30Drink. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <section id="login_signup">
+        <div class="modal">
+            <!-- lớp phủ -->
+            <div class="modal__overlay">
+            </div>
+            <div class="modal__body">
+               
+                <!-- register form -->
+                <div class="auth-form register" style="display: none;">
+                    <div class="auth-form__container">
+                        <div class="auth-form__header">
+                            <h3 class="auth-form__heading">Đăng ký</h3>
+                            <span class="auth-form__switch-btn auth-form__switch-btn1">Đăng nhập</span>
+                        </div>
+                        <div class="auth-form__form">
+                            <div class="auth-form__group">
+                                <input type="text" class="auth-form__input name" placeholder="Tên đăng nhập">
+                            </div>
+                           
+                            <div class="auth-form__group">
+                                <input type="password" class="auth-form__input pass" placeholder="Mật khẩu của bạn">
+                            </div>
+                            <div class="auth-form__group">
+                                <input type="password" class="auth-form__input pass2" placeholder="Nhập lại Mật Khẩu">
+                            </div>
+                            <div class="auth-form__group">
+                                <input type="text" class="auth-form__input fullname" placeholder="Họ và tên">
+                            </div>
+                            <div class="auth-form__group">
+                                <input type="text" class="auth-form__input email" placeholder="Email">
+                            </div>
+                            <div>
+                                <input type="text" class="auth-form__input phone" placeholder="Số điện thoại">
+                            </div>
+                           
+                        </div>
+                        
+                        
+                        <div class="auth-form_controls">
+                            <button class="btn auth-form_controls-back btn--nomal">Trở lại</button>
+                            <button class="btn btn--primary btn btn--primary1">Đăng ký</button>
+                        </div>
+                    </div>
+                    
+
+                </div> 
+    
+                <!-- login form -->
+                <div class="auth-form login" style="display: none;">
+                    <div class="auth-form__container">
+                        <div class="auth-form__header">
+                            <h3 class="auth-form__heading">Đăng nhập</h3>
+                            <span class="auth-form__switch-btn auth-form__switch-btn2">Đăng ký</span>
+                        </div>
+    
+                        <div class="auth-form__form">
+                            <div class="auth-form__group">
+                                <input type="text" class="auth-form__input name" placeholder="Tên đăng nhập">
+                            </div>
+                            <div class="auth-form__group">
+                                <input type="password" class="auth-form__input pass" placeholder="Mật khẩu của bạn">
+                            </div>
+                        </div>
+                        
+                        <div class="auth-form__aside">
+                           <div class="auth-form__help">
+                            <a href="" class="auth-form__help-forgot">Quên mật khẩu</a>
+                           </div>
+                        </div>
+                        <div class="auth-form_controls">
+                            <button class="btn auth-form_controls-back btn--nomal">Trở lại</button>
+                            <button class="btn btn--primary btn btn--primary2">Đăng nhập</button>
+                        </div>
+                    </div>
+                    
+                    
+                </div> 
+            </div>
+        </div>
+       </section>
+
+    <section id="shopping-cart">
+        <button id="cart-back"><i class=" cart-back_icon fa-solid fa-x"></i></button>
+        <div id="cart" class="section-p1">
+            <table width="100%" >
+                <thead>
+                    <tr>
+                        <td>Remove</td>
+                        <td>Image</td>
+                        <td>Product</td>
+                        <td>Price</td>
+                        <td>Size</td>
+                        <td>Quantity</td>
+                        <td>Subtotal</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="#"><i class="fa-regular fa-circle-xmark"></i></a></td>
+                        <td><img src="../image/products/FreshFruitTea/O-Long-Man-Moc-Chau-Thach-Que-Hoa.jpg" alt=""></td>
+                        <td>Ô Long Mận Mộc Châu Thạch Quế Hoa</td>
+                        <td>35.000</td>
+                        <td>M</td>
+                        <td>2</td>
+                        <td>70.000</td>
+                    </tr>
+                </tbody>
+            </table>
+         </div>
+          
+        <div id="cart-add" class="section-p1">
+        
+            <div id="subtotal">
+                <h3>Cart Totals</h3>
+                <table>
+                    <tr>
+                        <td>Cart Subtotal</td>
+                        <td id="cartSubtotal">0 VND</td>
+                    </tr>
+                    <tr>
+                        <td>Total</td>
+                        <td id="cartTotal">0 VND</td>
+                    </tr>
+                </table>  
+            </div>
+           
+
+            <div class="payment">
+                <h2>Phương thức thanh toán</h2>
+                <select id="paymentSelect">
+                    <option value="cash">Tiền mặt</option>
+                    <option value="bank-transfer">Chuyển khoản</option>
+                    <option value=""></option>
+                </select>
+                <button id="payButton">Thanh toán</button>
+            </div>
+            
+            <div id="orderList">
+                <h2>Đơn hàng đã thanh toán</h2>
+                <table>
+                    <thead>
+                        <th>Mã đơn</th>
+                        <th>Ngày</th>
+                        <th>Tình trạng</th>
+                        <th>Phương thức thanh toán</th>
+                        <th>Tổng tiền</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>12</td>
+                            <td>2024-12-5</td>
+                            <td>Chưa liên hệ</td>
+                            <td>Tiền mặt</td>
+                            <td>100000</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="order-detail">
+                    <!-- Chi tiết đơn hàng nằm ở đây -->
+                    <div class="order-header">
+                        <h2>Chi tiết đơn hàng</h2>
+                        <p><strong>Mã đơn hàng:</strong> 6</p>
+                        <p><strong>Mã khách hàng:</strong> 6</p>
+                        <p><strong>Số điện thoại:</strong> 0123456879</p>
+                        <p><strong>Thời gian đặt:</strong> 2024-10-22</p>
+                        <p><strong>Hình thức thanh toán:</strong> Chuyển khoản</p>
+                        <p><strong>Địa chỉ:</strong> 321, Đường số 2, Phường 13, Quận 6, Hồ Chí Minh</p>
+                        <button class="btn-close-order-detail" onclick="closeOrderDetail()">+</button>
+                    </div>
+
+                    <div class="order-items">
+                        <h3>Chi tiết sản phẩm</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Mã sản phẩm</th> <!-- Thêm cột Mã sản phẩm -->
+                                    <th>Sản phẩm</th>
+                                    <th>Size</th>
+                                    <th>Số lượng</th>
+                                    <th>Giá</th>
+                                    <th>Tổng</th>
+                                </tr>
+                            </thead>
+                            <tbody id="order-items-tbody">
+                                <tr>
+                                    <td rowspan="2">26</td>
+                                    <td rowspan="2">Trà Sữa Trân Châu Hoàng Gia</td>
+                                    <td>M</td>
+                                    <td>6</td>
+                                    <td>35.000&nbsp;₫</td>
+                                    <td rowspan="2">296.000&nbsp;₫</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <div class="order-summary">
+                            <p><strong>Tổng tiền:</strong> 646.000&nbsp;₫</p>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="shipping">
+        <div class="ship-modal">
+            <!-- lớp phủ -->
+            <div class="ship-modal__overlay">
+            </div>
+
+            <div class="ship-modal__body">
+                <div class="container">
+                    <h2>Thông tin giao hàng</h2>
+                    <input id="customerName" type="text" placeholder="Họ và tên"><br>
+                   <div class="form-row">
+                    <input id="customerEmail" type="email" placeholder="Email">
+                    <input id="customerPhone" type="text" placeholder="Số điện thoại"><br>
+                   </div>
+                    <input id="customerAddress" type="text" placeholder="Địa chỉ"><br>
+                   <div class="dropdowns">
+                    <select id="province-dropdown">
+                        <option value="">chọn Tỉnh/thành phố</option>
+                        <option value="Hồ Chí Minh">Hồ Chí Minh</option>
+                    </select>
+                    <select id="district-dropdown">
+                        <option value="">Chọn Quận / Huyện</option>
+                        <option value="Quận 1">Quận 1</option>
+                        <option value="Quận 2">Quận 2</option>
+                        <option value="Quận 3">Quận 3</option>
+                        <option value="Quận 4">Quận 4</option>
+                        <option value="Quận 5">Quận 5</option>
+                        <option value="Quận 6">Quận 6</option>
+                        <option value="Quận 7">Quận 7</option>
+                        <option value="Quận 8">Quận 8</option>
+                        <option value="Quận 9">Quận 9</option>
+                        <option value="Quận 10">Quận 10</option>
+                        <option value="Quận 11">Quận 11</option>
+                        <option value="Quận 12">Quận 12</option>
+                        <option value="Quận Tân Bình">Quận Tân Bình</option>
+                        <option value="Quận Bình Tân">Quận Bình Tân</option>
+                        <option value="Quận Bình Thạnh">Quận Bình Thạnh</option>
+                        <option value="Quận Gò Vấp">Quận Gò Vấp</option>
+                        <option value="Quận Phú Nhuận">Quận Phú Nhuận</option>
+                        <option value="Huyện Bình Chánh">Huyện Bình Chánh</option>
+                        <option value="Huyện Hóc Môn">Huyện Hóc Môn</option>
+                        <option value="Huyện Cần Giờ">Huyện Cần Giờ</option>
+                        <option value="Huyện Nhà Bè">Huyện Nhà Bè</option>
+                    </select>
+
+                    <select id="ward-dropdown">
+                        <option value="">Chọn Phường / Xã</option>
+                        <option value="phuong">Phường 1</option>
+                        <option value="phuong">Phường 2</option>
+                        <option value="phuong">Phường 3</option>
+                    </select>
+                   </div>
+                   <div class="formbtn">
+                        <button class="btn-cart back ">Giỏ hàng</button>
+                        <button class="btn-cart btn--primary1">Thanh Toán</button>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+     <!-- Chi tiết sản phầm -->
+     <div id="productModal" class="modal">
+        <div class="modal__overlay"></div>
+        <div class="modal__body">
+            <div class="product-details">
+                <div class="product-image">
+                    <img id="modalProductImage" src="" alt="Product Image">
+                </div>
+                <div class="product-info">
+                    <h3 id="modalProductName"></h3>
+                    <p>Price: <span id="modalProductPrice"></span> </p>
+                    <!-- Số lượng sản phẩm -->
+                    <label for="quantity">Quantity:</label>
+                    <div id="quantityWrapper">
+                        <button id="decreaseQuantity" class="quantity-btn">-</button>
+                        <input type="number" id="modalProductQuantity" value="1" min="1">
+                        <button id="increaseQuantity" class="quantity-btn">+</button>
+                    </div>
+                    <!-- Kích thước sản phẩm -->
+                    <label for="size">Size:</label>
+                    <select id="modalProductSize">
+                        <option value="M">M - 35,000 </option>
+                        <option value="L">L - 43,000 </option>
+                    </select>
+                    <button id="addToCartBtn" class="btn btn--primary">Add to Cart</button>
+                </div>
+            </div>
+            <button id="closeProductModal" class="btn auth-form_controls-back">Close</button>
+        </div>
+    </div>
+    
+    <script src="../Admin/products.js"></script>
+    <script src="../Admin/orders.js"></script>
+    <script src="../Admin/customers.js"></script>
+    <script src="../Admin/address.js"></script>
+    <script src="index.js"></script>
+    
+</body>
+</html>
