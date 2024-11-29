@@ -2,7 +2,7 @@
     box-sizing: border-box; /* Thiết lập để mọi phần tử có cùng cách tính kích thước */
     margin: 0; /* Loại bỏ khoảng cách mặc định của mọi phần tử */
     padding: 0; /* Loại bỏ khoảng cách bên trong mọi phần tử */
-    font-family: 'League Spartan', sans-serif; /* Chỉ định font chữ mặc định cho toàn bộ trang */
+    font-family: 'League Spartan', sans-serif; /* Chỉ định font chữ mặc định cho toàn bộ trang */ht
 }
 
 body {
@@ -808,32 +808,30 @@ body {
     float: left; /* Cột nằm bên trái */
 }
 
+/* Phần tìm kiếm và thêm sản phẩm */
+.search,
 .add {
     margin-bottom: 10px; /* Khoảng cách dưới cùng của các phần */
     padding: 10px; /* Khoảng cách bên trong */
     border: 3px solid black; /* Viền dày xung quanh các phần này */
     background-color: white; /* Màu nền trắng */
+    /* overflow: auto; */
 }
 
-/* Style for form button in .add */
+/* Nút trong form tìm kiếm và thêm sản phẩm */
+.search form button,
 .add form button {
     cursor: pointer;
-    display: block; /* Hiển thị nút dưới dạng block */
+    width: 25%; /* Đặt chiều rộng của nút là 25% của phần chứa */
     margin: 10px auto; /* Tạo khoảng cách trên dưới và căn giữa nút */
-    font-size: 25px; /* Cỡ chữ của nút */
-    font-weight: 600; /* Đậm chữ nút */
-    width: 100%; /* Nút chiếm toàn bộ chiều rộng */
-    height: 50px; /* Chiều cao của nút */
-    background-color: #3b8a3e; /* Màu nền của nút */
+    display: block; /* Hiển thị nút dưới dạng block */
+    /* overflow: auto; */
 }
 
-.add form button:hover {
-    background-color: #fffd82;
-    color: black;
-}
 
 /* Tiêu đề của form tìm kiếm và thêm sản phẩm */
-.add h1 {
+.add h1,
+.search h1 {
     text-align: center; /* Căn giữa tiêu đề */
     background-color: #3b8a3e; /* Màu nền của tiêu đề */
     margin-bottom: 10px; /* Khoảng cách phía dưới của tiêu đề */
@@ -845,6 +843,18 @@ body {
     margin-top: 5%; /* Khoảng cách từ trên */
 }
 
+/* Nút thêm sản phẩm */
+.add form button, .search form button {
+    font-size: 25px; /* Cỡ chữ của nút */
+    font-weight: 600; /* Đậm chữ nút */
+    width: 100%; /* Nút chiếm toàn bộ chiều rộng */
+    height: 50px; /* Chiều cao của nút */
+    background-color: #3b8a3e; /* Màu nền của nút */
+}
+.add form button:hover ,.search form button:hover{
+    background-color: #fffd82;
+    color: black;
+}
 /* Phần nhập giá sản phẩm */
 .price-input {
     display: none; /* Ẩn phần nhập giá mặc định */
@@ -869,6 +879,7 @@ body {
     width: 25%; /* Chiều rộng ảnh chiếm 25% chiều rộng của phần chứa */
     display: block; /* Hiển thị ảnh dưới dạng block */
     margin-left: 10px; /* Khoảng cách từ trái cho ảnh */
+    
 }
 
 /* Nhãn "productimage" trong form thêm sản phẩm */
