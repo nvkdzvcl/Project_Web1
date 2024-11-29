@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Retrieve the logged-in user from localStorage
-    const user = JSON.parse(localStorage.getItem('loggedInUser'));
+    const user = JSON.parse(localStorage.getItem('loggedInAdmin'));
 
     if (!user) {
         // If no logged-in user, redirect to the login page and set a flag in sessionStorage
@@ -19,8 +19,8 @@ document.addEventListener('DOMContentLoaded', function() {
 document.getElementById('logoutLink').addEventListener('click', function (e) {
     e.preventDefault(); // Prevent the default link behavior
 
-    // Clear loggedInUser data from localStorage
-    localStorage.removeItem('loggedInUser');
+    // Clear loggedInAdmin data from localStorage
+    localStorage.removeItem('loggedInAdmin');
     
     // Optionally, clear any sessionStorage flags if necessary
     sessionStorage.removeItem('redirected'); // Clear redirected flag if you have one
