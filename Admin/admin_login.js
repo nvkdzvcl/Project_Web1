@@ -60,7 +60,7 @@ loginForm.addEventListener('submit',(e)=>{
     const listOfAccounts = JSON.parse(localStorage.getItem('userData')) || []; 
     const user = listOfAccounts.find(account => account.username === name && account.password === pass);
     if(user){
-        localStorage.setItem('loggedInUser', JSON.stringify(user));
+        localStorage.setItem('loggedInAdmin', JSON.stringify(user));
         alert('Đăng nhập thành công'); 
         
         window.location.href = "admin.html"; 
