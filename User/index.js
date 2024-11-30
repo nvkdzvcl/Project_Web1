@@ -361,6 +361,12 @@ document.querySelector('.btn--primary2').addEventListener('click', () => {
     let customer = customers.find(cust => cust.username === username && cust.password === password);
 
     if (customer) {
+        // Kiểm tra khóa người dùng
+        if(customer.status === 'false') {
+            alert('Người dùng này đã bị khóa!');
+            return;
+        }
+
         // Lưu trạng thái đăng nhập vào localStorage
         localStorage.setItem('loggedInUser', JSON.stringify({ username: customer.username }));
 

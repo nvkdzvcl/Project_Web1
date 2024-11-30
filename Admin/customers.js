@@ -57,7 +57,7 @@ if(!customers) {
             id: 8,
             username: 'thongtindaotao',
             password: 'mssv',
-            status: 'true',
+            status: 'false',
             role: 'customer'
         },
         {
