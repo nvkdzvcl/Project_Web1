@@ -456,7 +456,8 @@ document.querySelector('.btn--primary1').addEventListener('click', () => {
         id: customers.length > 0 ? customers[customers.length - 1].id + 1 : 1, // Tự động tăng ID
         username: username,
         password: password,
-        status: 'true'
+        status: 'true',
+        role: 'customer'
     });
 
     // Lưu dữ liệu mới vào localStorage
