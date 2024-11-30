@@ -143,6 +143,11 @@ function displayPagination(totalOrders) {
 // In danh sách sản phẩm
 displayOrders(currentPageOrder);
 
+// Thêm sự kiện cho sắp xếp theo quận
+document.getElementById('district-filter').addEventListener('change', () => {
+    displayOrders(currentPageOrder);
+});
+
 // Hàm để hiển thị chi tiết đơn hàng khi click
 function showOrderDetail(orderId) {
     // Lấy các thông tin cần xử lý
@@ -272,17 +277,13 @@ function showOrderDetail(orderId) {
     `;
 
     // hien thi chi tiet don hang
-    document.querySelector('.order-detail').style.display = 'block';
-    document.querySelector('.order-detail').scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-    });
+    document.querySelector('.wrap-order-detail').style.display = 'block';
+    
 }
 
 // Thêm sự kiện cho nút tắt chi tiết sản phẩm
 function closeOrderDetail() {
-    document.querySelector('.order-detail').style.display = 'none';
-    
+    document.querySelector('.wrap-order-detail').style.display = 'none';
 }
 
 
