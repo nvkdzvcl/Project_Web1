@@ -67,18 +67,6 @@ function displayStatisticType() {
         });
     });
 
-    let bestSellerType = Number.MIN_SAFE_INTEGER;
-    let leastSellerType = Number.MAX_SAFE_INTEGER;
-    // Tính số lượng nhiều nhất và ít nhất trong các mặt hàng
-    for(let type in statisticType) {
-        if(statisticType[type].quantity >= bestSellerType) {
-            bestSellerType = statisticType[type].quantity;
-        }
-        if(statisticType[type].quantity <= leastSellerType) {
-            leastSellerType = statisticType[type].quantity;
-        }
-    }
-
     // Hiển thị thông tin thống kê trong bảng
     const statisticTableType = document.querySelector('.statistic-table-type tbody');
     statisticTableType.innerHTML = ''; // Xóa dữ liệu cũ trước khi hiển thị
@@ -87,18 +75,13 @@ function displayStatisticType() {
     for(let type in statisticType) {
         totalRevenue += statisticType[type].totalCost;  // Tính tổng doanh thu
         let row = document.createElement('tr');
+        row.onclick = () => showTypeDetail(type);
         row.innerHTML = `
             <td>${type}</td>
             <td>${statisticType[type].quantity}</td>
             <td>${formatCurrencyVND(statisticType[type].totalCost)}</td>
         `;
 
-        if(statisticType[type].quantity === bestSellerType) {
-            row.classList.add('best-seller-type');
-        }
-        if(statisticType[type].quantity === leastSellerType) {
-            row.classList.add('least-seller-type');
-        }
 
         statisticTableType.appendChild(row);
     }
@@ -111,6 +94,156 @@ function displayStatisticType() {
     `;
 }
 
+
+let currentPageTypeDetail = 1;
+let itemTypeDetailPerPage = 6;
+
+
+function showTypeDetail(type) {
+    let products = JSON.parse(localStorage.getItem('products')) || [];
+    products = products.filter(product => product.type === type);
+
+    let orders = JSON.parse(localStorage.getItem('orders')) || [];
+
+    // Thêm phần title cho chi tiết mặt hàng
+    const typeDetailTitle = document.querySelector('.type-detail-title');
+    typeDetailTitle.textContent = `Mặt hàng ${type}`;
+
+    // Thêm sự kiện cho sắp xếp theo việc bán chạy
+    const typeDetailFilter = document.getElementById('type-detail-filter');
+    typeDetailFilter.addEventListener('change', () => {
+        const type = document.querySelector('.type-detail-title').textContent.replace('Mặt hàng ', '');
+        showTypeDetail(type);
+    });
+    
+    let prods = [];
+    products.forEach(product => {
+        let sizes = [];
+        let prodCost = 0;
+        orders.forEach(order => {
+            order.orderItems.forEach(orderItem => {
+                if(orderItem.productId === product.id) {
+                    orderItem.sizes.forEach(oSize => {
+                        let pSize = product.sizes.find(pSize => pSize.size === oSize.size);
+                        if(pSize) {
+                            // Kiểm tra trong mảng kết quả có size này chưa
+                            let size = sizes.find(size => size.size === pSize.size);
+                            if(size) {
+                                size.quantity += oSize.quantity;
+                            }
+                            else {
+                                sizes.push({
+                                    size: pSize.size,
+                                    quantity: oSize.quantity,
+                                    price: pSize.price
+                                });
+                            }
+                            prodCost += pSize.price * oSize.quantity;
+                        }
+                    });
+                }
+            });
+        });
+        if(!prods.find(p => p.id === product.id)) {
+            prods.push({
+                id: product.id,
+                name: product.name,
+                sizes: sizes,
+                totalCost: prodCost
+            });
+        
+
+        }
+    });
+    // in html ở đây
+    if(typeDetailFilter.value === 'best_selling') {
+        prods.sort((a, b) => b.totalCost - a.totalCost);
+    }
+    if(typeDetailFilter.value === 'least_selling') {
+        prods.sort((a, b) => a.totalCost - b.totalCost);
+    }
+
+    const typeDetailBody = document.querySelector('.type-detail-table tbody');
+    typeDetailBody.innerHTML = '';
+
+    let startIndex = (currentPageTypeDetail - 1) * itemTypeDetailPerPage;
+    let endIndex = Math.min(startIndex + itemTypeDetailPerPage, prods.length);
+
+    for(let i = startIndex; i < endIndex; i++) {
+        if(prods[i].sizes.length === 0) {
+            typeDetailBody.innerHTML += `
+                <tr>
+                    <td rowspan="1">${prods[i].id}</td>
+                    <td rowspan="1">${prods[i].name}</td>
+                    <td></td>
+                    <td>0</td>
+                    <td>${formatCurrencyVND(0)}</td>
+                    <td rowspan="1">${formatCurrencyVND(0)}</td>
+                </tr>
+            `;
+        }
+    
+        prods[i].sizes.forEach((size, index) => {
+            let count = prods[i].sizes.length;
+            let row = `
+                <tr>
+                    <td rowspan="${count}">${prods[i].id}</td>
+                    <td rowspan="${count}">${prods[i].name}</td>
+                    <td>${size.size}</td> <!-- Đảm bảo sử dụng đúng kích thước -->
+                    <td>${size.quantity}</td>
+                    <td>${formatCurrencyVND(size.price)}</td>
+                    <td rowspan="${count}">${formatCurrencyVND(prods[i].totalCost)}</td>
+                </tr>
+            `;
+            if (index > 0) {
+                row = `
+                    <tr>
+                        <td>${size.size}</td>
+                        <td>${size.quantity}</td>
+                        <td>${formatCurrencyVND(size.price)}</td>
+                    </tr>
+                `;
+            }
+            typeDetailBody.innerHTML += row;
+        });
+
+    }
+    displayTypeDetailPagination(prods.length, type);
+
+    document.querySelector('.wrap-statistic-type-detail').style.display = 'block';
+}
+
+function displayTypeDetailPagination(length, type) {
+    let pagination = document.querySelector('.type-detail-pagination');
+    if (!pagination) {
+        console.error("Không tìm thấy phần tử '.type-detail-pagination'");
+        return;
+    }
+    pagination.innerHTML = '';
+
+    let totalPages = Math.ceil(length / itemTypeDetailPerPage);
+    
+    for (let i = 1; i <= totalPages; i++) {
+        let pageBtn = document.createElement('button');
+        pageBtn.textContent = i;
+        pageBtn.classList.add('pagination-btn');
+        pageBtn.addEventListener('click', () => {
+            currentPageTypeDetail = i;
+            showTypeDetail(type);
+        });
+        if(i === currentPageTypeDetail) {
+            pageBtn.className = 'active-pagination-btn';
+        }
+        pagination.appendChild(pageBtn);
+    }
+}
+
+
+
+function closeTypeDetail() {
+    document.querySelector('.wrap-statistic-type-detail').style.display = 'none';
+    document.querySelector('#type-detail-filter').value = 'best_selling';
+}
 
 
 // Tạo thống kê theo khách hàng
@@ -215,7 +348,7 @@ function displayStatisticCustomerPagination(totalCustomer) {
     for (let i = 1; i <= totalPages; i++) {
         let pageBtn = document.createElement('button');
         pageBtn.textContent = i;
-        pageBtn.classList.add('statistic-pagination-btn');
+        pageBtn.classList.add('pagination-btn');
         pageBtn.addEventListener('click', () => {
             currentPageStatistic = i;
             displayStatisticCustomer();
@@ -292,15 +425,12 @@ function showCustomerDetail(customerId) {
         <p><strong>Tổng tiền:</strong> ${formatCurrencyVND(customerDetail.totalSpent)}</p>
     `;
 
-    document.querySelector('.customer-detail').style.display = 'block';
-    document.querySelector('.customer-detail').scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-    });
+    document.querySelector('.wrap-customer-detail').style.display = 'block';
+    
 }
 
 function closeCustomerDetail() {
-    document.querySelector('.customer-detail').style.display = 'none';
+    document.querySelector('.wrap-customer-detail').style.display = 'none';
 }
 
 

@@ -35,7 +35,7 @@
     <div class="leftmenu">
         <!-- Mục Lục với logo chỉ (không có icon ở đây) -->
         <div class="mucluc">
-            <img src="/image/30 Drinks.jpg" class="logo" alt="Logo">
+            <img src="../image/30 Drinks.jpg" class="logo" alt="Logo">
             <span class="text">Mục Lục</span> <!-- Mục Lục chỉ hiển thị khi hover -->
         </div>
         <hr>
@@ -69,120 +69,129 @@
         <!-- Đơn hàng -->
         <div class="order-content">
 
-            <div class="orders-title">Danh sách đơn hàng</div>
-            <div class="order-filter">
-                <!-- Tiêu để của phần bộ lọc tìm kiếm -->
-                <div class="order-filter-title">
-                    <i class="fa-solid fa-filter"></i>
-                    <p>Bộ lọc tìm kiếm</p>
+            <div class="order-content-main">
+                <div class="orders-title">Danh sách đơn hàng</div>
+                <div class="order-filter">
+                    <!-- Tiêu để của phần bộ lọc tìm kiếm -->
+                    <div class="order-filter-title">
+                        <i class="fa-solid fa-filter"></i>
+                        <p>Bộ lọc tìm kiếm</p>
+                    </div>
+                    <!-- Nơi chứa các phương thức tìm kiếm -->
+                    <div class="order-filter-item">
+                        <!-- Tìm kiếm theo mã khách hàng -->
+                        <div class="customer-id-filter">
+                            <label for="customer-id">Mã khách hàng:</label>
+                            <input type="text" id="customer-id" placeholder="Nhập mã khách hàng" value="">
+                        </div>
+                        <!-- Tìm kiếm theo trạng thái đơn hàng -->
+                        <div class="status-filter">
+                            <label for="status-filter-select">Tình trạng:</label>
+                            <select id="status-filter-select">
+                                <option value="all">Tất cả</option>
+                                <option value="Chưa liên hệ">Chưa liên hệ</option>
+                                <option value="Đã liên hệ">Đã liên hệ</option>
+                                <option value="Đã giao">Đã giao</option>
+                                <option value="Đã hủy đơn">Đã hủy đơn</option>
+                            </select>
+                        </div>
+                        <!-- Tìm kiếm trong khoảng thời gian -->
+                        <div class="date-filter">
+                            <label for="start-date">Từ ngày:</label>
+                            <input type="date" id="start-date">
+    
+                            <label for="end-date">Đến ngày:</label>
+                            <input type="date" id="end-date">
+                        </div>
+                        
+                        <!-- Nút áp dụng tìm kiếm -->
+                        <button class="apply-filter-btn">Áp dụng</button><!-- Tìm kiếm theo địa chỉ -->
+
+                        <div class="address-filter">
+                            <label for="district-filter">Sắp xếp theo quận:</label>
+                            <select id="district-filter">
+                                <option value="all">Tất cả</option>
+                                <option value="Quận 1">Quận 1</option>
+                                <option value="Quận 2">Quận 2</option>
+                                <option value="Quận 3">Quận 3</option>
+                                <option value="Quận 4">Quận 4</option>
+                                <option value="Quận 5">Quận 5</option>
+                                <option value="Quận 6">Quận 6</option>
+                                <option value="Quận 7">Quận 7</option>
+                                <option value="Quận 8">Quận 8</option>
+                                <option value="Quận 9">Quận 9</option>
+                                <option value="Quận 10">Quận 10</option>
+                                <option value="Quận 11">Quận 11</option>
+                                <option value="Quận 12">Quận 12</option>
+                                <option value="Bình Thạnh">Bình Thạnh</option>
+                                <option value="Gò Vấp">Gò Vấp</option>
+                                <option value="Phú Nhuận">Phú Nhuận</option>
+                                <option value="Tân Bình">Tân Bình</option>
+                                <option value="Tân Phú">Tân Phú</option>
+                                <option value="Bình Tân">Bình Tân</option>
+                                <option value="Thủ Đức">Thủ Đức</option>
+                            </select>
+    
+                        </div>
+                    </div>
                 </div>
-                <!-- Nơi chứa các phương thức tìm kiếm -->
-                <div class="order-filter-item">
-                    <!-- Tìm kiếm theo mã khách hàng -->
-                    <div class="customer-id-filter">
-                        <label for="customer-id">Mã khách hàng:</label>
-                        <input type="text" id="customer-id" placeholder="Nhập mã khách hàng" value="">
-                    </div>
-                    <!-- Tìm kiếm theo trạng thái đơn hàng -->
-                    <div class="status-filter">
-                        <label for="status-filter-select">Tình trạng:</label>
-                        <select id="status-filter-select">
-                            <option value="all">Tất cả</option>
-                            <option value="Chưa liên hệ">Chưa liên hệ</option>
-                            <option value="Đã liên hệ">Đã liên hệ</option>
-                            <option value="Đã giao">Đã giao</option>
-                            <option value="Đã hủy đơn">Đã hủy đơn</option>
-                        </select>
-                    </div>
-                    <!-- Tìm kiếm trong khoảng thời gian -->
-                    <div class="date-filter">
-                        <label for="start-date">Từ ngày:</label>
-                        <input type="date" id="start-date">
-
-                        <label for="end-date">Đến ngày:</label>
-                        <input type="date" id="end-date">
-                    </div>
-                    <!-- Tìm kiếm theo địa chỉ -->
-                    <div class="address-filter">
-                        <label for="district-filter">Quận:</label>
-                        <select id="district-filter">
-                            <option value="all">Tất cả</option>
-                            <option value="Quận 1">Quận 1</option>
-                            <option value="Quận 2">Quận 2</option>
-                            <option value="Quận 3">Quận 3</option>
-                            <option value="Quận 4">Quận 4</option>
-                            <option value="Quận 5">Quận 5</option>
-                            <option value="Quận 6">Quận 6</option>
-                            <option value="Quận 7">Quận 7</option>
-                            <option value="Quận 8">Quận 8</option>
-                            <option value="Quận 9">Quận 9</option>
-                            <option value="Quận 10">Quận 10</option>
-                            <option value="Quận 11">Quận 11</option>
-                            <option value="Quận 12">Quận 12</option>
-                            <option value="Bình Thạnh">Bình Thạnh</option>
-                            <option value="Gò Vấp">Gò Vấp</option>
-                            <option value="Phú Nhuận">Phú Nhuận</option>
-                            <option value="Tân Bình">Tân Bình</option>
-                            <option value="Tân Phú">Tân Phú</option>
-                            <option value="Bình Tân">Bình Tân</option>
-                            <option value="Thủ Đức">Thủ Đức</option>
-                        </select>
-
-                    </div>
-                    <!-- Nút áp dụng tìm kiếm -->
-                    <button class="apply-filter-btn">Áp dụng</button>
-                </div>
-            </div>
-            <div class="wrap-orders">
-                <table class="order-table">
-                    <thead>
-                        <tr>
-                            <th>Mã đơn hàng</th>
-                            <th>Mã khách hàng</th>
-                            <th>Thời gian</th>
-                            <th>Tình trạng</th>
-                            <th>Tổng tiền</th>
-                        </tr>
-                    </thead>
-                    <tbody class="order-list">
-                    </tbody>
-                </table>
-                <div class="pagination-order"></div>
-            </div>
-            <div class="order-detail">
-                <!-- Chi tiết đơn hàng nằm ở đây -->
-                <div class="order-header">
-
-                </div>
-
-                <div class="order-items">
-                    <h3>Chi tiết sản phẩm</h3>
-                    <table>
+                <div class="wrap-orders">
+                    <table class="order-table">
                         <thead>
                             <tr>
-                                <th>Mã sản phẩm</th> <!-- Thêm cột Mã sản phẩm -->
-                                <th>Sản phẩm</th>
-                                <th>Size</th>
-                                <th>Số lượng</th>
-                                <th>Giá</th>
-                                <th>Tổng</th>
+                                <th>Mã đơn hàng</th>
+                                <th>Mã khách hàng</th>
+                                <th>Thời gian</th>
+                                <th>Tình trạng</th>
+                                <th>Tổng tiền</th>
                             </tr>
                         </thead>
-                        <tbody id="order-items-tbody">
-
-                            <!-- Ví dụ một sản phẩm có nhiều size -->
-
-
-
+                        <tbody class="order-list">
                         </tbody>
                     </table>
-                    <div class="order-detail-status-main">
+                    <div class="pagination-order"></div>
+                </div>
 
+            </div>
+            
+            
+            <div class="wrap-order-detail">
+                <div class="order-detail">
+                    <!-- Chi tiết đơn hàng nằm ở đây -->
+                    <div class="order-header">
+    
                     </div>
-                    <div class="order-summary">
-
+    
+                    <div class="order-items">
+                        <h3>Chi tiết sản phẩm</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Mã sản phẩm</th> <!-- Thêm cột Mã sản phẩm -->
+                                    <th>Sản phẩm</th>
+                                    <th>Size</th>
+                                    <th>Số lượng</th>
+                                    <th>Giá</th>
+                                    <th>Tổng</th>
+                                </tr>
+                            </thead>
+                            <tbody id="order-items-tbody">
+    
+                                <!-- Ví dụ một sản phẩm có nhiều size -->
+    
+    
+    
+                            </tbody>
+                        </table>
+                        <div class="order-detail-status-main">
+    
+                        </div>
+                        <div class="order-summary">
+    
+                        </div>
                     </div>
                 </div>
+
             </div>
         </div>
 
@@ -229,6 +238,43 @@
 
                 </div>
 
+                <!-- Chi tiết mặt hàng -->
+                <div class="wrap-statistic-type-detail">
+                    <div class="statistic-type-detail">
+                        <div class="type-detail-title">Mặt hàng Ice</div>
+                        <div class="wrap-type-detail-filter">
+                            <label for="type-detail-filter">Sắp xếp:</label>
+                            <select id="type-detail-filter">
+                                <option value="best_selling">Bán chạy nhất</option>
+                                <option value="least_selling">Bán ế nhất</option>
+                            </select>
+                        </div>
+                        <table class="type-detail-table">
+                            <thead>
+                                <th>Mã sản phẩm</th>
+                                <th>Tên sản phẩm</th>
+                                <th>Size</th>
+                                <th>Số lượng</th>
+                                <th>Giá</th>
+                                <th>Tổng tiền</th>
+                                <button class="btn-close-type-detail" onclick = "closeTypeDetail()">+</button>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td rowspan="2">2</td>
+                                    <td rowspan="2">Ô Long Tuyết Lê Khổng Lồ</td>
+                                    <td>M</td>
+                                    <td>2</td>
+                                    <td>35.000&nbsp;₫</td>
+                                    <td rowspan="2">156.000&nbsp;₫</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="type-detail-pagination"></div>
+                    </div>
+
+                </div>
+
                 <!-- Khách hàng -->
                 <div class="statistic-customer">
                     <div class="statistic-item-title">Thống kê theo khách hàng</div>
@@ -260,6 +306,9 @@
                         </tbody>
                     </table>
 
+                </div>
+
+                <div class="wrap-customer-detail">
                     <div class="customer-detail">
                         <!-- chi tiết khách hàng -->
                         <div class="customer-header">
@@ -269,7 +318,7 @@
                             <p><strong>Số điện thoại:</strong> 0909090909</p>
                             <button class="btn-close-customer-detail">+</button>
                         </div>
-
+    
                         <div class="customer-items">
                             <h3>Chi tiết đơn hàng</h3>
                             <table>
@@ -281,19 +330,19 @@
                                     </tr>
                                 </thead>
                                 <tbody class="customer-items-tbody">
-
+    
                                     <!-- Ví dụ một sản phẩm có nhiều size -->
-
-
-
+    
+    
+    
                                 </tbody>
                             </table>
                             <div class="customer-summary">
                                 <p><strong>Tổng tiền:</strong> 100000</p>
                             </div>
                         </div>
-
-
+    
+    
                     </div>
 
                 </div>
@@ -368,7 +417,7 @@
 
                         <br><br>
                         <label for="productimage">
-                            <span>Ảnh</span> <img src="/image/temp2.jpg" alt="Hình ảnh sản phẩm">
+                            <span>Ảnh</span> <img src="../image/temp2.jpg" alt="Hình ảnh sản phẩm">
                         </label>
                         <input type="file" id="productimage">
                         <br><br>
@@ -394,7 +443,7 @@
 
                         <label for="editProductImage">Product Image:</label>
                         <input type="file" id="editProductImage" accept="image/*" />
-                        <img id="previewImage" src="/image/temp2.jpg">
+                        <img id="previewImage" src="../image/temp2.jpg">
                         <button type="button" onclick="updateProduct()">Update Product</button>
                         <button type="button" onclick="closeModal()">Close</button>
                     </form>

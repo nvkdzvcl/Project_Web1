@@ -149,7 +149,7 @@ body {
 .content {
     margin-left: 70px; /* Khoảng cách trái cho nội dung chính (cho phù hợp với menu bên trái) */
     padding: 20px; /* Khoảng cách bên trong nội dung */
-    background: url('/image/hero.jpg'); /* Hình nền cho phần nội dung */
+    background: url('../image/hero.jpg'); /* Hình nền cho phần nội dung */
     flex-grow: 1; /* Làm nội dung chính chiếm phần còn lại của không gian */
     height: calc(100vh - 60px); /* Chiều cao của phần nội dung */
     overflow-y: auto; /* Cho phép cuộn dọc nếu nội dung vượt quá chiều cao */
@@ -157,17 +157,23 @@ body {
 
 /* Đơn hàng */
 .order-content {
-    display: none; 
+    position: relative;
+    display: none;
+}
+
+.order-content-main {
+    width: 100%;
+    display: flex; 
     flex-wrap: wrap;
-    margin: 20px 20px; /* Khoảng cách xung quanh đơn hàng */
-    background-color: white; /* Màu nền trắng cho phần đơn hàng */
-    padding: 30px; /* Khoảng cách bên trong phần đơn hàng */
+    margin: 20px 20px;
+    background-color: white;
+    padding: 30px;
 }
 
 .orders-title {
-    margin-bottom: 20px; /* Khoảng cách dưới tiêu đề đơn hàng */
-    font-size: 20px; /* Kích thước chữ cho tiêu đề */
-    font-weight: 700; /* Độ đậm chữ cho tiêu đề */
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: 700;
     text-align: center;
     width: 100%;
 }
@@ -233,7 +239,11 @@ body {
 .address-filter {
     border-top: 1px solid rgba(0, 0, 0, .09);
     padding-top: 28px;
-    margin-bottom: 28px;
+    margin-top: 26.apply-filter-btpx;
+}
+
+.address-filter label{
+    font-size: 15px;
 }
 
 .apply-filter-btn {
@@ -242,7 +252,7 @@ body {
     border: none;
     border-radius: 2px;
     display: flex;
-    margin: auto 36px;
+    margin: auto 4px;
     justify-content: center;
     align-items: center;
     background-color: #3b8a3e;
@@ -304,7 +314,7 @@ body {
     display: flex; /* Sử dụng flexbox để căn giữa các phần tử */
     justify-content: center; /* Căn giữa phân trang */
     position: absolute;
-    bottom: -35px;
+    bottom: 100px;
     right: 50%;
 }
 
@@ -334,7 +344,7 @@ body {
     display: flex; 
     flex-direction: column;
     display: none;
-
+    position: relative;
 }
 
 .statistic-title {
@@ -454,16 +464,6 @@ body {
     margin-bottom: 36px;
 }
 
-
-.best-seller-type {
-    background-color: #6bcf6f;
-}
-
-.least-seller-type {
-    background-color: #f77e70;
-}
-
-
 .statistic-pagination {
     display: flex;
     justify-content: center; 
@@ -487,15 +487,28 @@ body {
 
 
 /* chi tiết đơn hàng */
+.wrap-order-detail {
+    position:fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(102, 102, 102, 0.6);
+    display: none;
+}
+
 .order-detail {
     width: 60%;
-    margin: 20px auto;
+    margin: 35px auto;
     padding: 20px;
     border: 1px solid #ddd;
     background-color: #f9f9f9;
     border-radius: 8px;
     font-family: Arial, sans-serif;
-    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .order-header {
@@ -620,18 +633,126 @@ body {
 
 
 /* Chi tiết mặt hàng */
+.type-detail-title {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.wrap-type-detail-filter {
+    margin: 21px 0 20px 20px;
+}
+
+#type-detail-filter {
+    height: 22px;
+}
+
+.wrap-statistic-type-detail {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    display: none;
+}
+
+.statistic-type-detail {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* width: 70%; */
+    background-color: #fff;
+    padding: 20px;
+}
+
+.type-detail-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.type-detail-table th, .type-detail-table td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.type-detail-table th {
+    background-color: #f1f1f1;
+}
+
+.type-detail-table td {
+    font-size: 16px;
+}
+.type-detail-table td {
+    font-size: 16px;
+    padding: 10px;
+    text-align: center;
+}
+
+.type-detail-table td[colspan="3"] {
+    text-align: right;
+}
+
+.type-detail-table td strong {
+    font-size: 18px;
+    color: #333;
+    text-align: right;
+}
+
+.btn-close-type-detail {
+    height: 32px;
+    border: none;
+    background-color: #fff;
+    position: absolute;
+    right: 13px;
+    top: 11px;
+    font-size: 34px;
+    transform: rotate(45deg);
+    cursor: pointer;
+}
+
+.btn-close-type-detail:hover {
+    color: #555;
+}
+
+
+.btn-close-type-detail:active {
+    color: #3b8a3e;
+}
+
+.type-detail-pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
+}
 
 
 /* Chi tiết khách hàng */
-.customer-detail {
-    width: 60%;
-    margin: 20px auto;
-    padding: 20px;
-    border: 1px solid #ddd;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    font-family: Arial, sans-serif;
+.wrap-customer-detail {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Màu đen với độ trong suốt 50% */
     display: none;
+}
+
+.customer-detail {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 600px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow-y: auto;
 }
 
 .customer-header {
@@ -808,32 +929,30 @@ body {
     float: left; /* Cột nằm bên trái */
 }
 
+/* Phần tìm kiếm và thêm sản phẩm */
+.search,
 .add {
     margin-bottom: 10px; /* Khoảng cách dưới cùng của các phần */
     padding: 10px; /* Khoảng cách bên trong */
     border: 3px solid black; /* Viền dày xung quanh các phần này */
     background-color: white; /* Màu nền trắng */
+    /* overflow: auto; */
 }
 
-/* Style for form button in .add */
+/* Nút trong form tìm kiếm và thêm sản phẩm */
+.search form button,
 .add form button {
     cursor: pointer;
-    display: block; /* Hiển thị nút dưới dạng block */
+    width: 25%; /* Đặt chiều rộng của nút là 25% của phần chứa */
     margin: 10px auto; /* Tạo khoảng cách trên dưới và căn giữa nút */
-    font-size: 25px; /* Cỡ chữ của nút */
-    font-weight: 600; /* Đậm chữ nút */
-    width: 100%; /* Nút chiếm toàn bộ chiều rộng */
-    height: 50px; /* Chiều cao của nút */
-    background-color: #3b8a3e; /* Màu nền của nút */
+    display: block; /* Hiển thị nút dưới dạng block */
+    /* overflow: auto; */
 }
 
-.add form button:hover {
-    background-color: #fffd82;
-    color: black;
-}
 
 /* Tiêu đề của form tìm kiếm và thêm sản phẩm */
-.add h1 {
+.add h1,
+.search h1 {
     text-align: center; /* Căn giữa tiêu đề */
     background-color: #3b8a3e; /* Màu nền của tiêu đề */
     margin-bottom: 10px; /* Khoảng cách phía dưới của tiêu đề */
@@ -845,6 +964,18 @@ body {
     margin-top: 5%; /* Khoảng cách từ trên */
 }
 
+/* Nút thêm sản phẩm */
+.add form button, .search form button {
+    font-size: 25px; /* Cỡ chữ của nút */
+    font-weight: 600; /* Đậm chữ nút */
+    width: 100%; /* Nút chiếm toàn bộ chiều rộng */
+    height: 50px; /* Chiều cao của nút */
+    background-color: #3b8a3e; /* Màu nền của nút */
+}
+.add form button:hover ,.search form button:hover{
+    background-color: #fffd82;
+    color: black;
+}
 /* Phần nhập giá sản phẩm */
 .price-input {
     display: none; /* Ẩn phần nhập giá mặc định */
@@ -869,6 +1000,7 @@ body {
     width: 25%; /* Chiều rộng ảnh chiếm 25% chiều rộng của phần chứa */
     display: block; /* Hiển thị ảnh dưới dạng block */
     margin-left: 10px; /* Khoảng cách từ trái cho ảnh */
+    
 }
 
 /* Nhãn "productimage" trong form thêm sản phẩm */
@@ -1194,7 +1326,7 @@ body {
     }
 
     /* order */
-    .order-content {
+    .order-content-main {
         font-size: 12px;
     }
 
@@ -1203,7 +1335,8 @@ body {
     }
 
     .order-detail {
-        width: 90%;
+        width: 85%;
+        left: 55%;
     }
 
     /* Statistic */
@@ -1270,7 +1403,7 @@ body {
     }
 
     /* order */
-    .order-content {
+    .order-content-main {
         margin: 20px 8px;
         padding: 24px 24px 24px 12px;
         min-height: 628px;
@@ -1357,7 +1490,7 @@ body {
     }
 
     /* order */
-    .order-content {
+    .order-content-main {
         margin: 20px 0px;
     }
 
@@ -1366,7 +1499,8 @@ body {
     }
 
     .order-detail {
-        width: 100%;
+        width: 85%;
+        left: 56.5%;
     }
 
 
