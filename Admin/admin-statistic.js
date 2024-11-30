@@ -112,6 +112,7 @@ function showTypeDetail(type) {
     // Thêm sự kiện cho sắp xếp theo việc bán chạy
     const typeDetailFilter = document.getElementById('type-detail-filter');
     typeDetailFilter.addEventListener('change', () => {
+        currentPageTypeDetail = 1;
         const type = document.querySelector('.type-detail-title').textContent.replace('Mặt hàng ', '');
         showTypeDetail(type);
     });
