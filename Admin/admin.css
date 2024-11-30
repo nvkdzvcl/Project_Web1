@@ -1405,3 +1405,44 @@ body {
         width: 100%; /* Make input fields full width */
     }
 }
+
+
+
+
+
+@media screen and (max-width: 1240px) {
+    .ranking{
+        display: none;
+    }    
+    .email{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 650px){
+    .ranking{
+        display: none;
+    }    
+    .email{
+        display: none;
+    }
+    .status{
+        display: none; 
+    }   
+}
+
+
+@media screen and (max-width: 542px){
+    .ranking{
+        display: none;
+    }    
+    .email{
+        display: none;
+    }
+    .status{
+        display: none; 
+    }
+    .sdt{
+        display: none; 
+    }      
+}

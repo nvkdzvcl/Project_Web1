@@ -306,6 +306,7 @@ function closeCustomerDetail() {
 
 
 
+
 // Thêm sự kiện cho nút áp dụng
 document.querySelector('.btn-accept-filter').addEventListener('click', () => {
     if(document.querySelector('.statistic-type').style.display === 'block') {
