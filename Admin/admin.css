@@ -1059,14 +1059,14 @@ body {
     display: flex; /* Dùng flexbox để căn chỉnh các nút phân trang */
     justify-content: center; /* Căn giữa các nút phân trang */
 }
-
+/* 
 #add--customer{
 
-  /* text-align: center; */
+  
   margin-top: 20px;
   margin-left: 100px;  
 
-}
+} */
  
 
 @media screen and (max-width: 1240px){

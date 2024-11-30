@@ -92,31 +92,38 @@ document.querySelector('.view-customers').addEventListener('click',()=>{
 
 
 document.getElementById('timkiem').addEventListener('click', ()=>{
-    const username = document.getElementById('searchcustomername').value; 
+    const username = document.getElementById('searchcustomername').value;
+    if(username === ''){
+        alert('Vui lòng nhập thông tin tìm kiếm'); 
+        return; 
+    } 
     const storeData = JSON.parse(localStorage.getItem('address')); 
     const tableBody = document.querySelector('.customers--detail'); 
     tableBody.innerHTML = ''; 
     
     // console.log(storeData); 
 
-    const find = storeData.find(customers => customers.fullname == username)
-    console.log(getStatusThroughId(find.customerId)); 
+    const find = storeData.filter(customers => customers.fullname.includes(username)); 
+    // console.log(getStatusThroughId(find.customerId)); 
+    // console.log(find); 
     if(find){
-        const newRow = `
-                    <tr>
-                        <td>${find.customerId}</td> 
-                        <td>${find.fullname}</td>
-                        <td class = "sdt">${find.phone}</td> 
-                        <td class = "email">${find.email}</td>
-                        <td class = "role">regular</td>
-                        <td class = "status">${ getStatusThroughId(find.customerId) === "true" ? "Active" : "Inactive"}</td>
-                        <td>
-                            <button>Edit-customer</button>
-                            <button>Delete-customer</button>
-                        </td>
-                    </tr>
-                `; 
-            tableBody.innerHTML += newRow; 
+        find.forEach(find=>{
+            const newRow = `
+            <tr>
+                <td>${find.customerId}</td> 
+                <td>${find.fullname}</td>
+                <td class = "sdt">${find.phone}</td> 
+                <td class = "email">${find.email}</td>
+                <td class = "ranking">regular</td>
+                <td class = "status">${ getStatusThroughId(find.customerId) === "true" ? "Active" : "Inactive"}</td>
+                <td>
+                    <button>Edit-customer</button>
+                    <button>Delete-customer</button>
+                </td>
+            </tr>
+        `; 
+         tableBody.innerHTML += newRow; 
+        })
     }
 
     
@@ -125,10 +132,44 @@ document.getElementById('timkiem').addEventListener('click', ()=>{
     }
 
     document.getElementById('searchcustomername').value = '';  
+}); 
 
 
+document.getElementById('back').addEventListener('click',()=>{ 
+    const storeData2 = localStorage.getItem('address'); 
+    const storeData1 = localStorage.getItem('customers'); 
+    const customer2 = JSON.parse(storeData2); 
+    const customer1 = JSON.parse(storeData1); 
 
+    var html = ""; 
+
+    customer2.forEach(customers2 => {
+        const status = customer1.find(customers1 => customers1.id === customers2.customerId && customers1.status === "true") ? "Active" : "Inactive";
+        
+        const newRow = `
+        <tr>
+            <td>${customers2.customerId}</td> 
+            <td>${customers2.fullname}</td>
+            <td class = "sdt">${customers2.phone}</td> 
+            <td class = "email">${customers2.email}</td>
+            <td class = "role">regular</td>
+            <td class = "status">${status}</td>
+            <td>
+                <button>Edit-customer</button>
+                <button>Delete-customer</button>
+            </td>
+        </tr>
+        `;
+        
+        html += newRow; 
+  
+       
+  
+    });
     
+    const tableBody = document.querySelector('.customers--detail'); 
+    // console.log(tableBody); 
+    tableBody.innerHTML = html;    
 }); 
 
 // them khach hang 
