@@ -23,7 +23,7 @@ document.querySelector('.view-customers').addEventListener('click',()=>{
                 <td>${customers2.fullname}</td>
                 <td class = "sdt">${customers2.phone}</td> 
                 <td class = "email">${customers2.email}</td>
-                <td class = "ranking">regular</td>
+                <td class = "role">regular</td>
                 <td class = "status">${status}</td>
                 <td>
                     <button>Edit-customer</button>
@@ -61,7 +61,7 @@ document.querySelector('.view-customers').addEventListener('click',()=>{
                 <td>${customers2.fullname}</td>
                 <td class = "sdt">${customers2.phone}</td> 
                 <td class = "email">${customers2.email}</td>
-                <td class = "ranking">regular</td>
+                <td class = "role">regular</td>
                 <td class = "status">${getStatusThroughId(customers2.customerId) === "true" ? "Active" : "Inactive"}</td>
                 <td>
                     <button>Edit-customer</button>
@@ -108,7 +108,7 @@ document.getElementById('timkiem').addEventListener('click', ()=>{
                         <td>${find.fullname}</td>
                         <td class = "sdt">${find.phone}</td> 
                         <td class = "email">${find.email}</td>
-                        <td class = "ranking">regular</td>
+                        <td class = "role">regular</td>
                         <td class = "status">${ getStatusThroughId(find.customerId) === "true" ? "Active" : "Inactive"}</td>
                         <td>
                             <button>Edit-customer</button>

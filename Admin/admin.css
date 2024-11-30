@@ -1545,7 +1545,7 @@ body {
 
 
 @media screen and (max-width: 1240px) {
-    .ranking{
+    .role{
         display: none;
     }    
     .email{
@@ -1554,7 +1554,7 @@ body {
 }
 
 @media screen and (max-width: 650px){
-    .ranking{
+    .role{
         display: none;
     }    
     .email{
@@ -1567,7 +1567,7 @@ body {
 
 
 @media screen and (max-width: 542px){
-    .ranking{
+    .role{
         display: none;
     }    
     .email{

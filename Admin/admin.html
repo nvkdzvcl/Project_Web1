@@ -50,7 +50,7 @@
             </li>
             <li>
                 <i class="fa-solid fa-users"></i>
-                <a href="#" class = "view-customers">Khách Hàng</a>
+                <a href="#" class = "view-customers">Người dùng</a>
             </li>
             <li>
                 <i class="fa-solid fa-chart-simple"></i>
@@ -459,15 +459,15 @@
                 
 
                 <table>
-                    <h1 class="customer-title">Danh sách khách hàng</h1>
+                    <h1 class="customer-title">Danh sách người dùng</h1>
                     <thead>
                         <tr>
-                            <th>Mã khách hàng</th>
-                            <th>Tên khách hàng</th>
+                            <th>Mã người dùng</th>
+                            <th>Tên người dùng</th>
                             <th class = "sdt">Số điện thoại</th>
                             <th class = "email">Email</th>
-                            <th class = "ranking">Hạng mức khách hàng</th>
-                            <th class = "status">Trạng thái khách hàng</th>
+                            <th class = "role">Vai trò</th>
+                            <th class = "status">Trạng thái người dùng</th>
                             <th>Edit</th>
                         </tr>
                     </thead>
@@ -493,9 +493,9 @@
             <div class="right-column">
                 <!-- Phần tìm kiếm sản phẩm ở trên -->
                 <div class="search">
-                    <h1>Tìm kiếm khách hàng</h1>
+                    <h1>Tìm kiếm người dùng</h1>
                     <form>
-                        <label for="searchcustomername">Tên khách hàng</label>
+                        <label for="searchcustomername">Tên người dùng</label>
                         <input type="text" id="searchcustomername">
                         <br><br>
 
@@ -506,7 +506,7 @@
 
                 <!-- Phần thêm sản phẩm ở dưới -->
                 <div class="add">
-                    <h1>Thêm khách hàng</h1>
+                    <h1>Thêm người dùng</h1>
                     <form>
                         <!-- <div class="code--customer">
                             <label for="customer--code">Mã khách hàng</label>
@@ -526,36 +526,36 @@
                         </div>
                        
                         <div class="name-customer">
-                            <label for="customer--name">Tên khách hàng</label>
+                            <label for="customer--name">Tên người dùng</label>
                             <input type="text" id="customer--name">
     
                         </div>
                         
 
                         <div class="phone-customer">
-                            <label for="customer--phone">Số điện thoại khách hàng</label>
+                            <label for="customer--phone">Số điện thoại người dùng</label>
                             <input type="text" id="customer--phone">
     
                         </div>
                         
                         <div class="email-customer">
-                            <label for="customer--email">Email khách hàng</label>
+                            <label for="customer--email">Email người dùng</label>
                             <input type="text" id="customer--email">
                         </div>
                        
                         <div class="ranking-customer">
-                            <label for="customer--ranking">Hạng mức</label>
-                            <select id="customer--ranking" name="ranking">
-                            <option value="gold">Vàng</option>
-                            <option value="silver">Bạc</option>
-                            <option value="bronze">Đồng</option>
-                        </select>
+                            <label for="customer--role">Vai trò</label>
+                            <select id="customer--role" name="role">
+                            <option value="Admin">Admin</option>
+                            <option value="Staff">Nhân viên</option>
+                            <option value="Customer">Khách hàng</option>
+                            </select>
                         </div>
                         
 
 
                         <div class="status-customer">
-                            <label for="customer--status">Trạng thái khách hàng</label>
+                            <label for="customer--status">Trạng thái người dùng</label>
                             <select id="customer--status" name="status">
                                 <option value="active">Active</option>
                                 <option value="inactive">Inactive</option>
@@ -616,8 +616,12 @@
                         <label for="change-email">Thay đổi email</label>
                         <input type="email" name="changeEmail" id="change-email">
                         <br>
-                        <label for="change-ranking">Thay đổi hạng mức</label>
-                        <input type="text" name="changeRanking" id="change-ranking">
+                        <label for="change-role">Thay đổi vai trò người dùng</label>
+                        <select id="change--role" name="role">
+                            <option value="Admin">Admin</option>
+                            <option value="Staff">Nhân viên</option>
+                            <option value="Customer">Khách hàng</option>
+                        </select>
                         <br>
                         <label for="change-status">Thay đổi trạng thái</label>
                         <select id="change-status">
