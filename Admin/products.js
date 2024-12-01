@@ -12,6 +12,7 @@ if (!products) {
                 { size: 'L', price: 43000 }
             ],
             type: 'FreshFruitTea',
+            describe: 'Mứt mận Mộc Châu vị chua ngọt thưởng thức cùng thạch quế hoa thanh mát tạo nên món nước cuốn hút' ,
             image: '../image/products/FreshFruitTea/O-Long-Man-Moc-Chau-Thach-Que-Hoa.jpg'
         },
         {
@@ -22,6 +23,7 @@ if (!products) {
                 { size: 'L', price: 43000 }
             ],
             type: 'FreshFruitTea',
+            describe: 'Topping lê tươi giòn ngọt cùng tuyết nhĩ sần sật, thưởng thức cùng trà ô lông khói vô cùng thanh lọc, bổ dưỡng' ,
             image: '../image/products/FreshFruitTea/O-Long-Tuyet-Le-Khong-Lo.jpg'
         },
         {
@@ -32,6 +34,7 @@ if (!products) {
                 { size: 'L', price: 43000 }
             ],
             type: 'FreshFruitTea',
+            describe: 'Vị chua nhẹ từ chanh vàng được giã bằng tay kết hợp với trà xanh lài cùng mật ong tự nhiên ngọt thanh. Có sẵn topping thạch băng tuyết' ,
             image: '../image/products/FreshFruitTea/Tra-Chanh-Mat-Ong-Gia-Tay-Khong-Lo.jpg'
         },
         {
@@ -42,6 +45,7 @@ if (!products) {
                 { size: 'L', price: 43000 }
             ],
             type: 'FreshFruitTea',
+            describe: 'Vị chua nhẹ từ chanh vàng được giã bằng tay kết hợp với trà xanh lài cùng mật ong tự nhiên ngọt thanh. Có sẵn topping thạch băng tuyết' ,
             image: '../image/products/FreshFruitTea/Tra-Chanh-Mat-Ong-Gia-Tay.jpg'
         },
         {
@@ -52,16 +56,18 @@ if (!products) {
                 { size: 'L', price: 43000 }
             ],
             type: 'FreshFruitTea',
+            describe: 'Hồng trà đào đậm vị, topping đào tiên mà hồng giòn ngọt tự nhiên kết hợp cùng thạch quế hoa mềm mướt. Thức uống thanh mát sảng khoái đặc biệt cho mùa hè' ,
             image: '../image/products/FreshFruitTea/Tra-Dao-Tien-Que-Hoa.png'
         },
         {
             id: 6,
-            name: 'Trà Dâu Tầm Pha Lê Tuyế',
+            name: 'Trà Dâu Tầm Pha Lê Tuyết',
             sizes: [
                 { size: 'M', price: 35000 },
                 { size: 'L', price: 43000 }
             ],
             type: 'FreshFruitTea',
+            describe: 'Mứt dâu tầm chua chua ngọt ngọt hòa cùng vị trà chát nhẹ, kết hợp với topping thạch băng tuyết tạo nên thức uống giải khát tuyệt vời' ,
             image: '../image/products/FreshFruitTea/Tra-Dau-Tam-Pha-Le-Tuyet.jpg'
         },
         {
@@ -72,6 +78,7 @@ if (!products) {
                 { size: 'L', price: 43000 }
             ],
             type: 'FreshFruitTea',
+            describe: 'Hương vị đậm đà, chua ngọt hài hòa đặc trưng của mứt dứa kết hợp với vị trà xanh nhài thanh mát, topping thạch Konjac giòn giòn vui miệng' ,
             image: '../image/products/FreshFruitTea/Tra-Dua-Thach-Konjac.jpg'
         },
         {
@@ -82,6 +89,7 @@ if (!products) {
                 { size: 'L', price: 43000 }
             ],
             type: 'FreshFruitTea',
+            describe: 'Trà xanh nhài thoảng hương hoa nhài, topping đào tiên má hồng giòn ngọt tự nhiên kết hợp cùng thạch quế hoa mềm mướt. Thức uống thanh mát sảng khoái đặc biệt cho mùa hè' ,
             image: '../image/products/FreshFruitTea/Tra-Xanh-Nhai-Dao-Tien.png'
         },
         {
@@ -92,6 +100,7 @@ if (!products) {
                 { size: 'L', price: 20000 }
             ],
             type: 'Ice',
+            describe: 'SẢN PHẨM NGON HƠN KHI THƯỞNG THỨC TẠI CỬA HÀNG' ,
             image: '../image/products/Ice/Ca-Phe-Kem-Tran-Chan-Hoang-Kim.jpg'
         },
         {
@@ -102,6 +111,7 @@ if (!products) {
                 { size: 'L', price: 20000 }
             ],
             type: 'Ice',
+            describe: 'SẢN PHẨM NGON HƠN KHI THƯỞNG THỨC TẠI CỬA HÀNG' ,
             image: '../image/products/Ice/Kem-Ly-Vani-Dau.jpg'
         },
         {
@@ -112,6 +122,7 @@ if (!products) {
                 { size: 'L', price: 20000 }
             ],
             type: 'Ice',
+            describe: 'Kem thơm vị hồng trà, hương caramel của đường đen cùng chút ngậy béo từ sữa, thưởng thức cùng trân châu hoàng kim dẻo dai, độc đáo' ,
             image: '../image/products/Ice/Kem-Tra-Sua-Tran-Chau-Hoang-Kim.png'
         },
         {
@@ -122,6 +133,7 @@ if (!products) {
                 { size: 'L', price: 20000 }
             ],
             type: 'Ice',
+            describe: 'SẢN PHẨM NGON HƠN KHI THƯỞNG THỨC TẠI CỬA HÀNG' ,
             image: '../image/products/Ice/Kem-Tran-Chau-Hoang-Kim.jpg'
         },
         {
@@ -132,6 +144,7 @@ if (!products) {
                 { size: 'L', price: 20000 }
             ],
             type: 'Ice',
+            describe: 'Sự hòa quyện của hương thơm trà sữa đậm đà cùng vị vani béo ngậy, kết hợp với trân châu hoàng kim dẻo dai, ngọt ngọt' ,
             image: '../image/products/Ice/Kem-Vani-Tra-Sua-Tran-Chau-Hoang-Kim.png'
         },
         {
@@ -142,6 +155,7 @@ if (!products) {
                 { size: 'L', price: 43000 }
             ],
             type: 'MilkTea',
+            describe: 'Trà xanh hoa nhài đậm vị kết hợp với 4 loại topping: Trân châu hoàng kim, trân châu sợi, thạch quế hoa, thạch konjac thơm ngon sảng khoái' ,
             image: '../image/products/Milktea/Nguoi-Ban-Xanh-Sua-Nhai-Khong-Lo.jpg'
         },
         {
@@ -152,6 +166,7 @@ if (!products) {
                 { size: 'L', price: 43000 }
             ],
             type: 'MilkTea',
+            describe: 'Trà sữa ô long khói thanh nhiệt thơm béo, topping trân châu ngũ cốc dẻo bùi được làm từ khoai lang Đà Lạt' ,
             image: '../image/products/Milktea/O-Long-Sua-Tuoi-Tran-Chau-Ngu-Coc.jpg'
         },
         {
@@ -162,6 +177,7 @@ if (!products) {
                 { size: 'L', price: 43000 }
             ],
             type: 'MilkTea',
+            describe: 'Sữa tươi nguyên kem thơm béo, có sẵn topping trân châu hoàng kim dẻo dai mang lại trải nghiệm thú vị hấp dẫn' ,
             image: '../image/products/Milktea/Sua-Tuoi-Tran-Chau-Duong-Ho-Khong-Lo.jpg'
         },
         {
@@ -172,6 +188,7 @@ if (!products) {
                 { size: 'L', price: 43000 }
             ],
             type: 'MilkTea',
+            describe: 'Sữa tươi nguyên kem thơm béo, có sẵn topping trân châu hoàng kim dẻo dai mang lại trải nghiệm thú vị hấp dẫn' ,
             image: '../image/products/Milktea/Tiger-Sugar.jpg'
         },
         {
@@ -182,6 +199,7 @@ if (!products) {
                 { size: 'L', price: 43000 }
             ],
             type: 'MilkTea',
+            describe: 'Vị trà sữa thơm béo đậm đà đặc trưng với 3 loại topping: pudding phô mai tươi dẻo thơm, topping trân châu sợi và chân trâu hoàng kim dẻo dai kích thích vị giác' ,
             image: '../image/products/Milktea/Tra-Sua-Ba-Anh-Em.jpg'
         },
         {
@@ -192,6 +210,7 @@ if (!products) {
                 { size: 'L', price: 43000 }
             ],
             type: 'MilkTea',
+            describe: 'Boba cheese được làm từ phô mai con bò cười, mang đến trải nghiệm mềm trong dai ngoài hòa cùng vị trà sữa thơm béo' ,
             image: '../image/products/Milktea/Tra-Sua-BoBa-Cheese.png'
         },
         {
@@ -202,6 +221,7 @@ if (!products) {
                 { size: 'L', price: 43000 }
             ],
             type: 'MilkTea',
+            describe: 'Hương vị chua ngọt hài hòa đặc trưng của dâu tây và trà thanh mát' ,
             image: '../image/products/Milktea/Tra-Sua-Dau-Tay.jpg'
         },
         {
@@ -212,6 +232,7 @@ if (!products) {
                 { size: 'L', price: 43000 }
             ],
             type: 'MilkTea',
+            describe: 'Trà ô long đậm vị kết hợp với sữa thơm béo, độ ngọt vừa phải' ,
             image: '../image/products/Milktea/Tra-Sua-O-Long.jpg'
         },
         {
@@ -222,6 +243,7 @@ if (!products) {
                 { size: 'L', price: 43000 }
             ],
             type: 'MilkTea',
+            describe: 'Sự ngọt thanh kết hợp trân châu giòn khiến ta cảm tháy thú vị' ,
             image: '../image/products/Milktea/Tra-Sua-Okinawa.png'
         },
         {
@@ -232,6 +254,7 @@ if (!products) {
                 { size: 'L', price: 43000 }
             ],
             type: 'MilkTea',
+            describe: 'Hồng trà đậm đà hòa cùng sữa béo béo, kết hợp pudding phô mai tươi thơm thơm, vừa dẻo lại vừa mịn kích thích vị giác' ,
             image: '../image/products/Milktea/Tra-Sua-Pho-Mai-Tuoi.png'
         },
         {
@@ -242,6 +265,7 @@ if (!products) {
                 { size: 'L', price: 43000 }
             ],
             type: 'MilkTea',
+            describe: 'Hương thơm socola đậm đà hòa cùng vị trà sữa ngọt ngào, béo ngậy' ,
             image: '../image/products/Milktea/Tra-Sua-Socola.jpg'
         },
         {
@@ -252,6 +276,7 @@ if (!products) {
                 { size: 'L', price: 43000 }
             ],
             type: 'MilkTea',
+            describe: 'Hương thơm socola đậm đà hòa cùng vị trà sữa ngọt ngào, béo ngậy' ,
             image: '../image/products/Milktea/Tra-Sua-Tran-Chau-Duong-Den.jpg'
         },
         {
@@ -262,6 +287,7 @@ if (!products) {
                 { size: 'L', price: 43000 }
             ],
             type: 'MilkTea',
+            describe: 'Hương vị trà sữa thơm béo cùng hương thơm đặc trưng của hồng trà kết hợp với trân châu được tẩm với mật ong nguyên chất tạo ra hương vị ngọt ngào đặc trưng' ,
             image: '../image/products/Milktea/Tra-Sua-Tran-Chau-Hoang-Gia.jpg'
         },
         {
@@ -272,6 +298,7 @@ if (!products) {
                 { size: 'L', price: 43000 }
             ],
             type: 'MilkTea',
+            describe: 'Hương hoa nhài thanh mát cùng với hương vị đặc trưng của lá trà xanh kết hợp với độ dẻo dai của trân châu sợi tạo trải nghiệm thú vị' ,
             image: '../image/products/Milktea/Tra-Sua-Tran-Chau-Soi.jpg'
         },
         {
@@ -282,6 +309,7 @@ if (!products) {
                 { size: 'L', price: 43000 }
             ],
             type: 'MilkTea',
+            describe: '' ,
             image: '../image/products/Milktea/Tra-Sua.jpg'
         },
         {
@@ -292,6 +320,7 @@ if (!products) {
                 { size: 'L', price: 43000 }
             ],
             type: 'MilkTea',
+            describe: '' ,
             image: '../image/products/Milktea/Tra-Xanh-Sua-Vi-Nhai.jpg'
         },
 
