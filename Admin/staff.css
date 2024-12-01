@@ -1,0 +1,106 @@
+.staff-login {
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.staff-login:hover {
+    color: #4CAF50;
+}
+
+.wrap-staff-login {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: none;
+}
+
+#login-form {
+    /* display: none; */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    background-color: white;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    padding: 20px;
+    z-index: 1000;
+}
+
+.form-tab {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #ddd;
+}
+
+.form-tab button {
+    flex: 1;
+    border: none;
+    background: none;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.form-tab button.active {
+    border-bottom: 2px solid #007BFF;
+    color: #007BFF;
+    font-weight: bold;
+}
+
+.form-content {
+    display: none;
+}
+
+.form-content.active {
+    display: block;
+}
+
+.form-content input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.btn-login {
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-login:hover {
+    background-color: #0056b3;
+}
+
+.btn-close-login-form {
+    height: 32px;
+    border: none;
+    background-color: white;
+    right: 8px;
+    top: 0px;
+    font-size: 34px;
+    transform: rotate(45deg);
+    cursor: pointer;
+    position: absolute;
+    font-size: 26px;
+}
+
+.btn-close-login-form:hover {
+    color: #555;
+}
+
+
+.btn-close-login-form:active {
+    color: #0056b3;
+}

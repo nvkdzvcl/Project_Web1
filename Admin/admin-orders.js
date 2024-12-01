@@ -27,7 +27,7 @@ function displayOrders(currentPageOrder) {
     orderList.innerHTML = ''; // Xóa danh sách cũ trước khi hiển thị lại
 
     // Lấy danh sách đơn hàng
-    let orders = JSON.parse(localStorage.getItem('orders')) || [];
+    let orders = JSON.parse(localStorage.getItem('orders')).reverse() || [];
 
     // Lấy danh sách sản phẩm
     let products = JSON.parse(localStorage.getItem('products')) || [];

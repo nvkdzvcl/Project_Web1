@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang nhân viên</title>
+    <!-- <link rel="icon" href="../image/30 Drinks.jpg" type="image/jpeg"> -->
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="staff.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <script src="products.js"></script>
+    <script src="orders.js"></script>
+    <script src="customers.js"></script>
+    <script src="address.js"></script>
+
+</head>
+
+<body>
+
+    <!-- Phần Header -->
+    <div class="menu">
+        <section id="header">
+            <!-- Nội dung Header căn phải -->
+            <ul id="navbar">
+                <li>
+                    <div class="staff-login">
+                        Đăng nhập
+                    </div>
+                </li>
+                <li class="userInfo">
+                    <a href="#"><i class="fa-solid fa-rocket"></i> Nhân viên
+                        <ul>
+                            <li id="usernameItem">Username: </li>
+                            <li id="emailItem">Email: </li>
+                        </ul>
+                    </a>
+                </li>
+                
+            </ul>
+        </section>
+        <div class="wrap-staff-login">
+            <form id="login-form">
+                <div class="form-tab">
+                    <button type="button" class="tab-login active" onclick="showTab('login')">Đăng nhập</button>
+                    <button type="button" class="tab-register" onclick="showTab('register')">Đăng ký</button>
+                </div>
+        
+                <div id="login-content" class="form-content active">
+                    <input type="text" id="login-username" placeholder="Tên đăng nhập" required>
+                    <input type="password" id="login-password" placeholder="Mật khẩu" required>
+                    <button type="button" onclick="submitLogin()" class="btn-login">Đăng nhập</button>
+                    <button class="btn-close-login-form" onclick="closeLoginForm()">+</button>
+                </div>
+        
+                <div id="register-content" class="form-content">
+                    <input type="text" id="register-username" placeholder="Tên đăng nhập" required>
+                    <input type="email" id="register-email" placeholder="Email" required>
+                    <input type="password" id="register-password" placeholder="Mật khẩu" required>
+                    <input type="password" id="register-confirm-password" placeholder="Nhập lại mật khẩu" required>
+                    <button type="button" onclick="submitRegister()" class="btn-login" >Đăng ký</button>
+                    <button class="btn-close-login-form" onclick="closeLoginForm()">+</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+    <!-- Phần Menu bên trái -->
+    <div class="leftmenu">
+        <!-- Mục Lục với logo chỉ (không có icon ở đây) -->
+        <div class="mucluc">
+            <img src="../image/30 Drinks.jpg" class="logo" alt="Logo">
+            <span class="text">Mục Lục</span> <!-- Mục Lục chỉ hiển thị khi hover -->
+        </div>
+        <hr>
+        <ul>
+            <li>
+                <i class="fa-solid fa-truck-fast"></i>
+                <a href="#" class="view-order">Đơn Hàng</a>
+            </li>
+            <li>
+                <i class="fa-solid fa-door-open"></i>
+                <a href="admin_login.html" class="logoutLink">Đăng xuất</a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Phần Nội dung chính -->
+    <div class="content">
+        <!-- Nội dung sẽ được đặt ở đây -->
+        <!-- Đơn hàng -->
+        <div class="order-content">
+
+            <div class="order-content-main">
+                <div class="orders-title">Danh sách đơn hàng</div>
+                <div class="order-filter">
+                    <!-- Tiêu để của phần bộ lọc tìm kiếm -->
+                    <div class="order-filter-title">
+                        <i class="fa-solid fa-filter"></i>
+                        <p>Bộ lọc tìm kiếm</p>
+                    </div>
+                    <!-- Nơi chứa các phương thức tìm kiếm -->
+                    <div class="order-filter-item">
+                        <!-- Tìm kiếm theo mã khách hàng -->
+                        <div class="customer-id-filter">
+                            <label for="customer-id">Mã khách hàng:</label>
+                            <input type="text" id="customer-id" placeholder="Nhập mã khách hàng" value="">
+                        </div>
+                        <!-- Tìm kiếm theo trạng thái đơn hàng -->
+                        <div class="status-filter">
+                            <label for="status-filter-select">Tình trạng:</label>
+                            <select id="status-filter-select">
+                                <option value="all">Tất cả</option>
+                                <option value="Chưa liên hệ">Chưa liên hệ</option>
+                                <option value="Đã liên hệ">Đã liên hệ</option>
+                                <option value="Đã giao">Đã giao</option>
+                                <option value="Đã hủy đơn">Đã hủy đơn</option>
+                            </select>
+                        </div>
+                        <!-- Tìm kiếm trong khoảng thời gian -->
+                        <div class="date-filter">
+                            <label for="start-date">Từ ngày:</label>
+                            <input type="date" id="start-date">
+    
+                            <label for="end-date">Đến ngày:</label>
+                            <input type="date" id="end-date">
+                        </div>
+                        
+                        <!-- Nút áp dụng tìm kiếm -->
+                        <button class="apply-filter-btn">Áp dụng</button><!-- Tìm kiếm theo địa chỉ -->
+
+                        <div class="address-filter">
+                            <label for="district-filter">Sắp xếp theo quận:</label>
+                            <select id="district-filter">
+                                <option value="all">Tất cả</option>
+                                <option value="Quận 1">Quận 1</option>
+                                <option value="Quận 2">Quận 2</option>
+                                <option value="Quận 3">Quận 3</option>
+                                <option value="Quận 4">Quận 4</option>
+                                <option value="Quận 5">Quận 5</option>
+                                <option value="Quận 6">Quận 6</option>
+                                <option value="Quận 7">Quận 7</option>
+                                <option value="Quận 8">Quận 8</option>
+                                <option value="Quận 9">Quận 9</option>
+                                <option value="Quận 10">Quận 10</option>
+                                <option value="Quận 11">Quận 11</option>
+                                <option value="Quận 12">Quận 12</option>
+                                <option value="Bình Thạnh">Bình Thạnh</option>
+                                <option value="Gò Vấp">Gò Vấp</option>
+                                <option value="Phú Nhuận">Phú Nhuận</option>
+                                <option value="Tân Bình">Tân Bình</option>
+                                <option value="Tân Phú">Tân Phú</option>
+                                <option value="Bình Tân">Bình Tân</option>
+                                <option value="Thủ Đức">Thủ Đức</option>
+                            </select>
+    
+                        </div>
+                    </div>
+                </div>
+                <div class="wrap-orders">
+                    <table class="order-table">
+                        <thead>
+                            <tr>
+                                <th>Mã đơn hàng</th>
+                                <th>Mã khách hàng</th>
+                                <th>Thời gian</th>
+                                <th>Tình trạng</th>
+                                <th>Tổng tiền</th>
+                            </tr>
+                        </thead>
+                        <tbody class="order-list">
+                        </tbody>
+                    </table>
+                    <div class="pagination-order"></div>
+                </div>
+
+            </div>
+            
+            
+            <div class="wrap-order-detail">
+                <div class="order-detail">
+                    <!-- Chi tiết đơn hàng nằm ở đây -->
+                    <div class="order-header">
+    
+                    </div>
+    
+                    <div class="order-items">
+                        <h3>Chi tiết sản phẩm</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Mã sản phẩm</th> <!-- Thêm cột Mã sản phẩm -->
+                                    <th>Sản phẩm</th>
+                                    <th>Size</th>
+                                    <th>Số lượng</th>
+                                    <th>Giá</th>
+                                    <th>Tổng</th>
+                                </tr>
+                            </thead>
+                            <tbody id="order-items-tbody">
+    
+                                <!-- Ví dụ một sản phẩm có nhiều size -->
+    
+    
+    
+                            </tbody>
+                        </table>
+                        <div class="order-detail-status-main">
+    
+                        </div>
+                        <div class="order-summary">
+    
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="product-content">
+            <!-- Danh sách sản phẩm bên trái chiếm 70% chiều rộng -->
+            <div class="product-list">
+                <h1 class="product-title">Danh sách sản phẩm</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Ảnh</th>
+                            <th>Tên sản phẩm</th>
+                            <th>Loại</th>
+                            <th>Size</th>
+                            <th>Giá</th>
+                            <th>Edit</th>
+                        </tr>
+                    </thead>
+                    <tbody class="product-detail">
+                        <!-- Nội dung sẽ được điền vào đây -->
+                    </tbody>
+                </table>
+
+                <!-- Phân trang -->
+                <div class="pagination-product">
+                    <button id="prev-page" class="pagination-btn" onclick="changePage(-1)">Prev</button>
+                    <button id="next-page" class="pagination-btn" onclick="changePage(1)">Next</button>
+                </div>
+            </div>
+
+            <!-- Cột bên phải với search ở trên và add ở dưới -->
+            <div class="right-column">
+                <!-- Phần thêm sản phẩm ở dưới -->
+                <div class="add">
+                    <h1>Thêm sản phẩm</h1>
+                    <form>
+                        <label for="productname">Tên sản phẩm</label>
+                        <input type="text" id="productname"><br>
+
+                        <label for="size">Size:</label><br>
+                        <br>
+                        <input type="checkbox" id="size-s" name="size" value="s">S
+                        <div class="price-input">
+                            <label for="price-s">Giá cho S:</label>
+                            <input type="text" id="price-s-input">
+                        </div>
+                        <br>
+                        <input type="checkbox" id="size-m" name="size" value="m">M
+                        <div class="price-input">
+                            <label for="price-m">Giá cho M:</label>
+                            <input type="text" id="price-m-input">
+                        </div>
+                        <br>
+                        <input type="checkbox" id="size-l" name="size" value="l">L
+                        <div class="price-input">
+                            <label for="price-l">Giá cho L:</label>
+                            <input type="text" id="price-l-input">
+                        </div>
+                        <br>
+                        <label for="searchbysize">Chọn loại :</label>
+                        <select id="Loai">
+                            <option value="Milktea" selected>Milktea</option>
+                            <option value="FreshFruitTea">FreshFruitTea</option>
+                            <option value="Ice">Ice</option>
+                        </select>
+
+                        <br><br>
+                        <label for="productimage">
+                            <span>Ảnh</span> <img src="../image/temp2.jpg" alt="Hình ảnh sản phẩm">
+                        </label>
+                        <input type="file" id="productimage">
+                        <br><br>
+
+                        <button type="button" onclick="handleAddProduct()">Thêm</button>
+
+                    </form>
+                </div>
+            </div>
+            <div id="editModal">
+                <div class="modal-content">
+                    <form>
+                        <input type="hidden" id="editProductId" />
+                        <label for="editProductName">Product Name:</label>
+                        <input type="text" id="editProductName" required />
+
+                        <!-- Container for size fields -->
+                        <div id="size-fields-container">
+                            <!-- Dynamic size fields will be inserted here -->
+                        </div>
+
+                        <button type="button" onclick="addSizeField()">Add Size</button>
+
+                        <label for="editProductImage">Product Image:</label>
+                        <input type="file" id="editProductImage" accept="image/*" />
+                        <img id="previewImage" src="../image/temp2.jpg">
+                        <button type="button" onclick="updateProduct()">Update Product</button>
+                        <button type="button" onclick="closeModal()">Close</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        
+
+    </div>
+    <script src="admin-orders.js"></script>
+    <script src="admin-products.js"></script>
+    <script src="staff.js"></script>
+
+    
+</body>
+
+</html>
