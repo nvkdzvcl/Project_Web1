@@ -138,6 +138,7 @@ body {
     height: 50px; /* Chiều cao liên kết */
     padding-left: 20px; /* Khoảng cách trái của chữ */
     opacity: 0; /* Liên kết ban đầu ẩn đi */
+    cursor: pointer; 
 }
 
 .leftmenu:hover ul li a {
