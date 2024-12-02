@@ -1238,6 +1238,7 @@ body {
     width: 100%;
     height: 100%;
     z-index: 1000;
+    overflow: auto;
     
 }
 .modal-content {
@@ -1314,6 +1315,12 @@ body {
     font-weight: bold; /* Chữ đậm */
     color: #333; /* Màu chữ xám đậm */
     cursor: pointer; /* Con trỏ thay đổi khi di chuột vào */
+}
+#previewImage{
+    width: 30%;
+    margin : 0 auto;
+    margin-bottom: 10px;
+    height: 100px;
 }
 
 @media (max-width: 1020px) {
