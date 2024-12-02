@@ -585,14 +585,6 @@ function getCustomerId() {
 
 const a = JSON.parse(localStorage.getItem('address'));
 let a1 = a.find(a => a.customerId === getCustomerId());
-console.log(a1)
-
-if (a1) {
-    document.getElementById('fullnameItem').textContent = 'Họ và tên: ' + a1.fullname;
-    document.getElementById('emailItem').textContent = 'Email: ' + a1.email;
-    document.getElementById('phoneItem').textContent = 'Phone: ' + a1.phone;
-    console.log(a1.fullname);
-}
 
 
 //  Giỏ hàng 

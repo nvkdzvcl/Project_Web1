@@ -30,25 +30,33 @@
             <button id="apply-button">Áp dụng</button>
         </div>
 
-        <div>
+        <div >
             <ul id="navbar" class="logged-in">
                 <li><a class="active" href="index.html">Tất cả</a></li>
                 <li><a href="#">MilkTea</a></li>
                 <li><a href="#">FreshFruitTea</a></li>
                 <li><a href="#">Ice</a></li>
                 <li id="login-item" >
-                    <a href="#" id="loginLink">Đăng nhập
-                        
-                    </a>
-                    <ul id="account-info" class="account-info">
-                        <li id="fullnameItem"><strong>Họ và tên: </strong></li>
-                        <li id="emailItem"><strong>Email: </strong></li>
-                        <li id="phoneItem"><strong>Phone: </strong></li>
-                        
-                    </ul>
+                    <a href="#" id="loginLink">Đăng nhập </a>
+
+                    <div id="login-box">
+                        <button id="accoutFromBtn" >Thông tin tài khoản</button>
+                        <button id="logoutButton" >Logout</button>
+                    </div>
                     
-                    <button id="logoutButton" >Logout</button>
-                    
+
+                    <div class="account-form" id="accountForm"> 
+                        <h3>Thông tin tài khoản</h3> 
+                        <label for="username">Username:</label> 
+                        <input type="text" id="username" disabled> 
+                        <label for="fullname">Họ và tên:</label> 
+                        <input type="text" id="fullname"> 
+                        <label for="phone">Số điện thoại:</label> 
+                        <input type="text" id="phone"> 
+                        <label for="email">Email:</label> 
+                        <input type="email" id="email"> 
+                        <button id="saveButton">Lưu thông tin</button>
+                    </div>
                 </li>
                 <li id="lg-bag"><a href="#"><i class="fa-solid fa-basket-shopping"></i></a></li>
                 <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
