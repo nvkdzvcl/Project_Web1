@@ -13,15 +13,24 @@
         <a href=""><img src="../image/30 Drinks.jpg" class="logo" alt=""></a>
 
         <div id="search-bar">
-            <input type="text" id="search-input" placeholder="Tìm kiếm sản phẩm...">
-            <input type="number" id="min-price" placeholder="Giá thấp nhất" min="0">
-            <input type="number" id="max-price" placeholder="Giá cao nhất" min="0">
+            <input type="text" id="search-input" placeholder="Tìm kiếm sản phẩm">
             <button id="search-button"><i class="fa-solid fa-magnifying-glass"></i></button>
             <div id="search-suggestions" class="suggestions"></div>
         </div>
         
+        <div id="search-bar_advanced">
+            <select id="category" name="category">
+                <option value="TatCa">Tất cả</option>
+                <option value="MilkTea">MilkTea</option>
+                <option value="FreshFruitTea">FreshFruitTea</option>
+                <option value="Ice">Ice</option>
+            </select>
+            <input type="number" id="min-price" placeholder="Giá thấp nhất" min="0">
+            <input type="number" id="max-price" placeholder="Giá cao nhất" min="0">
+            <button id="apply-button">Áp dụng</button>
+        </div>
 
-        <div >
+        <div>
             <ul id="navbar" class="logged-in">
                 <li><a class="active" href="index.html">Tất cả</a></li>
                 <li><a href="#">MilkTea</a></li>
@@ -265,9 +274,38 @@
                 <select id="paymentSelect">
                     <option value="cash">Tiền mặt</option>
                     <option value="bank-transfer">Chuyển khoản</option>
-                    <option value=""></option>
+                    <option value="card">Thẻ</option>
                 </select>
                 <button id="payButton">Thanh toán</button>
+            </div>
+
+            <div class="wrap-card-form">
+                <div class="card-form">
+                    <h2>Thông Tin Thẻ</h2>
+                    <div>
+                        <div class="form-group">
+                            <label for="cardholder-name">Tên trên thẻ</label>
+                            <input type="text" id="cardholder-name" placeholder="Nguyễn Văn A" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="card-number">Số thẻ</label>
+                            <input type="text" id="card-number" placeholder="1234 5678 9012 3456" maxlength="19" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="expiry-date">Ngày hết hạn</label>
+                                <input type="text" id="expiry-date" placeholder="MM/YYYY" maxlength="7" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="cvv">CVV</label>
+                                <input type="password" id="cvv" placeholder="1234" maxlength="4" required>
+                            </div>
+                        </div>
+                        <button class="btn-submit">Xác nhận</button>
+                        <button class="btn-close-card-form" onclick = "closeCardForm()">+</button>
+                    </div>
+                </div>
+
             </div>
             
             <div id="orderList">
@@ -279,6 +317,7 @@
                         <th>Tình trạng</th>
                         <th>Phương thức thanh toán</th>
                         <th>Tổng tiền</th>
+                        <th>Chi tiết</th>
                     </thead>
                     <tbody>
                         <tr>
@@ -287,51 +326,59 @@
                             <td>Chưa liên hệ</td>
                             <td>Tiền mặt</td>
                             <td>100000</td>
+                            <!-- <td>
+                                <button class="btn-cancel-order">Hủy</button>
+                                <button class="btn-show-order-detail" onclick = "showOrderDetail(${order.id})">Chi tiết</button>
+                            </td> -->
                         </tr>
                     </tbody>
                 </table>
-                <div class="order-detail">
-                    <!-- Chi tiết đơn hàng nằm ở đây -->
-                    <div class="order-header">
-                        <h2>Chi tiết đơn hàng</h2>
-                        <p><strong>Mã đơn hàng:</strong> 6</p>
-                        <p><strong>Mã khách hàng:</strong> 6</p>
-                        <p><strong>Số điện thoại:</strong> 0123456879</p>
-                        <p><strong>Thời gian đặt:</strong> 2024-10-22</p>
-                        <p><strong>Hình thức thanh toán:</strong> Chuyển khoản</p>
-                        <p><strong>Địa chỉ:</strong> 321, Đường số 2, Phường 13, Quận 6, Hồ Chí Minh</p>
-                        <button class="btn-close-order-detail" onclick="closeOrderDetail()">+</button>
-                    </div>
-
-                    <div class="order-items">
-                        <h3>Chi tiết sản phẩm</h3>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Mã sản phẩm</th> <!-- Thêm cột Mã sản phẩm -->
-                                    <th>Sản phẩm</th>
-                                    <th>Size</th>
-                                    <th>Số lượng</th>
-                                    <th>Giá</th>
-                                    <th>Tổng</th>
-                                </tr>
-                            </thead>
-                            <tbody id="order-items-tbody">
-                                <tr>
-                                    <td rowspan="2">26</td>
-                                    <td rowspan="2">Trà Sữa Trân Châu Hoàng Gia</td>
-                                    <td>M</td>
-                                    <td>6</td>
-                                    <td>35.000&nbsp;₫</td>
-                                    <td rowspan="2">296.000&nbsp;₫</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        
-                        <div class="order-summary">
-                            <p><strong>Tổng tiền:</strong> 646.000&nbsp;₫</p>
+                <div class="wrap-order-detail">
+                    <div class="order-detail">
+                        <!-- Chi tiết đơn hàng nằm ở đây -->
+                        <div class="order-header">
+                            <h2>Chi tiết đơn hàng</h2>
+                            <p><strong>Mã đơn hàng:</strong> 6</p>
+                            <p><strong>Mã khách hàng:</strong> 6</p>
+                            <p><strong>Số điện thoại:</strong> 0123456879</p>
+                            <p><strong>Thời gian đặt:</strong> 2024-10-22</p>
+                            <p><strong>Hình thức thanh toán:</strong> Chuyển khoản</p>
+                            <p><strong>Số thẻ: </strong></p>
+                            <p><strong>Địa chỉ:</strong> 321, Đường số 2, Phường 13, Quận 6, Hồ Chí Minh</p>
+                            <button class="btn-close-order-detail" onclick="closeOrderDetail()">+</button>
+                        </div>
+    
+                        <div class="order-items">
+                            <h3>Chi tiết sản phẩm</h3>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Mã sản phẩm</th> <!-- Thêm cột Mã sản phẩm -->
+                                        <th>Sản phẩm</th>
+                                        <th>Size</th>
+                                        <th>Số lượng</th>
+                                        <th>Giá</th>
+                                        <th>Tổng</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="order-items-tbody">
+                                    <tr>
+                                        <td rowspan="2">26</td>
+                                        <td rowspan="2">Trà Sữa Trân Châu Hoàng Gia</td>
+                                        <td>M</td>
+                                        <td>6</td>
+                                        <td>35.000&nbsp;₫</td>
+                                        <td rowspan="2">296.000&nbsp;₫</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            
+                            <div class="order-summary">
+                                <p><strong>Tổng tiền:</strong> 646.000&nbsp;₫</p>
+                            </div>
                         </div>
                     </div>
+
                 </div>
                 </div>
             </div>
@@ -347,13 +394,21 @@
             <div class="ship-modal__body">
                 <div class="container">
                     <h2>Thông tin giao hàng</h2>
+                    <div class="address-options">
+                        <label>
+                            <input type="radio" name="address" value="new" id="new-address-radio" checked/> Địa chỉ mới
+                        </label>
+                        <label>
+                            <input type="radio" name="address" value="old" id="old-address-radio" /> Địa chỉ cũ
+                        </label>
+                    </div>
                     <input id="customerName" type="text" placeholder="Họ và tên"><br>
-                   <div class="form-row">
-                    <input id="customerEmail" type="email" placeholder="Email">
-                    <input id="customerPhone" type="text" placeholder="Số điện thoại"><br>
-                   </div>
-                    <input id="customerAddress" type="text" placeholder="Địa chỉ"><br>
-                   <div class="dropdowns">
+                    <div class="form-row">
+                        <input id="customerEmail" type="email" placeholder="Email">
+                        <input id="customerPhone" type="text" placeholder="Số điện thoại"><br>
+                    </div>
+                        <input id="customerAddress" type="text" placeholder="Số nhà, tên đường"><br>
+                    <div class="dropdowns">
                     <select id="province-dropdown">
                         <option value="">chọn Tỉnh/thành phố</option>
                         <option value="Hồ Chí Minh">Hồ Chí Minh</option>
@@ -389,11 +444,11 @@
                         <option value="phuong">Phường 2</option>
                         <option value="phuong">Phường 3</option>
                     </select>
-                   </div>
-                   <div class="formbtn">
+                    </div>
+                    <div class="formbtn">
                         <button class="btn-cart back ">Giỏ hàng</button>
                         <button class="btn-cart btn--primary1">Thanh Toán</button>
-                   </div>
+                    </div>
                 </div>
             </div>
         </div>
