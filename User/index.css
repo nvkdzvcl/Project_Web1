@@ -408,11 +408,16 @@ footer .copyright {
     border-radius: 4px;
     color: #fff;
     font-weight: 600;
+    cursor: pointer;
 }
 
 #pagination button i {
     font-size: 16px;
     font-weight: 600;
+}
+
+#pagination .active {
+    background-color: #eb8695;
 }
 
 #prodetails {
@@ -585,6 +590,43 @@ footer .copyright {
     display: none;
 }
 
+#search-bar_advanced {
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 400px;
+    width: 100%;
+}
+
+#search-bar_advanced select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    font-size: 16px;
+}
+
+#search-bar_advanced input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    font-size: 16px;
+}
+
+#search-bar_advanced button {
+    padding: 10px;
+    background-color: #ff5722;
+    color: white;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 17px;
+    width: 80%;
+}
+
 .suggestions-item {
     padding: 10px;
     cursor: pointer;
@@ -679,6 +721,11 @@ footer .copyright {
     #subtotal {
         width: 100%;
        padding: 20px;
+    }
+    
+    #search-bar_advanced button {
+        font-size: 9px;
+        width: auto;
     }
 }
 
@@ -791,7 +838,7 @@ footer .copyright {
 
 .auth-form__header{
     display: flex;
-    /* chứa đăng kí và đăng nhập
+    /* chứa đăng ký và đăng nhập
     cho flex để lên cx dòng  */
     /*  sau lệnh flex thì 2 tk cx dòng nhưng bị so le 
     để ngang nhau dùng */
@@ -894,7 +941,7 @@ footer .copyright {
     font-size: 12px;
     padding: 0 8px;
 }
-/*  nút đăng suất */
+/*  nút đăng xuất */
 #logoutButton {
     display: none;
     right: 18px;
@@ -1060,6 +1107,103 @@ footer .copyright {
 }
 
 
+/* Thẻ */
+.wrap-card-form {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: none;
+    z-index: 2;
+}
+
+.card-form {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.card-form h2 {
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.form-row {
+    display: flex;
+    gap: 10px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 10px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.btn-submit:hover {
+    background-color: #45a049;
+}
+
+
+.btn-close-card-form {
+    height: 32px;
+    border: none;
+    background-color: white;
+    right: 10px;
+    top: 4px;
+    font-size: 34px;
+    transform: rotate(45deg);
+    cursor: pointer;
+    position: absolute;
+}
+
+.btn-close-card-form:hover {
+    color: #555;
+}
+
+
+.btn-close-card-form:active {
+    color: #3b8a3e;
+}
+
+
 /* sản phẩm đã thanh toán */
 
 #orderList{
@@ -1093,16 +1237,66 @@ footer .copyright {
     text-wrap: wrap;
 }
 
+.last-detail {
+    display: flex;
+    justify-content: space-around;
+}
+
+.btn-cancel-order {
+    border: none;
+    border-radius: 2px;
+    background-color: #db2d2d;
+    height: 22px;
+    width: 52px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-cancel-order:hover {
+    background-color: #da5858;
+}
+
+.btn-show-order-detail {
+    border: none;
+    border-radius: 2px;
+    background-color: #3b8a3e;
+    height: 24px;
+    width: 72px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}
+.btn-show-order-detail:hover {
+    background-color: #45a049;
+}
+
+
 /* Chi tiết đơn hàng */
+.wrap-order-detail {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: none;
+}
+
 .order-detail {
-    width: 90%;
+    width: 60%;
     margin: 20px auto;
     padding: 20px;
     border: 1px solid #ddd;
     background-color: #f9f9f9;
     border-radius: 8px;
     font-family: Arial, sans-serif;
-    display: none;
+    /* display: none; */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
 }
 
 .order-header {
@@ -1378,6 +1572,10 @@ margin: 5px 0;
     color: #333;
     font-size: 24px;
 
+}
+
+.address-options label {
+    margin-right: 8px;
 }
 
 #customerName{
