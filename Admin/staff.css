@@ -104,3 +104,11 @@
 .btn-close-login-form:active {
     color: #0056b3;
 }
+.no-interaction {
+    pointer-events: none;  /* Tắt mọi sự kiện chuột trên body */
+      /* Thêm hiệu ứng mờ để hiển thị trạng thái vô hiệu hóa */
+}
+
+.no-interaction .menu {
+    pointer-events: auto;  /* Cho phép thao tác chuột trên phần tử #header */
+}
