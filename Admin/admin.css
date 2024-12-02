@@ -1239,7 +1239,8 @@ body {
     height: 100%;
     z-index: 1000;
     overflow: auto;
-    
+    box-shadow: 0 50px 100px 30px black;
+    border-radius: 10px; 
 }
 .modal-content {
     background-color: white; /* Màu nền trắng cho modal */
@@ -1321,6 +1322,19 @@ body {
     margin : 0 auto;
     margin-bottom: 10px;
     height: 100px;
+}
+.product-item td button{
+    padding-right: 10%;
+    width: 30%;
+    background-color: white;
+    color: black;
+    border-radius: 9px;
+    margin-left:5px ;
+    
+}
+.product-item td button:hover{
+    box-shadow: 0 0 0 2px black;
+    color:#3b8a3e;
 }
 
 @media (max-width: 1020px) {
