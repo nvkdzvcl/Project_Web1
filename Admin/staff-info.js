@@ -23,12 +23,9 @@ document.getElementById('logoutLink').addEventListener('click', function (e) {
 // Kiểm tra xem localStorage có chứa 'loggedInAdmin' hay không
 
 document.addEventListener('DOMContentLoaded', function () {
-    // Kiểm tra xem localStorage có chứa 'loggedInAdmin' hay không
+    // Kiểm tra nếu không có dữ liệu 'loggedInAdmin' trong localStorage
     if (!localStorage.getItem('loggedInAdmin')) {
-        // Nếu không có dữ liệu 'loggedInAdmin', loại bỏ thẻ <script> của admin-orders.js
-        var script = document.getElementById('adminOrdersScript');
-        if (script) {
-            script.parentNode.removeChild(script);  // Loại bỏ thẻ <script> khỏi DOM
-        }
+        // Thêm lớp 'no-interaction' vào body để vô hiệu hóa mọi thao tác người dùng
+        document.body.classList.add('no-interaction');
     }
 });
