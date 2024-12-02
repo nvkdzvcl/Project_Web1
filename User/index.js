@@ -1289,7 +1289,7 @@ function closeCardForm() {
 // thông tin tài khoản 
 
 // show 
-document.getElementById('loginLink').addEventListener('click', () => {
+document.querySelector('.logged-in').addEventListener('click', () => {
     document.getElementById('login-box').style.display = 'block';
 })
 
