@@ -80,7 +80,7 @@
             </li>
             <li>
                 <i class="fa-solid fa-door-open"></i>
-                <a href="admin_login.html" class="logoutLink">Đăng xuất</a>
+                <a href="staff.html" id="logoutLink">Đăng xuất</a>
             </li>
         </ul>
     </div>
@@ -217,8 +217,8 @@
             </div>
         </div>
 
-        <div class="product-content">
-            <!-- Danh sách sản phẩm bên trái chiếm 70% chiều rộng -->
+<!--         <div class="product-content">
+          
             <div class="product-list">
                 <h1 class="product-title">Danh sách sản phẩm</h1>
                 <table>
@@ -234,20 +234,20 @@
                         </tr>
                     </thead>
                     <tbody class="product-detail">
-                        <!-- Nội dung sẽ được điền vào đây -->
+                    
                     </tbody>
                 </table>
 
-                <!-- Phân trang -->
+             
                 <div class="pagination-product">
                     <button id="prev-page" class="pagination-btn" onclick="changePage(-1)">Prev</button>
                     <button id="next-page" class="pagination-btn" onclick="changePage(1)">Next</button>
                 </div>
             </div>
 
-            <!-- Cột bên phải với search ở trên và add ở dưới -->
+          
             <div class="right-column">
-                <!-- Phần thêm sản phẩm ở dưới -->
+             
                 <div class="add">
                     <h1>Thêm sản phẩm</h1>
                     <form>
@@ -300,9 +300,9 @@
                         <label for="editProductName">Product Name:</label>
                         <input type="text" id="editProductName" required />
 
-                        <!-- Container for size fields -->
+ 
                         <div id="size-fields-container">
-                            <!-- Dynamic size fields will be inserted here -->
+   
                         </div>
 
                         <button type="button" onclick="addSizeField()">Add Size</button>
@@ -315,16 +315,16 @@
                     </form>
                 </div>
             </div>
-        </div>
+        </div> -->
         
         
 
     </div>
-    <script src="admin-orders.js"></script>
-    <script src="admin-products.js"></script>
+    <script src="staff-info.js"></script>
+    <script id="adminOrdersScript" src="admin-orders.js"></script>
+<!--     <script src="admin-products.js"></script> -->
     <script src="staff.js"></script>
 
-    
 </body>
 
 </html>
