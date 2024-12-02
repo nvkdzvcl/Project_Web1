@@ -35,22 +35,22 @@ navLinks.forEach(link => {
         // Thêm lớp 'active' cho liên kết được nhấn
         link.classList.add('active');
 
-        // Cập nhật danh mục hiện tại
-        currentCategory = link.textContent.trim();
-
-        // Quay lại trang đầu tiên khi chuyển danh mục
-        currentPage = 1;
-
-        // Hiển thị sản phẩm theo danh mục và trang
-        displayProducts(currentPage);
         switch(link.textContent) {
             case 'Tất cả':
             case 'MilkTea':
             case 'FreshFruitTea':
             case 'Ice':
                 document.querySelector('#product1').scrollIntoView({ behavior: 'smooth', block: 'start' });
+                // Cập nhật danh mục hiện tại
+                currentCategory = link.textContent.trim();
                 break;
         }
+
+        // Quay lại trang đầu tiên khi chuyển danh mục
+        currentPage = 1;
+
+        // Hiển thị sản phẩm theo danh mục và trang
+        displayProducts(currentPage);
     });
 });
 
@@ -127,7 +127,7 @@ function displayProducts(page) {
                     </div>
                     <h4>${formatCurrencyVND(filteredProducts[i].sizes[0].price)}</h4>
                 </div>
-                <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+                <a><i class="fa-solid fa-cart-shopping cart"></i></a>
             </div>
         `;
     }
@@ -203,7 +203,7 @@ function showProductModal(productId) {
     productInfo.innerHTML = `
         <h3 id="modalProductName">${product.name}</h3>
         <!-- Mô tả sản phẩm -->
-        <i>${product.describe}</i>
+        <i class="no-copy">${product.describe}</i>
         <!-- Số lượng sản phẩm -->
 
         <label for="quantity">Quantity:</label>

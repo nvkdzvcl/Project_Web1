@@ -119,7 +119,7 @@ body {
 
 #hero {
     background-image: url("../image/hero.jpg");
-    height: 90vh;
+    height: 72vh;
     width: 100%;
     background-size: cover;
     background-position: top 25% right 0;
@@ -1676,4 +1676,8 @@ margin: 5px 0;
 .account-form button {
     padding: 10px;
     margin-top: 10px;
+}
+
+.no-copy {
+    user-select: none; /* Tắt chức năng chọn văn bản */
 }
