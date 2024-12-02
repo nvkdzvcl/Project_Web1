@@ -52,6 +52,7 @@ function deleteProduct(productId) {
     } else {
         alert("Product deletion was canceled.");
     }
+    reset.paginate(products);
 }
 
 
@@ -99,19 +100,12 @@ function handleAddProduct() {
         reader.onloadend = function () {
             imageBase64 = reader.result; // This is the Base64 encoded string of the image
 
-            // Check if the image path is different from '/image/products/'
-            if (!imageBase64.includes('/image/products/')) {
-                // If it's not in the /image/products/ folder, move the image path to that folder
-                const fileName = imageBase64.split('/').pop(); // Extract file name from the Base64 URL
-                imageBase64 = `/image/products/${fileName}`;  // Set the path to /image/products/
-            }
-
             saveProduct(imageBase64); // Call the save function after image is loaded
         };
         reader.readAsDataURL(imageFile); // This will trigger the onloadend function once conversion is done
         return; // Return early to prevent proceeding until the image is processed
     }
-
+    alert(" Sản phẩm đã được thêm");
     // If image is selected, proceed to save product
     saveProduct(imageBase64);
 
@@ -136,9 +130,11 @@ function handleAddProduct() {
         products.push(newProduct);
         saveToLocalStorage(products);
         renderProductList(products);
-        paginate(products);
+        reset.paginate(products);
     }
 }
+
+
 
 
 
@@ -220,20 +216,11 @@ function updateProduct() {
 
         // Cập nhật ảnh nếu có
         if (imageFile) {
-            let imageBase64;
             const reader = new FileReader();
             reader.onloadend = function () {
-                imageBase64 = reader.result; // Base64 encoded image string
-
-                // Check if the image path is different from '/image/products/'
-                if (!imageBase64.includes('/image/products/')) {
-                    // If it's not in the /image/products/ folder, move the image path to that folder
-                    const fileName = imageBase64.split('/').pop(); // Extract file name from the Base64 URL
-                    imageBase64 = `/image/products/${fileName}`;  // Set the path to /image/products/
-                }
-
-                product.image = imageBase64; // Update the product image with the corrected path
-                
+                const imageBase64 = reader.result; // Base64 encoded image string
+                product.image = imageBase64; // Update the product image without changing the path
+                alert(" Sản phẩm đã được chỉnh sửa");
                 // Save the updated product list to localStorage
                 saveToLocalStorage(products);
                 renderProductList(products); // Render the updated product list
@@ -241,6 +228,7 @@ function updateProduct() {
             };
             reader.readAsDataURL(imageFile); // Convert the image file to Base64
         } else {
+            alert(" Sản phẩm đã được chỉnh sửa");
             // If no image is selected, simply save the updated product without changing the image
             saveToLocalStorage(products);
             renderProductList(products); // Render the updated product list
@@ -337,3 +325,25 @@ function handleFileSelect(event) {
 
 // Add event listener for the input element
 document.getElementById('editProductImage').addEventListener('change', handleFileSelect);
+// Add event listener for the input element
+
+
+// ----------------------------------------------------------------------------------
+function handleImageSelect(event) {
+    const file = event.target.files[0];  // Lấy tệp hình ảnh đầu tiên người dùng chọn
+
+    if (file) {
+        const reader = new FileReader();  // Tạo đối tượng FileReader để đọc tệp
+
+        reader.onload = function(e) {
+            document.getElementById('add-image').src = e.target.result;  // Update the image source
+        };
+
+        // Đọc tệp hình ảnh dưới dạng URL dữ liệu (Base64)
+        reader.readAsDataURL(file);
+    }
+}
+
+// Make sure the correct function name is used here
+document.getElementById('productimage').addEventListener('change', handleImageSelect);
+
