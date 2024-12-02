@@ -47,10 +47,10 @@ function deleteProduct(productId) {
         let products = getProducts();
         products = products.filter(product => product.id !== productId);
         saveToLocalStorage(products);
-        alert("Product has been successfully deleted!");
+        alert("Sản phẩm đã bị xóa");
         renderProductList(products);
     } else {
-        alert("Product deletion was canceled.");
+        alert("Xóa sản phẩm đã bị hủy");
     }
     reset.paginate(products);
 }
@@ -120,7 +120,7 @@ function handleAddProduct() {
         if (document.getElementById('size-l').checked) selectedSizes.push({ size: 'L', price: priceL });
 
         if (selectedSizes.length === 0) {
-            alert("Please select at least one size.");
+            alert("Chọn ít nhất 1 size.");
             return;
         }
 
