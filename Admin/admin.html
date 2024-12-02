@@ -419,9 +419,10 @@
                         <textarea id="thongtin"></textarea>
                         <br><br>
                         <label for="productimage">
-                            <span>Ảnh</span> <img src="../image/temp2.jpg" alt="Hình ảnh sản phẩm">
+                            <span>Ảnh</span>
+                            <img id="add-image" src="../image/temp2.jpg">
                         </label>
-                        <input type="file" id="productimage">
+                        <input type="file" id="productimage" accept="image/*">
                         <br><br>
 
                         <button type="button" onclick="handleAddProduct()">Thêm</button>
