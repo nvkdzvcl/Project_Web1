@@ -64,64 +64,84 @@ function handleAddProduct() {
     const priceM = parseInt(document.getElementById('price-m-input').value, 10);
     const priceL = parseInt(document.getElementById('price-l-input').value, 10);
 
+    // Get the value from the textarea for the product description
+    const describe = document.getElementById('thongtin').value;
+
+    // Check if product name is empty
+    if (!name) {
+        alert("Bạn chưa nhập tên sản phẩm.");
+        return;  // Stop execution if the name is not provided
+    }
+
+    // Check if prices for selected sizes are valid
     if (document.getElementById('size-s').checked && isNaN(priceS)) {
-        alert("Please enter a valid price for size S.");
+        alert("Vui lòng nhập giá trị hợp lệ cho size S.");
         return;
     }
     if (document.getElementById('size-m').checked && isNaN(priceM)) {
-        alert("Please enter a valid price for size M.");
+        alert("Vui lòng nhập giá trị hợp lệ cho  size M.");
         return;
     }
     if (document.getElementById('size-l').checked && isNaN(priceL)) {
-        alert("Please enter a valid price for size L.");
+        alert("Vui lòng nhập giá trị hợp lệ cho  size L.");
         return;
     }
 
-    const image = document.getElementById('productimage').files.length > 0 
-                    ? URL.createObjectURL(document.getElementById('productimage').files[0]) 
-                    : '';
+    const imageFile = document.getElementById('productimage').files[0];
+    let imageBase64 = '';
 
-    let products = getProducts();
-    const lastProductId = products.length ? Math.max(...products.map(p => p.id)) : 0;
-    const newProductId = lastProductId + 1;
-
-    const selectedSizes = [];
-    if (document.getElementById('size-all').checked) {
-        selectedSizes.push({ size: 'S', price: priceS }, { size: 'M', price: priceM }, { size: 'L', price: priceL });
+    // Check if image is selected
+    if (!imageFile) {
+        alert("Bạn chưa chọn ảnh. Ảnh sẽ được để ảnh mặc định.");
+        imageBase64 = '/image/anhmacdinh.png';  // Use default image if no image is selected
     } else {
+        const reader = new FileReader();
+        reader.onloadend = function () {
+            imageBase64 = reader.result; // This is the Base64 encoded string of the image
+
+            // Check if the image path is different from '/image/products/'
+            if (!imageBase64.includes('/image/products/')) {
+                // If it's not in the /image/products/ folder, move the image path to that folder
+                const fileName = imageBase64.split('/').pop(); // Extract file name from the Base64 URL
+                imageBase64 = `/image/products/${fileName}`;  // Set the path to /image/products/
+            }
+
+            saveProduct(imageBase64); // Call the save function after image is loaded
+        };
+        reader.readAsDataURL(imageFile); // This will trigger the onloadend function once conversion is done
+        return; // Return early to prevent proceeding until the image is processed
+    }
+
+    // If image is selected, proceed to save product
+    saveProduct(imageBase64);
+
+    function saveProduct(image) {
+        let products = getProducts();
+        const lastProductId = products.length ? Math.max(...products.map(p => p.id)) : 0;
+        const newProductId = lastProductId + 1;
+
+        const selectedSizes = [];
         if (document.getElementById('size-s').checked) selectedSizes.push({ size: 'S', price: priceS });
         if (document.getElementById('size-m').checked) selectedSizes.push({ size: 'M', price: priceM });
         if (document.getElementById('size-l').checked) selectedSizes.push({ size: 'L', price: priceL });
+
+        if (selectedSizes.length === 0) {
+            alert("Please select at least one size.");
+            return;
+        }
+
+        // Include the 'describe' field in the new product object
+        const newProduct = { id: newProductId, name, type, sizes: selectedSizes, describe, image };
+
+        products.push(newProduct);
+        saveToLocalStorage(products);
+        renderProductList(products);
+        paginate(products);
     }
-
-    if (selectedSizes.length === 0) {
-        alert("Please select at least one size.");
-        return;
-    }
-
-    const newProduct = { id: newProductId, name, type, sizes: selectedSizes, image };
-
-    products.push(newProduct);
-    saveToLocalStorage(products);
-    renderProductList(products);
 }
 
-// Tìm kiếm sản phẩm
-function searchProduct() {
-    const name = document.getElementById('searchproductname').value.toLowerCase();
-    const size = document.getElementById('searchproductsize').value;
-    const type = document.getElementById('searchproductype').value;
 
-    let filteredProducts = getProducts();
-    if (name) filteredProducts = filteredProducts.filter(p => p.name.toLowerCase().includes(name));
-    if (size !== "all") filteredProducts = filteredProducts.filter(p => p.sizes.some(s => s.size.toLowerCase() === size.toLowerCase()));
-    if (type !== "all") filteredProducts = filteredProducts.filter(p => p.type.toLowerCase() === type.toLowerCase());
 
-    renderProductList(filteredProducts);
-}
-
-// Lắng nghe sự kiện nhấn nút tìm kiếm
-document.querySelector('.search button').addEventListener('click', searchProduct);
 
 // Hàm phân trang
 let currentPage = 1;
@@ -167,6 +187,9 @@ function updateProduct() {
     const priceElements = document.querySelectorAll('.editProductPrice');  // Get all price fields
     const imageFile = document.getElementById('editProductImage').files[0];
 
+    // Get the value of 'thongtin' field (description)
+    const describe = document.getElementById('thongtin-update').value; 
+
     // Check if all size and price fields are filled
     const sizes = [];
     for (let i = 0; i < sizeElements.length; i++) {
@@ -193,16 +216,36 @@ function updateProduct() {
     if (product) {
         product.name = name;
         product.sizes = sizes; // Cập nhật lại thông tin size và giá
-        
+        product.describe = describe; // Lưu thông tin mô tả
+
         // Cập nhật ảnh nếu có
         if (imageFile) {
-            product.image = URL.createObjectURL(imageFile); // Tạo URL cho ảnh mới
-        }
+            let imageBase64;
+            const reader = new FileReader();
+            reader.onloadend = function () {
+                imageBase64 = reader.result; // Base64 encoded image string
 
-        // Lưu lại danh sách sản phẩm đã cập nhật vào localStorage
-        saveToLocalStorage(products);
-        renderProductList(products); // Render lại danh sách sản phẩm sau khi cập nhật
-        closeModal(); // Đóng modal
+                // Check if the image path is different from '/image/products/'
+                if (!imageBase64.includes('/image/products/')) {
+                    // If it's not in the /image/products/ folder, move the image path to that folder
+                    const fileName = imageBase64.split('/').pop(); // Extract file name from the Base64 URL
+                    imageBase64 = `/image/products/${fileName}`;  // Set the path to /image/products/
+                }
+
+                product.image = imageBase64; // Update the product image with the corrected path
+                
+                // Save the updated product list to localStorage
+                saveToLocalStorage(products);
+                renderProductList(products); // Render the updated product list
+                closeModal(); // Close modal after update
+            };
+            reader.readAsDataURL(imageFile); // Convert the image file to Base64
+        } else {
+            // If no image is selected, simply save the updated product without changing the image
+            saveToLocalStorage(products);
+            renderProductList(products); // Render the updated product list
+            closeModal(); // Close modal after update
+        }
     } else {
         alert("Không tìm thấy sản phẩm.");
     }
@@ -237,7 +280,7 @@ function openEditForm(productId) {
         document.getElementById('editProductImage').value = ''; // reset input file
         // Lưu ID sản phẩm để cập nhật sau
         document.getElementById('editProductId').value = product.id;
-
+        document.getElementById('thongtin-update').value = product.describe || '';
         // Hiển thị modal
         document.getElementById('editModal').style.display = "block";
     } else {
