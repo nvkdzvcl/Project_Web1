@@ -43,6 +43,14 @@ navLinks.forEach(link => {
 
         // Hiển thị sản phẩm theo danh mục và trang
         displayProducts(currentPage);
+        switch(link.textContent) {
+            case 'Tất cả':
+            case 'MilkTea':
+            case 'FreshFruitTea':
+            case 'Ice':
+                document.querySelector('#product1').scrollIntoView({ behavior: 'smooth', block: 'start' });
+                break;
+        }
     });
 });
 
@@ -62,7 +70,7 @@ categorySelect.addEventListener('change', () => {
 });
 
 // Hàm để hiển thị sản phẩm
-function displayProducts(page, applyPriceFilter = false) {
+function displayProducts(page) {
     // Lấy dữ liệu danh sách sản phẩm từ localStorage
     let products = JSON.parse(localStorage.getItem('products')) || [];
     
@@ -84,15 +92,16 @@ function displayProducts(page, applyPriceFilter = false) {
     
 
     // Nếu áp dụng bộ lọc giá, lọc theo khoảng giá
-    if (applyPriceFilter) {
-        // const minPrice = parseInt(minPriceInput.value) || 0;
-        const maxPrice = parseInt(maxPriceInput.value) || Infinity;
+    const minPrice = parseInt(minPriceInput.value) || 0;
+    const maxPrice = parseInt(maxPriceInput.value) || Infinity;
 
-        filteredProducts = filteredProducts.filter(p => {
-            const price = p.sizes[0].price;
-            return price >= minPrice && price <= maxPrice;
-        });
-    }
+    filteredProducts = filteredProducts.filter(p => {
+        if(!maxPrice) {
+            return price >= minPrice;
+        }
+        const price = p.sizes[0].price;
+        return price >= minPrice && price <= maxPrice;
+    });
 
     // Tính toán chỉ mục bắt đầu và kết thúc
     const start = (page - 1) * productsPerPage;
@@ -129,17 +138,20 @@ function displayProducts(page, applyPriceFilter = false) {
 
 // Lắng nghe sự kiện thay đổi trên ô tìm kiếm (search-input)
 searchInput.addEventListener('input', function() {
-    displayProducts(1, false); // Hiển thị lại sản phẩm khi người dùng nhập tìm kiếm mà không lọc theo giá
+    displayProducts(1);
+    document.querySelector('#product1').scrollIntoView({ behavior: 'smooth', block: 'start' });
 });
 
 // Lắng nghe sự kiện nhấn nút "Search" để chỉ lọc theo tên sản phẩm
 searchButton.addEventListener('click', function() {
-    displayProducts(1, false); // Hiển thị lại sản phẩm khi người dùng nhấn "Search" mà không lọc theo giá
+    displayProducts(1);
+    document.querySelector('#product1').scrollIntoView({ behavior: 'smooth', block: 'start' });
 });
 
 // Lắng nghe sự kiện nhấn nút "Áp dụng" để lọc theo giá
 applyButton.addEventListener('click', function() {
-    displayProducts(1, true); // Hiển thị lại sản phẩm khi người dùng nhấn "Áp dụng" và lọc theo giá
+    displayProducts(1);
+    document.querySelector('#product1').scrollIntoView({ behavior: 'smooth', block: 'start' });
 });
 
 
@@ -262,7 +274,10 @@ displayProducts(currentPage);
 
 
 // Thêm sự kiện click vào nút tìm kiếm
-searchButton.addEventListener('click', () => displayProducts(1));
+searchButton.addEventListener('click',() => {
+    displayProducts(1);
+    document.querySelector('#product1').scrollIntoView({ behavior: 'smooth', block: 'start' });
+});
 
 
 // Cho phép tìm kiếm bằng phím Enter

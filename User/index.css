@@ -38,7 +38,6 @@ p {
 .section-p1 {
     padding: 40px 80px
 }
-
 .section-m1 {
     margin: 40px 0;
 }
@@ -189,10 +188,12 @@ body {
     margin: 15px 0;
     transition: 0.2s ease;
     position: relative;
+    transition: transform 0.3s ease;
 }
 
 #product1 .pro:hover {
     box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.06);
+    transform: translateY(-5px);
 }
 
 #product1 .pro img {
@@ -328,6 +329,7 @@ footer {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    background-color: #D1D0C7 ;
 }
 
 footer .col {
@@ -335,6 +337,10 @@ footer .col {
     flex-direction: column;
     align-items: flex-start;
     margin-bottom: 20px;
+}
+
+footer .map {
+    border: 1px solid #C8C6B3;
 }
 
 footer .logo {
