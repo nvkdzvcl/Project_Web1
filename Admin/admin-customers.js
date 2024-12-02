@@ -16,14 +16,14 @@ document.querySelector('.view-customers').addEventListener('click',()=>{
     
         customer2.forEach(customers2 => {
             const status = customer1.find(customers1 => customers1.id === customers2.customerId && customers1.status === "true") ? "Active" : "Inactive";
-            
+            // const role = customer1.find(customer1 => customer1.id === customers2.customerId && customer1.role);  
             const newRow = `
             <tr>
                 <td>${customers2.customerId}</td> 
                 <td>${customers2.fullname}</td>
                 <td class = "sdt">${customers2.phone}</td> 
                 <td class = "email">${customers2.email}</td>
-                <td class = "role">regular</td>
+                <td class = "role">${getRoleThroughId(customers2.customerId)}</td>
                 <td class = "status">${status}</td>
                 <td>
                     <button>Edit-customer</button>
@@ -43,6 +43,13 @@ document.querySelector('.view-customers').addEventListener('click',()=>{
         tableBody.innerHTML = html;    
     });
 
+    function getRoleThroughId(id){
+        const storeData = JSON.parse(localStorage.getItem('customers')); 
+        const find1 = storeData.find(customers => parseInt(customers.id) === parseInt(id));
+        return find1.role; 
+        
+    }
+
 
     function display(){
         const storeData2 = localStorage.getItem('address'); 
@@ -61,7 +68,7 @@ document.querySelector('.view-customers').addEventListener('click',()=>{
                 <td>${customers2.fullname}</td>
                 <td class = "sdt">${customers2.phone}</td> 
                 <td class = "email">${customers2.email}</td>
-                <td class = "role">regular</td>
+                <td class = "role">${getRoleThroughId(customers2.customerId)}</td>
                 <td class = "status">${getStatusThroughId(customers2.customerId) === "true" ? "Active" : "Inactive"}</td>
                 <td>
                     <button>Edit-customer</button>
@@ -114,8 +121,8 @@ document.getElementById('timkiem').addEventListener('click', ()=>{
                 <td>${find.fullname}</td>
                 <td class = "sdt">${find.phone}</td> 
                 <td class = "email">${find.email}</td>
-                <td class = "ranking">regular</td>
-                <td class = "status">${ getStatusThroughId(find.customerId) === "true" ? "Active" : "Inactive"}</td>
+                <td class = "ranking">${getRoleThroughId(find.customerId)}</td>
+                <td class = "status">${getStatusThroughId(find.customerId) === "true" ? "Active" : "Inactive"}</td>
                 <td>
                     <button>Edit-customer</button>
                     <button>Delete-customer</button>
@@ -145,14 +152,15 @@ document.getElementById('back').addEventListener('click',()=>{
 
     customer2.forEach(customers2 => {
         const status = customer1.find(customers1 => customers1.id === customers2.customerId && customers1.status === "true") ? "Active" : "Inactive";
-        
+        // const role = customer1.find(customer1=>customer1.id === customer2.customerId); 
+        // console.log(role.role); 
         const newRow = `
         <tr>
             <td>${customers2.customerId}</td> 
             <td>${customers2.fullname}</td>
             <td class = "sdt">${customers2.phone}</td> 
             <td class = "email">${customers2.email}</td>
-            <td class = "role">regular</td>
+            <td class = "role">${getRoleThroughId(customers2.customerId)}</td>
             <td class = "status">${status}</td>
             <td>
                 <button>Edit-customer</button>
@@ -185,7 +193,7 @@ document.getElementById('add--customer').addEventListener('click',()=>{
     // const rankingCustomers = document.getElementById('customer--ranking').value; 
     const statusCustomers = document.getElementById('customer--status').value; 
     // console.log(statusCustomers); 
-
+    const roleCustomers = document.getElementById('customer--role').value; 
     const district = document.getElementById('customer--district').value.trim(); 
     const province = document.getElementById('customer--province').value.trim(); 
     const street = document.getElementById('customer--street').value.trim(); 
@@ -214,10 +222,12 @@ document.getElementById('add--customer').addEventListener('click',()=>{
     }; 
 
     let updatestatus = (statusCustomers === "active" ? "true" : "false"); 
-    console.log(updatestatus); 
+    // console.log(updatestatus); 
+
     let newcustomer2 = {
         id: lastCustomerId2+1, 
         password: password, 
+        role:roleCustomers,
         status: updatestatus, 
         username: username 
     }
@@ -267,11 +277,12 @@ document.getElementById('add--customer').addEventListener('click',()=>{
   
     // });
     
-    
+    document.getElementById('username--name').value = ''; 
+    document.getElementById('password--name').value = ''; 
     document.getElementById('customer--name').value =''; 
     document.getElementById('customer--phone').value =''; 
     document.getElementById('customer--email').value =''; 
-    document.getElementById('customer--ranking').value =''; 
+    // document.getElementById('customer--ranking').value =''; 
     document.getElementById('customer--status').value =''; 
     document.getElementById('customer--district').value =''; 
     document.getElementById('customer--province').value =''; 
@@ -283,9 +294,7 @@ document.getElementById('add--customer').addEventListener('click',()=>{
 
 
 document.getElementById('button-close').addEventListener('click',()=>{
-    // console.log('hello'); 
     document.getElementById('modal').style.display = 'none'; 
-
 })
 
 
@@ -295,8 +304,8 @@ document.addEventListener('click', (e) => {
     if (e.target && e.target.tagName === 'BUTTON' && e.target.textContent === 'Edit-customer') {
         const row = e.target.closest('tr'); 
         
-        customerId = row.querySelector('td:first-child').textContent; 
-
+        customerId = parseInt(row.querySelector('td:first-child').textContent); 
+        
         document.querySelector('.modal').style.display = 'flex';
         
         const customerData = {
@@ -304,21 +313,25 @@ document.addEventListener('click', (e) => {
             name: row.querySelector('td:nth-child(2)').textContent,
             phone: row.querySelector('td:nth-child(3)').textContent,
             email: row.querySelector('td:nth-child(4)').textContent,
-            ranking: row.querySelector('td:nth-child(5)').textContent,
+            // ranking: row.querySelector('td:nth-child(5)').textContent,
+            role:  row.querySelector('td:nth-child(5)').textContent,
             status: row.querySelector('td:nth-child(6)').textContent
         };
 
         const addressdata = JSON.parse(localStorage.getItem('address')); 
-       
+
+        // console.log(customerId); 
+        // console.log(addressdata[customerId]); 
+        
         document.getElementById('change-name').value = customerData.name;
         document.getElementById('change-phone').value = customerData.phone;
         document.getElementById('change-email').value = customerData.email;
-        document.getElementById('change-ranking').value = customerData.ranking; 
+        // document.getElementById('change-ranking').value = customerData.ranking; 
         document.getElementById('change-status').value = customerData.status;  
+        document.getElementById('change-role').value = customerData.role;
         document.getElementById('change-city').value = addressdata[customerId].province; 
         document.getElementById('change-street').value = addressdata[customerId].street; 
         document.getElementById('change-ward').value = addressdata[customerId].ward; 
-
 
 
     }
@@ -358,11 +371,11 @@ document.getElementById("submit").addEventListener('click', (e) => {
     const street = document.getElementById("change-street").value;
     const ward = document.getElementById("change-ward").value;
     const status = document.getElementById("change-status").value; 
+    const role = document.getElementById("change-role").value; 
     // console.log(status); 
 
 
     const row = e.target.closest('tr');
-    // Get the current customer data from localStorage
     const addressData = JSON.parse(localStorage.getItem('address'));
     const customersData = JSON.parse(localStorage.getItem('customers'));
 
@@ -380,21 +393,31 @@ document.getElementById("submit").addEventListener('click', (e) => {
             ward: ward || addressData[customerIndex].ward
         };
         
-        // Save updated data back to localStorage
         localStorage.setItem('address', JSON.stringify(addressData));
 
-        // change status  
         // console.log(customerDataIndex); 
         // console.log(customersData[customerDataIndex]); 
 
         const updateStatus = status === "true" ? "true" : "false"; 
-
+        var updateRole = ""; 
+        if(role === "Admin"){
+            updateRole = "Quản lý"; 
+        }
+        if(role === "Staff"){
+            updateRole = "Nhân viên"; 
+        }
+        if(role === "Customer"){
+            updateRole = "Khách hàng"; 
+        }
         customersData[customerDataIndex] = {
             id: customersData[customerDataIndex].id, 
             password: customersData[customerDataIndex].password, 
+            role: updateRole, 
             status: updateStatus,
             username: customersData[customerDataIndex].username
         }; 
+
+        // console.log(customersData[customerDataIndex].role); 
 
         // console.log(customersData[customerDataIndex]); 
 
