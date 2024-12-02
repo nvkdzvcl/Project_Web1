@@ -48,7 +48,7 @@ body {
     display: block;
     border: solid 3px black;
     background-color: white;
-    
+    z-index: 1;
 }
 .userInfo { position: relative; }
 .userInfo ul{
@@ -234,12 +234,12 @@ body {
 #end-date {
     max-width: 150px;
     margin: 4px 0 14px 0;
-
+    cursor: pointer;
 }
 .address-filter {
     border-top: 1px solid rgba(0, 0, 0, .09);
     padding-top: 28px;
-    margin-top: 26.apply-filter-btpx;
+    margin-top: 26px;
 }
 
 .address-filter label{
@@ -261,6 +261,9 @@ body {
     cursor: pointer;
 }
 
+#district-filter {
+    cursor: pointer;
+}
 
 
 .wrap-orders {
@@ -389,7 +392,7 @@ body {
 .statistic-item p {
     min-width: 90px;
     margin-right: 24px;
-    border-left: 1px solid rgba(0, 0, 0, 0.2);
+    border-left: 3px solid rgba(0, 0, 0, 0.25);
     padding: 0 10px;
 }
 
@@ -1545,6 +1548,13 @@ body {
         margin: 10px 10px;
     }
 
+    .pagination-order {
+        bottom: 48px;
+    }
+
+    .apply-filter-btn {
+        width: 76px;
+    }
 }
 
 
