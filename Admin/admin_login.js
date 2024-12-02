@@ -23,11 +23,38 @@ registerForm.addEventListener('submit', (e) => {
         return; 
     }
     
-    if (password !== confirmPassword) {
-        alert('Vui lòng nhập mật khẩu đúng mật khẩu đã nhập'); 
-        document.getElementById('pass').value = ""; 
-        document.getElementById('confirmpass').value = ""; 
+    if(!ValidateUserName(username)){
+        document.getElementById('warning-username').style.display = 'block'; 
         return; 
+    }
+    else{
+        document.getElementById('warning-username').style.display = 'none'; 
+    }
+    if(!validateGmail(email)){
+        document.getElementById('warning-email').style.display = 'block'; 
+        return;
+    }
+    else{
+        document.getElementById('warning-email').style.display = 'none'; 
+    }   
+    if(!validatePassword(password)){
+        document.getElementById('warning-password').style.display = 'block'; 
+        return;
+    }
+    else{
+        document.getElementById('warning-password').style.display = 'none'; 
+    }
+
+    if (password !== confirmPassword) {
+        // alert('Vui lòng nhập mật khẩu đúng mật khẩu đã nhập'); 
+        // document.getElementById('pass').value = ""; 
+        document.getElementById('confirmpass').value = ""; 
+        document.getElementById('warning-confirm-password').style.display = 'block'; 
+        return; 
+    }
+    else{
+        document.getElementById('warning-confirm-password').style.display = 'none'; 
+
     }
     
         const AdminData = JSON.parse(localStorage.getItem('AdminData')) || [];
@@ -57,6 +84,20 @@ loginForm.addEventListener('submit',(e)=>{
         alert('vui lòng nhập đầy đủ thông tin'); 
         return; 
     }
+    if(!ValidateUserName(name)){
+        document.getElementById('warning-username').style.display = 'block'; 
+        return; 
+    }
+    else{
+        document.getElementById('warning-username').style.display = 'none'; 
+    }
+    if(!validatePassword(pass)){
+        document.getElementById('warning-login-password').style.display = 'block';
+        return;  
+    }
+    else{
+        document.getElementById('warning-username').style.display = 'none'; 
+    }
     const listOfAccounts = JSON.parse(localStorage.getItem('AdminData')) || []; 
     const user = listOfAccounts.find(account => account.username === name && account.password === pass);
     if(user){
@@ -71,4 +112,22 @@ loginForm.addEventListener('submit',(e)=>{
         alert('Đăng nhập thất bại'); 
     }
     
-})
+});
+
+// bắt đầu với kí tự, chứa kí tự số hoặc gạch dưới, 3-16 kí tự 
+function ValidateUserName(username){
+    const usernameRegex = /^[a-zA-Z][a-zA-Z0-9_]{2,15}$/;
+    return usernameRegex.test(username); 
+}
+
+// truoc @ có thể chứa số, chữ, ký tự đặc biệt sau @ chứa @gmail.com 
+function validateGmail(email) {
+    const gmailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+    return gmailRegex.test(email);
+}
+
+// ít nhất 1 chữ thường, 1 chữ hoa,1 số,1 ký tự đặc biệt, tối thiểu 8 ký tự 
+function validatePassword(password) {
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()\-_=+[{\]};:'",/?]).{8,}$/;
+    return passwordRegex.test(password);
+}

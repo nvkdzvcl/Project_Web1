@@ -1,0 +1,35 @@
+#warning-username{
+    color: red;
+    font-size: 12px;
+    display: none; 
+}
+
+#warning-email{ 
+    color: red;
+    font-size: 12px;
+    display: none; 
+}
+
+#warning-confirm-password{
+    color: red;
+    font-size: 12px;
+    display:none;
+}
+
+#warning-password{
+    color: red;
+    font-size: 12px;
+    display: none;
+}
+
+#warning-login-username{
+    color: red;
+    font-size: 12px;
+    display: none;
+}
+
+#warning-login-password{
+    color: red;
+    font-size: 12px;
+    display: none;
+}
