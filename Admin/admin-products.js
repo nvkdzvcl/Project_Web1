@@ -102,7 +102,7 @@ function handleAddProduct() {
         const reader = new FileReader();
         reader.onloadend = function () {
             imageBase64 = reader.result; // This is the Base64 encoded string of the image
-
+            alert("Sản phẩm đã được thêm");
             saveProduct(imageBase64); // Call the save function after image is loaded
         };
         reader.readAsDataURL(imageFile); // This will trigger the onloadend function once conversion is done
