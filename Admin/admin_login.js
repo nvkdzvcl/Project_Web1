@@ -18,10 +18,42 @@ registerForm.addEventListener('submit', (e) => {
     const password = document.getElementById('pass').value; 
     const confirmPassword = document.getElementById('confirmpass').value; 
     
-    if (!username || !email || !password || !confirmPassword) {
-        alert('Vui lòng nhập đầy đủ thông tin'); 
+    // if (!username || !email || !password || !confirmPassword) {
+    //     alert('Vui lòng nhập đầy đủ thông tin'); 
+    //     return; 
+    // }
+    if(!username){
+        document.getElementById('warning-empty-username').style.display = 'block'; 
         return; 
     }
+    else{
+        document.getElementById('warning-empty-username').style.display = 'none'; 
+    }
+
+    if(!email){
+        document.getElementById('warning-empty-email').style.display = 'block'; 
+        return; 
+    }
+    else{
+        document.getElementById('warning-empty-email').style.display = 'none'; 
+    }
+    if(!password){
+        document.getElementById('warning-empty-password').style.display = 'block'; 
+        return; 
+    }
+    else{
+        document.getElementById('warning-empty-password').style.display = 'none'; 
+    }
+
+    if(!confirmPassword){
+        document.getElementById('warning-empty-confirm-password').style.display = 'block'; 
+        return; 
+    }
+    else{
+        document.getElementById('warning-empty-confirm-password').style.display = 'none'; 
+
+    }
+
     
     if(!ValidateUserName(username)){
         document.getElementById('warning-username').style.display = 'block'; 

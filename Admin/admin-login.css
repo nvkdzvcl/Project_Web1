@@ -45,3 +45,31 @@
     font-size: 12px;
     display: none;
 }
+
+
+#warning-empty-username{ 
+    color: red;
+    font-size: 12px;
+    display: none; 
+}
+
+
+
+#warning-empty-email{
+    color: red;
+    font-size: 12px;
+    display: none;
+}
+
+#warning-empty-password{
+    color: red;
+    font-size: 12px;
+    display: none; 
+}
+
+#warning-empty-confirm-password{
+    color: red;
+    font-size: 12px;
+    display: none;
+}
+
