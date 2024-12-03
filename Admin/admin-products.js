@@ -1,6 +1,6 @@
 // Lắng nghe sự kiện hiển thị sản phẩm
 document.querySelector('.view-product').addEventListener('click', () => {
-    document.querySelector('.product-content').style.display = 'flex';
+    document.querySelector('.product-content').style.display = 'flex';sa
     document.querySelector('.order-content').style.display = 'none';
     document.querySelector('.statistic-content').style.display = 'none';
     document.querySelector('.customer-content').style.display = 'none'; 
@@ -108,10 +108,10 @@ function handleAddProduct() {
         reader.readAsDataURL(imageFile); // This will trigger the onloadend function once conversion is done
         return; // Return early to prevent proceeding until the image is processed
     }
-    alert("Sản phẩm đã được thêm");
+   
     // If image is selected, proceed to save product
     saveProduct(imageBase64);
-
+     alert("Sản phẩm đã được thêm");
     function saveProduct(image) {
         let products = getProducts();
         const lastProductId = products.length ? Math.max(...products.map(p => p.id)) : 0;
