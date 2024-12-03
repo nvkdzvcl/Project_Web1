@@ -24,7 +24,7 @@ document.getElementById('logoutLink').addEventListener('click', function (e) {
 
 document.addEventListener('DOMContentLoaded', function () {
     // Kiểm tra nếu không có dữ liệu 'loggedInAdmin' trong localStorage
-    if (!localStorage.getItem('loggedInAdmin')) {
+    if (!localStorage.getItem('loggedInStaff')) {
         // Thêm lớp 'no-interaction' vào body để vô hiệu hóa mọi thao tác người dùng
         document.body.classList.add('no-interaction');
     }
