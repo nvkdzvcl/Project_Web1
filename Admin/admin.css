@@ -1338,7 +1338,8 @@ body {
 }
 .product-item td button:hover{
     box-shadow: 0 0 0 2px black;
-    color:#3b8a3e;
+    background-color: red;
+    cursor: pointer;
 }
 
 @media (max-width: 1020px) {
