@@ -7,6 +7,7 @@
     <title>Trang quản trị</title>
     <link rel="stylesheet" href="admin.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="admin-login.css">
     <script src="products.js"></script>
     <script src="orders.js"></script>
     <script src="customers.js"></script>
@@ -502,6 +503,8 @@
                     <form>
                         <label for="searchcustomername">Tên người dùng</label>
                         <input type="text" id="searchcustomername">
+                        <p id = "warning-name-valid">*Nhập đúng định dạng</p>
+                        <p id = "warning-empty-search-customer">*Không được để trống tên tìm kiếm</p>
                         <br><br>
 
                         <button type="button" id = "timkiem">Tìm kiếm</button>
@@ -521,32 +524,48 @@
                         <div class="username-customer">
                             <label for="username--name">username</label>
                             <input type="text" id="username--name">
-    
+                            <p id = "warning-add-username">*Yêu cầu nhập đúng định dạng</p>
+                            <p id = "warning-empty-add-username">*Không được để trống username</p>
                         </div>
+
+                        <br>
 
                         <div class="password-customer">
                             <label for="password--name">password</label>
                             <input type="text" id="password--name">
-    
+                            <p id = "warning-add-password">*Yêu cầu nhập đúng định dạng</p>
+                            <p id = "warning-empty-add-password">*Không được để trống password</p>
                         </div>
+
+                        <br>
                        
                         <div class="name-customer">
                             <label for="customer--name">Tên người dùng</label>
                             <input type="text" id="customer--name">
-    
+                            <p id = "warning-add-name">*Yêu cầu nhập đúng định dạng</p>
+                            <p id = "warning-empty-add-name">*Không được để trống tên người dùng</p>
                         </div>
+
+                        <br>
                         
 
                         <div class="phone-customer">
                             <label for="customer--phone">Số điện thoại người dùng</label>
                             <input type="text" id="customer--phone">
-    
+                            <p id = "warning-add-phone">*Yêu cầu nhập đúng định dạng</p>
+                            <p id = "warning-empty-add-phone">*Không được để trống số điện thoại</p>
                         </div>
+
+                        <br>
                         
                         <div class="email-customer">
                             <label for="customer--email">Email người dùng</label>
                             <input type="text" id="customer--email">
+                            <p id = "warning-add-email">*Yêu cầu nhập đúng định dạng</p>
+                            <p id = "warning-empty-add-email">*Không được để trống email</p>
                         </div>
+
+                        <br>
                        
                         <div class="ranking-customer">
                             <label for="customer--role">Vai trò</label>
@@ -557,7 +576,7 @@
                             </select>
                         </div>
                         
-
+                        <br>
 
                         <div class="status-customer">
                             <label for="customer--status">Trạng thái người dùng</label>
@@ -566,31 +585,39 @@
                                 <option value="inactive">Inactive</option>
                             </select>
                         </div>
-
+                        <br>
                         <div class="district-customer">
                             <label for="customer--district">Quận</label>
                             <input type="text" id = "customer--district"> 
+                            <p id = "warning-add-district">*Yêu cầu nhập đúng định dạng</p>
+                            <p id = "warning-empty-add-district">*Không được để trống quận</p>
                         </div>
-                      
+                        <br>
                         <div class="province-customer">
                             <label for="customer--province">Thành phố/tỉnh</label>
                             <input type="text" id = "customer--province"> 
-                            
+                            <p id = "warning-add-province">*Yêu cầu nhập đúng định dạng</p>
+                            <p id = "warning-empty-add-province">*Không được để trống tỉnh/thành</p>
                         </div>
-                        
+                        <br>
                         <div class="ward-customer">
                             <label for="customer--ward">Phường</label>
                             <input type="text" id = "customer--ward"> 
-                            
+                            <p id = "warning-add-ward">*Yêu cầu nhập đúng định dạng</p>
+                            <p id = "warning-empty-add-ward">*Không được để trống phường</p>
                         </div>
+                        <br>
 
                         <div class="street-customer">
                             <label for="customer--street">Đường</label>
                             <input type="text" id = "customer--street"> 
-                        
+                            <p id = "warning-add-street">*Yêu cầu nhập đúng định dạng</p>
+                            <p id = "warning-empty-add-street">*Không được để trống đường</p>
                             
                           
                         </div>
+
+                        <br>
                         
                         <button type="button" id = "add--customer">Thêm</button>
 

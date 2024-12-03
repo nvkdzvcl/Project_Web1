@@ -73,3 +73,128 @@
     display: none;
 }
 
+
+#warning-add-username{
+    color: red;
+    font-size: 12px;
+    display: none;
+}
+
+
+#warning-empty-add-username{
+    color: red;
+    font-size: 12px;
+    display: none;
+}
+
+
+#warning-add-password{
+    color: red;
+    font-size: 12px;
+    display: none;
+}
+
+#warning-empty-add-password{
+    color: red;
+    font-size: 12px;
+    display: none;
+}
+
+#warning-add-name{
+    color: red;
+    font-size: 12px;
+    display: none;   
+}
+
+#warning-empty-add-name{
+    color: red;
+    font-size: 12px;
+    display: none;   
+}
+
+#warning-add-phone{
+    color: red;
+    font-size: 12px;
+    display: none;      
+}
+
+#warning-empty-add-phone{
+    color: red;
+    font-size: 12px;
+    display: none;      
+}
+
+#warning-add-email{
+    color: red;
+    font-size: 12px;
+    display: none;      
+}
+
+
+#warning-empty-add-email{
+    color: red;
+    font-size: 12px;
+    display: none;      
+}
+
+
+#warning-add-district{
+    color: red;
+    font-size: 12px;
+    display: none;    
+}
+
+#warning-empty-add-district{
+    color: red;
+    font-size: 12px;
+    display: none;    
+}
+
+#warning-add-province{
+    color: red;
+    font-size: 12px;
+    display: none;    
+}
+
+#warning-empty-add-province{
+    color: red;
+    font-size: 12px;
+    display: none;    
+}
+
+#warning-add-ward{
+    color: red;
+    font-size: 12px;
+    display: none;    
+}
+
+#warning-empty-add-ward{
+    color: red;
+    font-size: 12px;
+    display: none;    
+}
+
+#warning-add-street{
+    color: red;
+    font-size: 12px;
+    display: none;    
+}
+
+#warning-empty-add-street{
+    color: red;
+    font-size: 12px;
+    display: none;    
+}
+
+
+#warning-empty-search-customer{
+    color: red;
+    font-size: 12px;
+    display: none;  
+}
+
+#warning-name-valid{
+    color: red;
+    font-size: 12px;
+    display: none;  
+}

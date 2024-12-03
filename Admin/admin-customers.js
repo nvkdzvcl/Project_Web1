@@ -95,15 +95,31 @@ document.querySelector('.view-customers').addEventListener('click',()=>{
         return find1.status; 
     }   
 
-
+    // check valid search name 
+    function validateCustomerName(customerName) {
+        const customerNameRegex = /^[\p{L}\s.,-]+$/u;
+        return customerNameRegex.test(customerName);
+    }
 
 
 document.getElementById('timkiem').addEventListener('click', ()=>{
     const username = document.getElementById('searchcustomername').value;
-    if(username === ''){
-        alert('Vui lòng nhập thông tin tìm kiếm'); 
+    if(!username){
+        document.getElementById('warning-empty-search-customer').style.display = 'block'; 
         return; 
-    } 
+    }
+    else{
+        document.getElementById('warning-empty-search-customer').style.display = 'none'; 
+        
+    }
+    if(!validateCustomerName(username)){
+        document.getElementById('warning-name-valid').style.display = 'block';
+        return; 
+    }
+    else{
+        document.getElementById('warning-name-valid').style.display = 'none';
+        
+    }
     const storeData = JSON.parse(localStorage.getItem('address')); 
     const tableBody = document.querySelector('.customers--detail'); 
     tableBody.innerHTML = ''; 
@@ -180,36 +196,217 @@ document.getElementById('back').addEventListener('click',()=>{
     tableBody.innerHTML = html;    
 }); 
 
+// không được bắt đầu với số phải chứa ký tự a-z, A-Z, 0 - 9, chiều dài phải 6-30 ký tự ,không được chứa ký tự đặc biệt ngoài _
+function validateUsername(username) {
+    const pattern = /^[A-Za-z][A-Za-z0-9_]{5,29}$/;
+    return pattern.test(username);
+}
+// tối thiểu 8 ký tự ít nhất một chữ hoa,một chữ thường, ít nhất 1 số 0-9, ít nhất một ký tự đặc biệt @, #, $, không khoảng trắng 
+function validatePassword(password) {
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    return passwordRegex.test(password);
+}
+
+// cho phép chữ hoa lẫn thường có thể có khoảng trắng giữa tên, không có số hoặc ký tự đặc biệt 
+function validateName(name) {
+    const nameRegex = /^[a-zA-Z' -]+$/; 
+    return nameRegex.test(name);
+}
+// so dien thoai 
+function validatePhone(phoneNumber) {
+    const phoneRegex = /^(?:\+84|0)(3[2-9]|5[6-9]|7[0-9]|8[0-6]|9[0-4])[0-9]{7}$/;
+    return phoneRegex.test(phoneNumber);
+}
+// email 
+function validateEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
+// bắt đầu bằng chuỗi vd Quận 1 
+// cho phep khoảng trắng 
+// hổ trợ có dấu 
+// không có ký tự đặc biệt
+// không được bắt đầu là số 
+function validateDistrictName(districtName) {
+    const districtRegex = /^[\p{L}\s-]+$/u;
+    return districtRegex.test(districtName);
+}
+//  không được có số và ký tự đặc biệt 
+function validateProvinceName(provinceName) {
+    const provinceRegex = /^[\p{L}\s-]+$/u;
+    return provinceRegex.test(provinceName);
+}
+// không đc bắt đầu bằng số
+// không có ký tự đặc biệt 
+function validateWardName(wardName) {
+    const wardRegex = /^[\p{L}\s-]*Phường \d*[\p{L}\s-]*$/u;
+    return wardRegex.test(wardName);
+}
+// không được bắt đầu là số 
+// không được chứa ký tự đặc biệt 
+function validateStreetName(streetName) {
+    const streetRegex = /^Đường\s+[\p{L}\s]*\d*[\p{L}\s-]*$/u;
+    return streetRegex.test(streetName);
+}
 // them khach hang 
 document.getElementById('add--customer').addEventListener('click',()=>{
-    // const codeCustomers =  document.getElementById('customer--code').value.trim(); 
     const username = document.getElementById('username--name').value.trim(); 
     const password = document.getElementById('password--name').value.trim(); 
-    // console.log(username); 
-    // console.log(password); 
     const nameCustomers = document.getElementById('customer--name').value.trim(); 
     const phoneCustomers = document.getElementById('customer--phone').value.trim(); 
     const emailCustomers = document.getElementById('customer--email').value.trim(); 
-    // const rankingCustomers = document.getElementById('customer--ranking').value; 
     const statusCustomers = document.getElementById('customer--status').value; 
-    // console.log(statusCustomers); 
     const roleCustomers = document.getElementById('customer--role').value; 
     const district = document.getElementById('customer--district').value.trim(); 
     const province = document.getElementById('customer--province').value.trim(); 
     const street = document.getElementById('customer--street').value.trim(); 
     const ward = document.getElementById('customer--ward').value.trim(); 
+    // confirm information 
+    if(!username){
+        document.getElementById('warning-empty-add-username').style.display = 'block'; 
+        return; 
+    }
+    else{
+        document.getElementById('warning-empty-add-username').style.display = 'none'; 
+    }
+    if(!password){
+        document.getElementById('warning-empty-add-password').style.display = 'block'; 
+        return; 
+    }
+    else{ 
+        document.getElementById('warning-empty-add-password').style.display = 'none'; 
+    }
+    if(!nameCustomers){
+        document.getElementById('warning-empty-add-name').style.display = 'block'; 
+        return;
+    }
+    else{
+        document.getElementById('warning-empty-add-name').style.display = 'none'; 
+        
+    }
+    if(!phoneCustomers){
+        document.getElementById('warning-empty-add-phone').style.display = 'block'; 
+        return;
+    }
+    else{
+        document.getElementById('warning-empty-add-phone').style.display = 'none'; 
+    }
+    if(!emailCustomers){
+        document.getElementById('warning-empty-add-email').style.display = 'block'; 
+        return; 
+    }
+    else{
+        document.getElementById('warning-empty-add-email').style.display = 'none'; 
+    }
+    if(!district){
+        document.getElementById('warning-empty-add-district').style.display = 'block'; 
+        return; 
+    }
+    else{
+        document.getElementById('warning-empty-add-district').style.display = 'none'; 
+    }
+    if(!province){
+        document.getElementById('warning-empty-add-province').style.display = 'block'; 
+        return; 
+    }
+    else{
+        document.getElementById('warning-empty-add-province').style.display = 'none'; 
+    }
+    if(!ward){
+        document.getElementById('warning-empty-add-ward').style.display = 'block';
+        return; 
+    }
+    else{
+        document.getElementById('warning-empty-add-ward').style.display = 'none';
+    }
+    if(!street){
+        document.getElementById('warning-empty-add-street').style.display = 'block'; 
+        return;
+    }
+    else{
+        document.getElementById('warning-empty-add-street').style.display = 'none'; 
+    }
+    // kiem tra tinh hop le 
+    if(!validateUsername(username)){
+        document.getElementById('warning-add-username').style.display = 'block'; 
+        return; 
+    }
+    else{
+        document.getElementById('warning-add-username').style.display = 'none'; 
+    }
 
-    // const storeData1 = localStorage.getItem('address');   
-    // const storeData2 = localStorage.getItem('customers'); 
+    if(!validatePassword(password)){
+        document.getElementById('warning-add-password').style.display = 'block'; 
+        return; 
+    }
+    else{
+        document.getElementById('warning-add-password').style.display = 'none'; 
+    }
+
+    if(!validateName(nameCustomers)){
+        document.getElementById('warning-add-name').style.display = 'block'; 
+        return; 
+    }
+    else{
+        document.getElementById('warning-add-name').style.display = 'none'; 
+
+    }
+
+    if(!validatePhone(phoneCustomers)){
+        document.getElementById('warning-add-phone').style.display = 'block'; 
+        return;
+    }
+    else{
+        document.getElementById('warning-add-phone').style.display = 'none'; 
+        
+    }
+
+    if(!validateEmail(emailCustomers)){
+        document.getElementById('warning-add-email').style.display = 'block';
+        return; 
+    }
+    else{
+        document.getElementById('warning-add-email').style.display = 'none';
+        
+    }
+    if(!validateDistrictName(district)){
+        document.getElementById('warning-add-district').style.display = 'block'; 
+        return;
+    }
+    else{
+        document.getElementById('warning-add-district').style.display = 'none'; 
+
+    }
+    if(!validateProvinceName(province)){
+        document.getElementById('warning-add-province').style.display = 'block'; 
+        return; 
+    }
+    else{
+        document.getElementById('warning-add-province').style.display = 'none'; 
+    }
+    if(!validateWardName(ward)){
+        document.getElementById('warning-add-ward').style.display = 'block'; 
+        return; 
+    }
+    else{
+        document.getElementById('warning-add-ward').style.display = 'none'; 
+   
+    }
+
+    if(!validateStreetName(street)){
+        document.getElementById('warning-add-street').style.display = 'block'; 
+    }
+    else{
+        document.getElementById('warning-add-street').style.display = 'none'; 
+    }
+
+
     const customers = JSON.parse(localStorage.getItem('address'));
     const customers2 = JSON.parse(localStorage.getItem('customers')); 
     const lastCustomerId = parseInt(customers.at(-1).customerId); 
     const lastCustomerId2 = parseInt(customers2.at(-1).id); 
 
-    // console.log(lastCustomerId); 
-    
-    // lastCustomerId++; 
-    // console.log(lastCustomerId); 
+   
     let newcustomer = {
         customerId:lastCustomerId+1,
         district:district, 
@@ -222,7 +419,6 @@ document.getElementById('add--customer').addEventListener('click',()=>{
     }; 
 
     let updatestatus = (statusCustomers === "active" ? "true" : "false"); 
-    // console.log(updatestatus); 
 
     let newcustomer2 = {
         id: lastCustomerId2+1, 
@@ -232,20 +428,11 @@ document.getElementById('add--customer').addEventListener('click',()=>{
         username: username 
     }
 
-    // console.log(newcustomer2); 
-
-
-    // console.log(newcustomer); 
-    // const customerString = JSON.stringify(newcustomer);
-    // console.log(customerString); 
-    // localStorage.setItem('address',customerString); 
-
+   
     let storeData1 = JSON.parse(localStorage.getItem('address')); 
     let storeData2 = JSON.parse(localStorage.getItem('customers')); 
-    // console.log(storeData1); 
     storeData1.push(newcustomer); 
     storeData2.push(newcustomer2); 
-    // console.log(JSON.stringify(storeData1));
      
 
     localStorage.setItem('address',JSON.stringify(storeData1));
