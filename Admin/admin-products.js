@@ -226,14 +226,25 @@ function updateProduct() {
         const price = parseFloat(priceElements[i].value);
         if (!size || isNaN(price)) {
             alert("Vui lòng nhập đầy đủ thông tin size và giá.");
+            sizeElements[i].focus();
             return;
         }
         sizes.push({ size, price });
     }
 
-    if (!name || sizes.length === 0) {
-        alert("Vui lòng nhập đầy đủ thông tin.");
-        return;
+    if (!name) {
+        alert("Vui lòng nhập tên")
+        document.getElementById('editProductName').focus();
+        return;  // Focus vào trường tên sản phẩm nếu thiếu
+    } else if (sizes.length === 0) {
+        addSizeField();
+        alert("Vui lòng nhập size và giá");
+        document.querySelector('.editProductSize').focus();
+        return;  // Focus vào size đầu tiên nếu không có size
+    } else if (!describe) {
+        alert("Vui lòng nhập mô tả")
+        document.getElementById('thongtin-update').focus();
+        return;  // Focus vào trường mô tả nếu thiếu
     }
 
     // Lấy danh sách sản phẩm từ localStorage
