@@ -44,16 +44,19 @@ function renderProductList(products) {
 function deleteProduct(productId) {
     const confirmation = confirm("Do you want to delete this product?");
     if (confirmation) {
-        let products = getProducts();
-        products = products.filter(product => product.id !== productId);
-        saveToLocalStorage(products);
-        alert("Sản phẩm đã bị xóa");
-        renderProductList(products);
+        let products = getProducts();  // Lấy danh sách sản phẩm hiện tại
+        products = products.filter(product => product.id !== productId);  // Xóa sản phẩm có ID trùng với productId
+        saveToLocalStorage(products);  // Lưu lại danh sách sản phẩm mới vào LocalStorage
+        alert("Sản phẩm đã bị xóa");  // Hiển thị thông báo đã xóa sản phẩm
+        renderProductList(products);  // Render lại danh sách sản phẩm
+
+        // Gọi paginate để cập nhật phân trang sau khi xóa sản phẩm
+         paginate(products).reload();  // Gọi hàm phân trang với danh sách sản phẩm mới
     } else {
-        alert("Xóa sản phẩm đã bị hủy");
+        alert("Xóa sản phẩm đã bị hủy");  // Hiển thị thông báo nếu người dùng hủy xóa
     }
-    reset.paginate(products);
 }
+
 
 
 
@@ -105,7 +108,7 @@ function handleAddProduct() {
         reader.readAsDataURL(imageFile); // This will trigger the onloadend function once conversion is done
         return; // Return early to prevent proceeding until the image is processed
     }
-    alert(" Sản phẩm đã được thêm");
+    alert("Sản phẩm đã được thêm");
     // If image is selected, proceed to save product
     saveProduct(imageBase64);
 
@@ -130,27 +133,23 @@ function handleAddProduct() {
         products.push(newProduct);
         saveToLocalStorage(products);
         renderProductList(products);
-        alert("Sản phẩm đã được thêm");
-        reset.paginate(products);
+        paginate(products).reload();
         clearForm();
-        
     }
     function clearForm() {
-        document.getElementById('productname').value = ''; // Xóa trường tên sản phẩm
-        document.getElementById('Loai').value = ''; // Xóa trường loại sản phẩm
-        document.getElementById('price-s-input').value = ''; // Xóa giá size S
-        document.getElementById('price-m-input').value = ''; // Xóa giá size M
-        document.getElementById('price-l-input').value = ''; // Xóa giá size L
-        document.getElementById('thongtin').value = ''; // Xóa mô tả sản phẩm
-
-        // Reset các checkbox (nếu có)
+        document.getElementById('productname').value = '';
+        document.getElementById('Loai').value = '';
+        document.getElementById('price-s-input').value = '';
+        document.getElementById('price-m-input').value = '';
+        document.getElementById('price-l-input').value = '';
+        document.getElementById('thongtin').value = '';
         document.getElementById('size-s').checked = false;
         document.getElementById('size-m').checked = false;
         document.getElementById('size-l').checked = false;
-
-        // Reset file input
         document.getElementById('productimage').value = '';
     }
+
+   
 }
 
 
@@ -171,6 +170,11 @@ function paginate(products) {
     renderProductList(currentProducts);
     document.getElementById('prev-page').disabled = currentPage === 1;
     document.getElementById('next-page').disabled = currentPage === totalPages;
+    return {
+        reload: function() {
+            paginate(products);  // Gọi lại paginate để cập nhật lại phân trang
+        }
+    };
 }
 
 // Hàm xử lý thay đổi trang khi nhấn vào nút "Prev" hoặc "Next"
