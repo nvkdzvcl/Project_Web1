@@ -80,14 +80,17 @@ function handleAddProduct() {
     // Check if prices for selected sizes are valid
     if (document.getElementById('size-s').checked && isNaN(priceS)) {
         alert("Vui lòng nhập giá trị hợp lệ cho size S.");
+        document.getElementById('price-s-input').focus();
         return;
     }
     if (document.getElementById('size-m').checked && isNaN(priceM)) {
         alert("Vui lòng nhập giá trị hợp lệ cho  size M.");
+        document.getElementById('price-m-input').focus();
         return;
     }
     if (document.getElementById('size-l').checked && isNaN(priceL)) {
         alert("Vui lòng nhập giá trị hợp lệ cho  size L.");
+        document.getElementById('price-l-input').focus();
         return;
     }
 
