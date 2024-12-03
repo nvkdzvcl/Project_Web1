@@ -198,3 +198,75 @@
     font-size: 12px;
     display: none;  
 }
+
+
+#modal-empty-change-name{
+    color: red;
+    font-size: 12px;
+    display: none;  
+}
+
+#modal-invalid-change-name{
+    color: red;
+    font-size: 12px;
+    display: none;  
+}
+
+#modal-empty-change-phone{
+    color: red;
+    font-size: 12px;
+    display: none;  
+}
+
+#modal-invalid-change-phone{
+    color: red;
+    font-size: 12px;
+    display: none;  
+}
+#modal-empty-change-email{
+    color: red;
+    font-size: 12px;
+    display: none;  
+}
+
+#modal-invalid-change-email{
+    color: red;
+    font-size: 12px;
+    display: none;  
+}
+
+#modal-empty-change-city{
+    color: red;
+    font-size: 12px;
+    display: none;  
+}
+
+#modal-invalid-change-city{
+    color: red;
+    font-size: 12px;
+    display: none;  
+}
+
+#modal-empty-change-street{
+    color: red;
+    font-size: 12px;
+    display: none;  
+}
+
+#modal-invalid-change-street{
+    color: red;
+    font-size: 12px;
+    display: none;  
+}
+
+#modal-empty-change-ward{
+    color: red;
+    font-size: 12px;
+    display: none;  
+}
+
+#modal-invalid-change-ward{
+    color: red;
+    font-size: 12px;
+    display: none;  
+}

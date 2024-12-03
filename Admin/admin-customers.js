@@ -550,7 +550,6 @@ document.addEventListener('click',(e)=>{
 
 
 document.getElementById("submit").addEventListener('click', (e) => {
-    // Get form values
     const name = document.getElementById("change-name").value;
     const phone = document.getElementById("change-phone").value;
     const email = document.getElementById("change-email").value;
@@ -559,8 +558,107 @@ document.getElementById("submit").addEventListener('click', (e) => {
     const ward = document.getElementById("change-ward").value;
     const status = document.getElementById("change-status").value; 
     const role = document.getElementById("change-role").value; 
-    // console.log(status); 
+    // check // 
+    if(!name){
+        document.getElementById('modal-empty-change-name').style.display = 'block'; 
+        return; 
+    }
+    else{
+        document.getElementById('modal-empty-change-name').style.display = 'none'; 
+        
+    }
+    if(!phone){
+        document.getElementById('modal-empty-change-phone').style.display = 'block'; 
+        return; 
+    }
+    else{
+        document.getElementById('modal-empty-change-phone').style.display = 'none'; 
+    }
+    if(!email){
+        document.getElementById('modal-empty-change-email').style.display = 'block'; 
+        return;
+    }
+    else{
+        document.getElementById('modal-empty-change-email').style.display = 'none'; 
+    }
+    if(!province){
+        document.getElementById('modal-empty-change-city').style.display = 'block'; 
+        return; 
+    }
+    else{
+        document.getElementById('modal-empty-change-city').style.display = 'none'; 
+        
+    }
 
+    if(!street){
+        document.getElementById('modal-empty-change-street').style.display = 'block'; 
+        return; 
+    }
+    else{
+        document.getElementById('modal-empty-change-street').style.display = 'none'; 
+        
+    }
+    if(!ward){
+        document.getElementById('modal-empty-change-ward').style.display = 'block'; 
+
+    }
+    else{
+        document.getElementById('modal-empty-change-ward').style.display = 'none'; 
+
+    }
+
+    if(!validateName(name)){
+        document.getElementById('modal-invalid-change-name').style.display = 'block'; 
+        return; 
+    }
+    else{
+        document.getElementById('modal-invalid-change-name').style.display = 'none'; 
+        
+    }
+
+    if(!validatePhone(phone)){
+        document.getElementById('modal-invalid-change-phone').style.display = 'block'; 
+        return;
+    }
+    else{
+        document.getElementById('modal-invalid-change-phone').style.display = 'none'; 
+        
+    }
+
+    if(!validateEmail(email)){
+        document.getElementById('modal-invalid-change-email').style.display = 'block'; 
+        return; 
+    }
+    else{
+        document.getElementById('modal-invalid-change-email').style.display = 'none'; 
+
+    }
+
+    if(!validateProvinceName(province)){
+        document.getElementById('modal-invalid-change-city').style.display = 'block'; 
+        return; 
+    }
+    else{
+        document.getElementById('modal-invalid-change-city').style.display = 'none'; 
+    }
+
+    if(!validateStreetName(street)){
+        document.getElementById('modal-invalid-change-street').style.display = 'block'; 
+        return; 
+    }
+    else{
+        document.getElementById('modal-invalid-change-street').style.display = 'none'; 
+
+    }
+
+    if(!validateWardName(ward)){
+        document.getElementById('modal-invalid-change-ward').style.display = 'block'; 
+        return; 
+    }
+    else{
+        document.getElementById('modal-invalid-change-ward').style.display = 'none'; 
+
+    }
 
     const row = e.target.closest('tr');
     const addressData = JSON.parse(localStorage.getItem('address'));
