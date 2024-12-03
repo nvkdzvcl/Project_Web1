@@ -194,7 +194,9 @@ function changePage(direction) {
 
     paginate(products);
 }
-
+document.addEventListener('DOMContentLoaded', function (){
+    document.getElementById('show-current').textContent=currentPage;
+});
 // Lắng nghe sự kiện phân trang
 document.getElementById('prev-page').addEventListener('click', () => changePage('prev'));
 document.getElementById('next-page').addEventListener('click', () => changePage('next'));
