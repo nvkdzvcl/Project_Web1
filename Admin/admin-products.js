@@ -130,7 +130,10 @@ function handleAddProduct() {
         products.push(newProduct);
         saveToLocalStorage(products);
         renderProductList(products);
+        alert("Sản phẩm đã được thêm");
+        reset.handleAddProduct();
         reset.paginate(products);
+        
     }
 }
 
