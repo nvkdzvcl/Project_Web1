@@ -237,11 +237,11 @@ function showProductModal(productId) {
 
     const addToCartBtn = document.getElementById('addToCartBtn');
     addToCartBtn.onclick = function() {
-        const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser')) || false;
-        if (!loggedInUser) {
-            alert('Bạn cần phải đăng nhập');
-            return;
-        }
+        // const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser')) || false;
+        // if (!loggedInUser) {
+        //     alert('Bạn cần phải đăng nhập');
+        //     return;
+        // }
 
         const carts = JSON.parse(localStorage.getItem('carts')) || [];
 
@@ -498,9 +498,9 @@ document.querySelector('.btn--primary1').addEventListener('click', () => {
     let customers = JSON.parse(localStorage.getItem('customers')) || [];
     
     // Kiểm tra user xem hợp lệ
-    const regex_username = /^[a-zA-Z0-9]+$/;
+    const regex_username = /^[a-zA-Z0-9._]{3,20}$/;
     if (!regex_username.test(username)) {
-        alert("Tên người dùng chỉ được phép chứa kí tự chữ cái và số, vui lòng chọn tên khác !");
+        alert("Tên người dùng chỉ được phép chứa kí tự chữ cái và số, độ dài từ 3-20 kí tự, vui lòng chọn tên khác !");
         return;
     }
     // Kiểm tra xem username đã tồn tại chưa
