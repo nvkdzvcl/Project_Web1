@@ -42,7 +42,7 @@ function renderProductList(products) {
 
 // Xử lý khi xóa sản phẩm
 function deleteProduct(productId) {
-    const confirmation = confirm("Do you want to delete this product?");
+    const confirmation = confirm("Bạn có muốn xóa sản phẩm này không ?");
     if (confirmation) {
         let products = getProducts();  // Lấy danh sách sản phẩm hiện tại
         products = products.filter(product => product.id !== productId);  // Xóa sản phẩm có ID trùng với productId
