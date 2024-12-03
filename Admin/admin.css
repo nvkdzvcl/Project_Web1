@@ -1097,7 +1097,7 @@ body {
     .product-list{
         width: 100%;
     }
-    .right-column{
+    .product-content .right-column{
         width: 100%;
         height:30%;
     }
@@ -1413,7 +1413,7 @@ body {
     .product-list{
         width: 100%;
     }
-    .right-column{
+    .product-content .right-column{
         width: 100%;
         height:30%;
     }
