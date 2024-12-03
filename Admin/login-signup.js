@@ -30,6 +30,16 @@ function checkLogin(emailInput,passwordInput){
     } 
     return false; 
 }
+//check 
+function validateEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
+
+function validateName(name) {
+    const nameRegex = /^[a-zA-Z]+ [a-zA-Z]+$/;
+    return nameRegex.test(name);
+}
 
 document.getElementById("login-button").addEventListener("click", (e) => {
     e.preventDefault(); 

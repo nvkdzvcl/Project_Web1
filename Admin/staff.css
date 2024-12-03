@@ -112,3 +112,83 @@
 .no-interaction .menu {
     pointer-events: auto;  /* Cho phép thao tác chuột trên phần tử #header */
 }
+
+
+#warning-register-username{
+    font-size: 12px;
+    color: red;
+    display: none;
+}
+
+#warning-empty-register-username{
+    font-size: 12px;
+    color: red;
+    display: none;
+}
+
+
+#warning-register-email{ 
+    font-size: 12px;
+    color: red;
+    display: none;   
+}
+
+#warning-empty-register-email{
+    font-size: 12px;
+    color: red;
+    display: none;      
+}
+
+#warning-register-password{
+    font-size: 12px;
+    color: red;
+    display: none;      
+}
+
+#warning-empty-register-password{
+    font-size: 12px;
+    color: red;
+    display: none;      
+}
+
+#warning-register-confirm-password{
+    font-size: 12px;
+    color: red;
+    display: none;      
+}
+
+#warning-empty-register-confirm-password{
+    font-size: 12px;
+    color: red;
+    display: none;      
+}
+
+#warning-login-username{
+    font-size: 12px;
+    color: red;
+    display: none;      
+}
+
+#warning-empty-login-username{
+    font-size: 12px;
+    color: red;
+    display: none;         
+}
+
+#warning-login-password{
+    font-size: 12px;
+    color: red;
+    display: none;      
+}
+
+#warning-empty-login-password{
+    font-size: 12px;
+    color: red;
+    display: none;      
+}
+
+#warning-email-exist{
+    font-size: 12px;
+    color: red;
+    display: none;      
+}

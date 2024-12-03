@@ -46,17 +46,30 @@
                 </div>
         
                 <div id="login-content" class="form-content active">
-                    <input type="text" id="login-username" placeholder="Tên đăng nhập" required>
-                    <input type="password" id="login-password" placeholder="Mật khẩu" required>
+                    <input type="text" id="login-username" placeholder="Tên đăng nhập">
+                    <p id = "warning-login-username">*Phải nhập đúng định dạng username</p>
+                    <p id = "warning-empty-login-username">*Không được trống username</p>
+                    <input type="password" id="login-password" placeholder="Mật khẩu">
+                    <p id = "warning-login-password">*Phải nhập đúng định dạng password</p>
+                    <p id = "warning-empty-login-password">*Không được trống password</p>
                     <button type="button" onclick="submitLogin()" class="btn-login">Đăng nhập</button>
                     <button class="btn-close-login-form" onclick="closeLoginForm()">+</button>
                 </div>
         
                 <div id="register-content" class="form-content">
-                    <input type="text" id="register-username" placeholder="Tên đăng nhập" required>
-                    <input type="email" id="register-email" placeholder="Email" required>
-                    <input type="password" id="register-password" placeholder="Mật khẩu" required>
-                    <input type="password" id="register-confirm-password" placeholder="Nhập lại mật khẩu" required>
+                    <input type="text" id="register-username" placeholder="Tên đăng nhập">
+                    <p id = "warning-register-username">*Nhập đúng định dạng tên đăng nhập</p>
+                    <p id = "warning-empty-register-username">*Tên đăng nhập không được trống</p>
+                    <input type="email" id="register-email" placeholder="Email">
+                    <p id = "warning-register-email">*Nhập đúng định dạng email</p>
+                    <p id = "warning-empty-register-email">*Email đăng nhập không được trống</p>
+                    <p id = "warning-email-exist">*Email đã tồn tại</p>
+                    <input type="password" id="register-password" placeholder="Mật khẩu">
+                    <p id = "warning-register-password">*Nhập đúng định dạng mật khẩu</p>
+                    <p id = "warning-empty-register-password">*Mật khẩu đăng nhập không được trống</p>
+                    <input type="password" id="register-confirm-password" placeholder="Nhập lại mật khẩu">
+                    <p id = "warning-register-confirm-password">*Mật khẩu xác nhận phải bằng với mật khẩu đăng ký</p>
+                    <p id = "warning-empty-register-confirm-password">*Xác nhận mật khẩu đăng nhập không được trống</p>
                     <button type="button" onclick="submitRegister()" class="btn-login" >Đăng ký</button>
                     <button class="btn-close-login-form" onclick="closeLoginForm()">+</button>
                 </div>
