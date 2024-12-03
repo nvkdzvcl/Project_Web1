@@ -208,8 +208,17 @@ function validatePassword(password) {
 }
 
 // cho phép chữ hoa lẫn thường có thể có khoảng trắng giữa tên, không có số hoặc ký tự đặc biệt 
+// function validateName(name) {
+//     const nameRegex = /^[a-zA-Z' -]+$/; 
+//     return nameRegex.test(name);
+// }
+// function validateName(name) {
+//     const nameRegex = /^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÀÁÂÃÈÉÊÌÍÒÓÔÕĐÝÝ' -]+$/u; 
+//     return nameRegex.test(name);
+// }
+
 function validateName(name) {
-    const nameRegex = /^[a-zA-Z' -]+$/; 
+    const nameRegex = /^[A-Za-zÀ-ỹ\s-]+$/;
     return nameRegex.test(name);
 }
 // so dien thoai 
@@ -227,8 +236,12 @@ function validateEmail(email) {
 // hổ trợ có dấu 
 // không có ký tự đặc biệt
 // không được bắt đầu là số 
+// function validateDistrictName(districtName) {
+//     const districtRegex = /^[\p{L}\s-]+$/u;
+//     return districtRegex.test(districtName);
+// }
 function validateDistrictName(districtName) {
-    const districtRegex = /^[\p{L}\s-]+$/u;
+    const districtRegex = /^[\p{L}\s\d-]+$/u; // Added \d to include digits
     return districtRegex.test(districtName);
 }
 //  không được có số và ký tự đặc biệt 
