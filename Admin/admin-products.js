@@ -1,6 +1,6 @@
 // Lắng nghe sự kiện hiển thị sản phẩm
 document.querySelector('.view-product').addEventListener('click', () => {
-    document.querySelector('.product-content').style.display = 'flex';
+    document.querySelector('.product-content').style.display = 'flex';sa
     document.querySelector('.order-content').style.display = 'none';
     document.querySelector('.statistic-content').style.display = 'none';
     document.querySelector('.customer-content').style.display = 'none'; 
@@ -42,18 +42,21 @@ function renderProductList(products) {
 
 // Xử lý khi xóa sản phẩm
 function deleteProduct(productId) {
-    const confirmation = confirm("Do you want to delete this product?");
+    const confirmation = confirm("Bạn có muốn xóa sản phẩm này không ?");
     if (confirmation) {
-        let products = getProducts();
-        products = products.filter(product => product.id !== productId);
-        saveToLocalStorage(products);
-        alert("Sản phẩm đã bị xóa");
-        renderProductList(products);
+        let products = getProducts();  // Lấy danh sách sản phẩm hiện tại
+        products = products.filter(product => product.id !== productId);  // Xóa sản phẩm có ID trùng với productId
+        saveToLocalStorage(products);  // Lưu lại danh sách sản phẩm mới vào LocalStorage
+        alert("Sản phẩm đã bị xóa");  // Hiển thị thông báo đã xóa sản phẩm
+        renderProductList(products);  // Render lại danh sách sản phẩm
+
+        // Gọi paginate để cập nhật phân trang sau khi xóa sản phẩm
+         paginate(products).reload();  // Gọi hàm phân trang với danh sách sản phẩm mới
     } else {
-        alert("Xóa sản phẩm đã bị hủy");
+        alert("Xóa sản phẩm đã bị hủy");  // Hiển thị thông báo nếu người dùng hủy xóa
     }
-    reset.paginate(products);
 }
+
 
 
 
@@ -99,16 +102,16 @@ function handleAddProduct() {
         const reader = new FileReader();
         reader.onloadend = function () {
             imageBase64 = reader.result; // This is the Base64 encoded string of the image
-
+            alert("Sản phẩm đã được thêm");
             saveProduct(imageBase64); // Call the save function after image is loaded
         };
         reader.readAsDataURL(imageFile); // This will trigger the onloadend function once conversion is done
         return; // Return early to prevent proceeding until the image is processed
     }
-    alert(" Sản phẩm đã được thêm");
+   
     // If image is selected, proceed to save product
     saveProduct(imageBase64);
-
+     alert("Sản phẩm đã được thêm");
     function saveProduct(image) {
         let products = getProducts();
         const lastProductId = products.length ? Math.max(...products.map(p => p.id)) : 0;
@@ -130,8 +133,23 @@ function handleAddProduct() {
         products.push(newProduct);
         saveToLocalStorage(products);
         renderProductList(products);
-        reset.paginate(products);
+        paginate(products).reload();
+        clearForm();
     }
+    function clearForm() {
+        document.getElementById('productname').value = '';
+        document.getElementById('Loai').value = '';
+        document.getElementById('price-s-input').value = '';
+        document.getElementById('price-m-input').value = '';
+        document.getElementById('price-l-input').value = '';
+        document.getElementById('thongtin').value = '';
+        document.getElementById('size-s').checked = false;
+        document.getElementById('size-m').checked = false;
+        document.getElementById('size-l').checked = false;
+        document.getElementById('productimage').value = '';
+    }
+
+   
 }
 
 
@@ -152,6 +170,11 @@ function paginate(products) {
     renderProductList(currentProducts);
     document.getElementById('prev-page').disabled = currentPage === 1;
     document.getElementById('next-page').disabled = currentPage === totalPages;
+    return {
+        reload: function() {
+            paginate(products);  // Gọi lại paginate để cập nhật lại phân trang
+        }
+    };
 }
 
 // Hàm xử lý thay đổi trang khi nhấn vào nút "Prev" hoặc "Next"
