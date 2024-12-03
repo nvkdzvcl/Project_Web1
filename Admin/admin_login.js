@@ -79,24 +79,37 @@ const loginForm = document.getElementById('loginForm');
 loginForm.addEventListener('submit',(e)=>{
     e.preventDefault(); 
     const name = document.getElementById('tendangnhap').value; 
-    const pass = document.getElementById('matkhau').value; 
-    if(!name || !pass){
-        alert('vui lòng nhập đầy đủ thông tin'); 
-        return; 
+    const pass = document.getElementById('matkhau').value;
+    console.log(name); 
+    console.log(pass);  
+    if(!name){
+        document.getElementById('warning-empty-login-username').style.display = 'block'; 
+        return;
     }
-    if(!ValidateUserName(name)){
-        document.getElementById('warning-username').style.display = 'block'; 
+    else{
+        document.getElementById('warning-empty-login-username').style.display = 'none'; 
+        
+    }
+    if(!pass){
+        document.getElementById('warning-empty-login-password').style.display = 'block'; 
         return; 
     }
     else{
-        document.getElementById('warning-username').style.display = 'none'; 
+        document.getElementById('warning-empty-login-password').style.display = 'none'; 
+    }
+    if(!ValidateUserName(name)){
+        document.getElementById('warning-login-username').style.display = 'block'; 
+        return; 
+    }
+    else{
+        document.getElementById('warning-login-username').style.display = 'none'; 
     }
     if(!validatePassword(pass)){
         document.getElementById('warning-login-password').style.display = 'block';
         return;  
     }
     else{
-        document.getElementById('warning-username').style.display = 'none'; 
+        document.getElementById('warning-login-password').style.display = 'none'; 
     }
     const listOfAccounts = JSON.parse(localStorage.getItem('AdminData')) || []; 
     const user = listOfAccounts.find(account => account.username === name && account.password === pass);

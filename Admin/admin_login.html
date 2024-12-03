@@ -8,28 +8,32 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="admin-login.css">
+
 </head>
 <body>
     <div class="wrapper">
         <form action="" id = "loginForm">
             <h1>Administrator's Login</h1>
             <div class="input-box">
-                <input type="text" placeholder="Tên đăng nhập" id = "tendangnhap" required>
+                <input type="text" placeholder="Tên đăng nhập" id = "tendangnhap">
                 <p id = "warning-login-username">*Bắt đầu với ký tự là chữ, có 3 tới 16 ký tự</p>
+                <p id = "warning-empty-login-username">*Không được để trống</p>
                 <i class='bx bxs-user'></i>
             </div>
             <div class="input-box">
-                <input type="password" placeholder="Mật khẩu" id = "matkhau" required>
-                <p id = "warning-login-password">*ít nhất 1 chữ thường, 1 chữ hoa,1 số, 1 ký tự đặc biệt, tối thiểu 8 ký tự</p>
+                <input type="password" placeholder="Mật khẩu" id = "matkhau">
+                <p id = "warning-login-password">*vui lòng nhập đúng định dạng</p>
+                <p id = "warning-empty-login-password">*Không được để trống</p>
                 <i class='bx bxs-lock-alt' ></i>
             </div>
             <div class="remember-forgot">
+               
                 <label>
                     <input type="checkbox"> Remember me
                 </label>
                 <a href="Quên mật khẩu"></a>
             </div>
-            <button type="submit " class="btn">Đăng nhập</button>
+            <button type="submit" class="btn">Đăng nhập</button>
             <div class="register-link">
                 <p>Không có tài khoản ? <a href="#" id = "register"> Đăng ký</a></p> 
             </div>    
