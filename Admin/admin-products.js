@@ -131,9 +131,25 @@ function handleAddProduct() {
         saveToLocalStorage(products);
         renderProductList(products);
         alert("Sản phẩm đã được thêm");
-        reset.handleAddProduct();
         reset.paginate(products);
+        clearForm();
         
+    }
+    function clearForm() {
+        document.getElementById('productname').value = ''; // Xóa trường tên sản phẩm
+        document.getElementById('Loai').value = ''; // Xóa trường loại sản phẩm
+        document.getElementById('price-s-input').value = ''; // Xóa giá size S
+        document.getElementById('price-m-input').value = ''; // Xóa giá size M
+        document.getElementById('price-l-input').value = ''; // Xóa giá size L
+        document.getElementById('thongtin').value = ''; // Xóa mô tả sản phẩm
+
+        // Reset các checkbox (nếu có)
+        document.getElementById('size-s').checked = false;
+        document.getElementById('size-m').checked = false;
+        document.getElementById('size-l').checked = false;
+
+        // Reset file input
+        document.getElementById('productimage').value = '';
     }
 }
 
