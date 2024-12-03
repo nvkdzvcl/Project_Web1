@@ -1,4 +1,4 @@
-// Format tiền việt
+// Format tiền Việt
 function formatCurrencyVND(amount) {
     return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(amount);
 }
@@ -76,6 +76,7 @@ function displayProducts(page) {
     
     // Lọc sản phẩm theo danh mục
     if (currentCategory !== 'Tất cả') {
+        //tạo mảng mới chứa các phần tử theo danh mục
         products = products.filter(p => p.type === currentCategory);
     }
 
@@ -139,6 +140,7 @@ function displayProducts(page) {
 // Lắng nghe sự kiện thay đổi trên ô tìm kiếm (search-input)
 searchInput.addEventListener('input', function() {
     displayProducts(1);
+    document.querySelector('#product1').scrollIntoView({ behavior: 'smooth', block: 'start' });
 });
 
 // Lắng nghe sự kiện nhấn nút "Search" để chỉ lọc theo tên sản phẩm
