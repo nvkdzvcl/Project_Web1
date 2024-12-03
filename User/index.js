@@ -139,7 +139,6 @@ function displayProducts(page) {
 // Lắng nghe sự kiện thay đổi trên ô tìm kiếm (search-input)
 searchInput.addEventListener('input', function() {
     displayProducts(1);
-    document.querySelector('#product1').scrollIntoView({ behavior: 'smooth', block: 'start' });
 });
 
 // Lắng nghe sự kiện nhấn nút "Search" để chỉ lọc theo tên sản phẩm
