@@ -1,11 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Retrieve the logged-in user from localStorage
     const user = JSON.parse(localStorage.getItem('loggedInStaff'));
-
-
-        // Display user info on the admin page
-        document.getElementById('usernameItem').textContent = 'Username: ' + user.username;
-        document.getElementById('emailItem').textContent = 'Email: ' + user.email;
+    // Display user info on the admin page
+    document.getElementById('usernameItem').textContent = 'Username: ' + user.username;
+    document.getElementById('emailItem').textContent = 'Email: ' + user.email;
+    document.querySelector('.staff-login').style.display = 'none';
     
 });
 document.getElementById('logoutLink').addEventListener('click', function (e) {

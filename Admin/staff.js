@@ -70,10 +70,11 @@ function submitLogin(){
     const user = listOfAccounts.find(account => account.username === username && account.password === password);
     if(user){
         // localStorage.setItem('loggedInAdmin', JSON.stringify(user));
-        // alert('Đăng nhập thành công'); 
+        alert('Đăng nhập thành công'); 
         
         window.location.href = "staff.html"; 
         
+        localStorage.setItem('loggedInStaff', JSON.stringify(user));
 
     }
     else{ 
