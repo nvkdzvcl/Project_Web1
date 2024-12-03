@@ -1363,6 +1363,26 @@ document.getElementById('saveButton').addEventListener('click', () => {
     }
 
 
+    // Kiểm tra định dạng số điện thoại
+    const phonePattern = /^0\d{9,10}$/;
+    if (!phonePattern.test(phone)) {
+        alert("Số điện thoại không hợp lệ. Vui lòng bắt đầu bằng 0 và chỉ chứa 10 hoặc 11 chữ số.");
+        phoneInput.focus();
+        return;
+    }
+    //Kiểm tra email hợp lệ
+    const regex_email = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!regex_email.test(email)) {
+        alert("Sai cấu trúc email, vui lòng nhập lại !");
+        emailInput.focus();
+        return;
+    }
+    
+    
+
+
+
+
     // Cập nhật thông tin trong localStorage
     let address = JSON.parse(localStorage.getItem('address'));
     let customer = address.find(a => a.customerId === getCustomerId());
