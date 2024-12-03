@@ -74,6 +74,7 @@ function handleAddProduct() {
     // Check if product name is empty
     if (!name) {
         alert("Bạn chưa nhập tên sản phẩm.");
+        document.getElementById('productname').focus();
         return;  // Stop execution if the name is not provided
     }
 
