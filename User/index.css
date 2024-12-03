@@ -629,8 +629,9 @@ footer .copyright {
     border: none;
     border-radius: 0 5px 5px 0;
     cursor: pointer;
-    font-size: 17px;
+    font-size: 12px;
     width: 80%;
+    height: 35px;
 }
 
 .suggestions-item {
@@ -726,13 +727,14 @@ footer .copyright {
 
     #subtotal {
         width: 100%;
-       padding: 20px;
+        padding: 20px;
     }
     
     #search-bar_advanced button {
         font-size: 9px;
         width: auto;
     }
+
 }
 
 @media (max-width: 477px) {
