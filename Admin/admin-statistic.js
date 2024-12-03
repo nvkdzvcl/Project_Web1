@@ -5,11 +5,14 @@ function formatCurrencyVND(amount) {
 
 
 // thong ke
-
+// Hàm lọc thống kê theo khoảng thời gian
+// Trả về danh sách đã lọc
 function filterOrdersByDate(orders){
+    // lấy ngày bắt đầu + kết thúc
     const startDate = document.querySelector('#start-date-filter').value;
     const endDate = document.querySelector('#end-date-filter').value;
 
+    // kiểm tra ngày hợp lệ ngày kết thúc > ngày bắt đầu
     if (new Date(startDate) > new Date(endDate)) {
         alert('Ngày không hợp lệ!');
         startDate.focus();
@@ -18,7 +21,6 @@ function filterOrdersByDate(orders){
 
     if(startDate){
         orders = orders.filter(order => new Date(order.date) >= new Date(startDate));
-
     }
     
     if(endDate){
@@ -30,13 +32,18 @@ function filterOrdersByDate(orders){
 }
 // Tạo thống kê mặt hàng
 function displayStatisticType() {
+    // lấy danh sách đơn hàng
     let orders = JSON.parse(localStorage.getItem('orders')) || [];
+    // lấy danh sách sản phẩm
     const products = JSON.parse(localStorage.getItem('products')) || [];
 
+    // lọc theo khoảng thời gian
     orders = filterOrdersByDate(orders);
-    console.log(orders);
 
+    // đối tượng chứa thông tin thống kê
     let statisticType = {};
+
+    // lấy thông tin thống kê
     orders.forEach(order => {
         order.orderItems.forEach(orderItem => {
             let product = products.find(p => p.id === orderItem.productId);
@@ -62,8 +69,8 @@ function displayStatisticType() {
                     }   
                     statisticType[type].totalCost += size.quantity * price;
                 });
-
             } 
+
         });
     });
 
@@ -94,22 +101,25 @@ function displayStatisticType() {
     `;
 }
 
-
+// Trang hiện tại của thống kê theo mặt hàng
 let currentPageTypeDetail = 1;
+// số lượng item trên 1 trang
 let itemTypeDetailPerPage = 6;
 
-
+// Xem chi tiết các sản phẩm được bán ra của mặt hàng
 function showTypeDetail(type) {
+    // lấy danh sách sản phẩm
     let products = JSON.parse(localStorage.getItem('products')) || [];
+    // lọc sản phẩm theo mặt hàng
     products = products.filter(product => product.type === type);
-
+    // lấy danh sách đơn hàng
     let orders = JSON.parse(localStorage.getItem('orders')) || [];
 
     // Thêm phần title cho chi tiết mặt hàng
     const typeDetailTitle = document.querySelector('.type-detail-title');
     typeDetailTitle.textContent = `Mặt hàng ${type}`;
 
-    // Thêm sự kiện cho sắp xếp theo việc bán chạy
+    // Thêm sự kiện cho sắp xếp theo việc bán chạy nhất / ế nhất
     const typeDetailFilter = document.getElementById('type-detail-filter');
     typeDetailFilter.addEventListener('change', () => {
         currentPageTypeDetail = 1;
@@ -117,7 +127,10 @@ function showTypeDetail(type) {
         showTypeDetail(type);
     });
     
+    
+    // Mảng chứa các sản phẩm được bán ra của mặt hàng
     let prods = [];
+
     products.forEach(product => {
         let sizes = [];
         let prodCost = 0;
@@ -145,18 +158,17 @@ function showTypeDetail(type) {
                 }
             });
         });
-        if(!prods.find(p => p.id === product.id)) {
-            prods.push({
-                id: product.id,
-                name: product.name,
-                sizes: sizes,
-                totalCost: prodCost
-            });
+        // Thêm sản phẩm mới vào mảng
+        prods.push({
+            id: product.id,
+            name: product.name,
+            sizes: sizes,
+            totalCost: prodCost
+        });
         
-
-        }
     });
     // in html ở đây
+    // Kiểm tra điều kiện đang chọn (bán chạy nhất/bán ế nhất) để sắp xếp
     if(typeDetailFilter.value === 'best_selling') {
         prods.sort((a, b) => b.totalCost - a.totalCost);
     }
@@ -214,12 +226,10 @@ function showTypeDetail(type) {
     document.querySelector('.wrap-statistic-type-detail').style.display = 'block';
 }
 
+// Hàm phân trang khi in ra chi tiết các sản phảm
 function displayTypeDetailPagination(length, type) {
     let pagination = document.querySelector('.type-detail-pagination');
-    if (!pagination) {
-        console.error("Không tìm thấy phần tử '.type-detail-pagination'");
-        return;
-    }
+    
     pagination.innerHTML = '';
 
     let totalPages = Math.ceil(length / itemTypeDetailPerPage);
@@ -240,7 +250,7 @@ function displayTypeDetailPagination(length, type) {
 }
 
 
-
+// Hàm tắt hiển thị chi tiết các sản phẩm được phân theo mặt hàng
 function closeTypeDetail() {
     document.querySelector('.wrap-statistic-type-detail').style.display = 'none';
     document.querySelector('#type-detail-filter').value = 'best_selling';
@@ -248,29 +258,36 @@ function closeTypeDetail() {
 
 
 // Tạo thống kê theo khách hàng
+// Trang hiện tại của thống kê theo khách hàng
 let currentPageStatistic = 1;
+// Số lượng item trên 1 trang
 let itemStatisticPerPage = 9;
 
+// hàm in ra danh sách các khách hàng đã mua
 function displayStatisticCustomer(){
     let orders = JSON.parse(localStorage.getItem('orders')) || [];
     const customers = JSON.parse(localStorage.getItem('customers')) || [];
     const address = JSON.parse(localStorage.getItem('address')) || [];
     const products = JSON.parse(localStorage.getItem('products')) || [];
 
+    // Lọc danh sách đơn theo khoảng thời gian
     orders = filterOrdersByDate(orders);
 
+    // Mảng thống kê chứa các thông tin khách hàng
     let statisticCustomerArray = [];
 
     orders.forEach(order => {   // Duyet qua danh sach don hang
         let customer = customers.find(cus => cus.id === order.customerId);  // Tim khach hang cua don hang hien tai
         if(customer) {  // Ton tai khach hang
             let customerId = customer.id;
+
+            // Kiểm tra khách hàng đã có trong mảng thống kê chưa
             let index = statisticCustomerArray.findIndex(o => o.customerId === customerId);
 
-            if(index == -1) {
+            if(index == -1) {   //Nếu khách hàng chưa tồn tại trong mảng thống kê
                 index = statisticCustomerArray.length;
                 let add = address.find(a => a.customerId === customerId);
-                statisticCustomerArray.push({
+                statisticCustomerArray.push({   //Thêm thông tin khách hàng vào mảng thống kê
                     customerId: customer.id,
                     name: add.fullname,
                     quantity: 0,
@@ -298,6 +315,7 @@ function displayStatisticCustomer(){
         }
     });
     
+    // Thêm html
     const statisticTableCustomer = document.querySelector('.statistic-table-customer tbody');
     statisticTableCustomer.innerHTML = '';
 
@@ -315,6 +333,7 @@ function displayStatisticCustomer(){
         `;
     }
     displayStatisticCustomerPagination(statisticCustomerArray.length);
+    // In ra danh sách 3 khách hàng mua có tổng tiền cao nhất
     displayHighestPayingCustomers(statisticCustomerArray);
 }
 
@@ -340,6 +359,7 @@ function displayHighestPayingCustomers (statisticCustomerArray) {   // Nhận v�
 
 }
 
+// hàm phân trang
 function displayStatisticCustomerPagination(totalCustomer) {
     let pagination = document.querySelector('.statistic-pagination');
     pagination.innerHTML = '';
@@ -361,6 +381,7 @@ function displayStatisticCustomerPagination(totalCustomer) {
     }
 }
 
+// Hàm hiển thị chi tiết khách hàng gồm: thôgn tin + đơn hàng
 function showCustomerDetail(customerId) {
     let orders = JSON.parse(localStorage.getItem('orders')) || [];
     let address = JSON.parse(localStorage.getItem('address')) || [];
