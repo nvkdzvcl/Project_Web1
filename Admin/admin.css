@@ -1085,6 +1085,9 @@ body {
     .right-column{
         margin-top: 20px; 
     }
+    .product-item td button{
+        width: 55%;
+    }
 
 }
     
