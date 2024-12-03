@@ -1304,10 +1304,25 @@ function closeCardForm() {
 
 // thông tin tài khoản 
 
-// show 
-document.querySelector('.logged-in').addEventListener('click', () => {
-    document.getElementById('login-box').style.display = 'block';
-})
+//show
+document.querySelector('.logged-in').addEventListener('click', (event) => {
+    event.stopPropagation(); // Ngăn sự kiện click lan ra ngoài
+    const loginBox = document.getElementById('login-box');
+    loginBox.style.display = 'flex';
+});
+
+// Ẩn khối login-box khi nhấn ra ngoài
+document.addEventListener('click', (event) => {
+    const loginBox = document.getElementById('login-box');
+    if (!loginBox.contains(event.target) && event.target.id !== 'loginLink') {
+        loginBox.style.display = 'none';
+    }
+});
+
+// Ngăn việc ẩn khối login-box khi nhấn trong khối login-box
+document.getElementById('login-box').addEventListener('click', (event) => {
+    event.stopPropagation();
+});
 
 // Hiển thị thông tin tài khoản
 document.getElementById('accoutFromBtn').addEventListener('click', (event) => {
