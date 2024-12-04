@@ -1088,6 +1088,9 @@ body {
     .product-item td button{
         width: 55%;
     }
+    #editModal{
+        margin-left: -30px;
+    }
 
 }
     
@@ -1349,6 +1352,10 @@ body {
 
 @media (max-width: 1020px) {
     /* Reduce the left menu width by 10% */
+    #editModal{
+        position: fixed;
+        left: 250px;
+    }
     .leftmenu {
         width: 63px; /* 10% less than 70px */
     }
@@ -1402,7 +1409,6 @@ body {
         width: 90%;
     }
     .product-item td button{
-        display: block;
         width: 100%;
     }
     .product-list{
@@ -1528,6 +1534,10 @@ body {
     .statistic-table-type td:nth-child(3){
         width: auto;
     }
+    #editModal{
+        position: fixed;
+        left: 150px;
+    }
 
 
 }
@@ -1605,6 +1615,12 @@ body {
     .email{
         display: none;
     }
+   .product-item td button{
+        width: 55%;
+    }
+    #editModal{
+        margin-left: -30px;
+    }
 }
 
 @media screen and (max-width: 650px){
@@ -1642,7 +1658,11 @@ body {
     }
     .product-item td {
         font-size: 12px;
-    }   
+    }  
+     #editModal{
+        position: fixed;
+        left: 75px;
+    } 
 }
 
 
@@ -1658,6 +1678,10 @@ body {
     }
     .sdt{
         display: none; 
-    }      
+    }
+      #editModal{
+        position: fixed;
+        left: 50px;
+    }
 }
 
