@@ -1650,12 +1650,10 @@ body {
         background-color: red;
         color:white;
     }
-    .leftmenu{
-        display: none;
+    .leftmenu ul li i{
+        border: none;
     }
-    .content{
-        margin-left: -5px;
-    }
+   
     .product-item td {
         font-size: 12px;
     }  
