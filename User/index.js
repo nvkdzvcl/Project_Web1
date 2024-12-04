@@ -140,12 +140,12 @@ function displayProducts(page) {
 // Lắng nghe sự kiện thay đổi trên ô tìm kiếm (search-input)
 searchInput.addEventListener('input', function() {
     displayProducts(1);
-    document.querySelector('#product1').scrollIntoView({ behavior: 'smooth', block: 'start' });
 });
 
 // Lắng nghe sự kiện nhấn nút "Search" để chỉ lọc theo tên sản phẩm
 searchButton.addEventListener('click', function() {
     displayProducts(1);
+    document.querySelector('#search-suggestions').style.display = 'none';
     document.querySelector('#product1').scrollIntoView({ behavior: 'smooth', block: 'start' });
 });
 
@@ -272,13 +272,6 @@ const addToCartBtn = document.getElementById('addToCartBtn');
 
 // Khởi tạo hiển thị lần đầu
 displayProducts(currentPage);
-
-
-// Thêm sự kiện click vào nút tìm kiếm
-searchButton.addEventListener('click',() => {
-    displayProducts(1);
-    document.querySelector('#product1').scrollIntoView({ behavior: 'smooth', block: 'start' });
-});
 
 
 // Cho phép tìm kiếm bằng phím Enter
