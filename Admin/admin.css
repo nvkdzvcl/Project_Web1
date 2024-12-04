@@ -1333,11 +1333,12 @@ body {
     height: 100px;
 }
 .product-item td button{
-    padding-right: 10%;
-    width: 30%;
+    height:40px;
+    padding: 0 5px;
     background-color: white;
     color: black;
     border-radius: 9px;
+    margin-left:5px ;
     
 }
 .product-item td button:hover{
@@ -1615,6 +1616,32 @@ body {
     }
     .status{
         display: none; 
+    }
+    .product-item td button{
+        visibility: collapse;
+      
+    }
+    .fa-solid , .fa-solid {
+        visibility:visible;
+        font-size: 20px;
+        padding: 5px 10px;
+        margin-top: 5px;
+        border: solid 3px black;
+        margin-left: -10px;
+        border-radius: 10px;
+    }
+    .fa-solid:hover , .fa-solid:hover {
+        background-color: red;
+        color:white;
+    }
+    .leftmenu{
+        display: none;
+    }
+    .content{
+        margin-left: -5px;
+    }
+    .product-item td {
+        font-size: 12px;
     }   
 }
 
