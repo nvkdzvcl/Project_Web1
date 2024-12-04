@@ -78,7 +78,7 @@ function submitLogin(){
 
     }
     else{ 
-        alert('Đăng nhập thất bại'); 
+        alert('Tài khoản hoặc mật khẩu không chính xác.'); 
     }
 
 }
@@ -175,4 +175,5 @@ function submitRegister(){
     document.getElementById('register-email').value = ''; 
     document.getElementById('register-password').value = ''; 
     document.getElementById('register-confirm-password').value = ''; 
+    alert('Đăng ký tài khoản thành công.');
 }
