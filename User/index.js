@@ -60,7 +60,7 @@ const searchInput = document.getElementById('search-input');
 const searchButton = document.getElementById('search-button');
 const minPriceInput = document.getElementById('min-price');
 const maxPriceInput = document.getElementById('max-price');
-const applyButton = document.getElementById('search-bar_advanced').querySelector('button');
+const applyButton = document.getElementById('apply-button');
 const categorySelect = document.getElementById('category');
 
 
@@ -97,12 +97,17 @@ function displayProducts(page) {
     const maxPrice = parseInt(maxPriceInput.value) || Infinity;
 
     filteredProducts = filteredProducts.filter(p => {
-        if(!maxPrice) {
-            return price >= minPrice;
-        }
-        const price = p.sizes[0].price;
-        return price >= minPrice && price <= maxPrice;
+        p.sizes = p.sizes.filter(pSize => {
+            const price = pSize.price;
+            if(!maxPrice) {
+                return price >= minPrice;
+            }
+            
+            return price >= minPrice && price <= maxPrice;
+        });
+        return p.sizes.length > 0;
     });
+    console.log(filteredProducts);
 
     // Tính toán chỉ mục bắt đầu và kết thúc
     const start = (page - 1) * productsPerPage;
