@@ -1052,14 +1052,13 @@ body {
     display: none; 
     flex-wrap: wrap;
     width: 100%; 
-    min-width: 920px;
 }
 
 
 .customer-list {
     border: 2px solid black; /* Viền đen xung quanh danh sách sản phẩm */
     width: 70%; /* Chiều rộng của phần này chiếm 70% chiều rộng của phần chứa */
-    
+    float: left; /* Cho phần tử này nằm bên trái */
     box-sizing: border-box; /* Bao gồm cả padding và border trong tổng chiều rộng */
     background-color: white; /* Màu nền của phần danh sách sản phẩm */
 }
@@ -1083,42 +1082,9 @@ body {
 .customer-list th,
 .customer-list td {
     border: 1px solid #ccc; /* Viền nhẹ cho các ô trong bảng */
-    text-wrap: wrap;
+    padding: 8px; /* Khoảng cách trong các ô */
     text-align: center; /* Căn giữa văn bản trong các ô */
-    padding: 10px;
 }
-
-.customer-list th:nth-child(5),
-.customer-list td:nth-child(5) {
-    display: none;
-}
-
-.customers--detail button {
-    border: 1px solid #333;
-    padding: 2px;
-    height: 20px;
-    cursor: pointer;
-}
-
-.customers--detail button:first-child {
-    border: 1px solid #333;
-    width: 40px;
-}
-
-.customers--detail button:first-child:active {
-    background-color: #72ce75;
-}
-
-.customers--detail button:last-child {
-    margin-top: 6px;
-    width: 55px;
-}
-
-.customers--detail button:last-child:active {
-    background-color: rgb(224, 74, 74);
-}
-
-
 
 .pagination-customer{
     margin-top: 20px; /* Khoảng cách trên cùng của phân trang */
@@ -1389,7 +1355,6 @@ body {
     
     .product-list {
         width: 100%;
-        min-width: 666px;
     }
 
     /* order */
@@ -1553,6 +1518,12 @@ body {
 
 
 @media (max-width:477px) {
+    .content {
+        padding: 0;
+    }
+    .product-content {
+        margin: 20px 8px;
+    }
     .menu-mobile {
         display: block;
     }
@@ -1644,7 +1615,37 @@ body {
         left: 45px;
     }
 
-    
+    .product-item td {
+        font-size: 12px;
+    }
 
+    .product-item td button {
+        visibility: collapse;
+    }
+
+    .btn-edit-delete {
+        visibility: visible;
+        font-size: 18px;
+        padding: 5px 10px;
+        margin-top: 5px;
+        border: solid 2px black;
+        margin-left: -10px;
+        border-radius: 10px;
+    }
+
+    .btn-edit-delete:hover {
+        background-color: red;
+    }
+
+
+    .product-list th,
+     .product-list td {
+        padding: 5px;
+    }
+
+    .product-item td:last-child {
+        display: flex;
+        flex-direction: column;
+    }
 
 }

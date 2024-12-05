@@ -32,8 +32,8 @@ function renderProductList(products) {
             <td>${product.sizes.map(size => size.size).join(', ')}</td>
             <td>${product.sizes.map(size => size.price).join(', ')}</td>
             <td >
-                <button onclick="openEditForm(${product.id})"><i class="fa-solid fa-pen-to-square"></i> &nbsp;Edit </button>
-                <button onclick="deleteProduct(${product.id} )"><i class="fa-solid fa-delete-left"></i> &nbsp;Delete</button>
+                <button onclick="openEditForm(${product.id})"><i class="fa-solid fa-pen-to-square btn-edit-delete"></i> &nbsp;Edit </button>
+                <button onclick="deleteProduct(${product.id} )"><i class="fa-solid fa-delete-left btn-edit-delete"></i> &nbsp;Delete</button>
             </td>
         `;
         container.appendChild(productElement);
