@@ -118,6 +118,7 @@ body {
     padding: 15px;
     margin-left: -12px;
     cursor: pointer;
+    height: 60px;
 }
 
 .leftmenu ul li:hover {
@@ -134,16 +135,16 @@ body {
     display: block; /* Hiển thị văn bản mục lục khi hover vào menu */
 }
 
-.leftmenu:hover ul li {
+/* .leftmenu:hover ul li {
     padding: 25px;
-}
+} */
 
 /* Ẩn các liên kết ban đầu */
 .leftmenu ul li a {
     font-weight: 600; /* Độ đậm của chữ trong các liên kết */
     text-decoration: none; /* Loại bỏ gạch chân của liên kết */
     color: black; /* Màu chữ của liên kết */
-    font-size: 14px; /* Kích thước chữ của liên kết */
+    font-size: 16px; /* Kích thước chữ của liên kết */
     display: inline-block; /* Làm liên kết có thể chiếm không gian */
     width: calc(100% - 50px); /* Chiều rộng liên kết */
     
@@ -1362,7 +1363,7 @@ body {
         margin: 20px 8px;
         padding: 24px 24px 24px 12px;
         /* min-height: 628px; */
-        min-width: 666px;
+        /* min-width: 666px; */
     }
 
     .order-filter label,
@@ -1564,14 +1565,11 @@ body {
     .leftmenu ul li a {
         opacity: 1;
         transition-delay: 0.2s;
+        font-size: 14px;
     }
 
     .leftmenu:hover .mucluc .text {
         display: none;
-    }
-
-    .leftmenu:hover ul li {
-        padding: 20px;
     }
 
     .filter-date {
@@ -1646,6 +1644,10 @@ body {
     .product-item td:last-child {
         display: flex;
         flex-direction: column;
+    }
+
+    .apply-filter-btn {
+        width: 50px;
     }
 
 }
