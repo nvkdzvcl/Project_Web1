@@ -811,7 +811,7 @@ footer .copyright {
     width: 100%;
     display: none;
     flex-direction: column;
-    gap: 10px;
+    /* gap: 10px; */
     position: absolute;
     top: 160%;
     right: 0;
@@ -891,7 +891,8 @@ footer .copyright {
 
 #cart table td:nth-child(4),
 #cart table td:nth-child(5),
-#cart table td:nth-child(6){
+#cart table td:nth-child(6),
+#cart table td:nth-child(7){
     width: 150px;
     text-align: center;
 }
@@ -1632,7 +1633,7 @@ margin: 5px 0;
     #login-box {
         position: absolute;
         top: 100%;
-        right: 50px;
+        /* right: 50px; */
     }
 
     .account-form {
@@ -1702,7 +1703,7 @@ margin: 5px 0;
      #login-box {
         position: absolute;
         top: 100%;
-        right: 50px;
+        /* right: 50px; */
     }
 
     .account-form {
