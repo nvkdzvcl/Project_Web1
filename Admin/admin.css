@@ -1647,6 +1647,9 @@ body {
         margin-left: -10px;
         border-radius: 10px;
     }
+    .product-item .fa-solid:hover{
+        background-color: red;
+    }
     .leftmenu ul li i{
         border: none;
     }
