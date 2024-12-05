@@ -18,6 +18,7 @@ body {
     padding: 20px 40px; /* Khoảng cách bên trong của header */
     background-color: #F3F1E2; /* Màu nền sáng cho header */
     height: 60px; /* Chiều cao của header */
+    position: relative;
 }
 
 #navbar {
@@ -55,10 +56,20 @@ body {
     position: absolute;
     display: flex;
     flex-direction: column;
+    top: 26px;
+    right: 0;
 }
 .userInfo a{
     position: relative;
     margin-right: 200px;
+}
+
+.menu-mobile {
+    position: absolute;
+    top: 16px;
+    left: 21px;
+    font-size: 25px;
+    display: none;
 }
 
 /* Left menu */
@@ -70,10 +81,10 @@ body {
     top: 0; /* Gắn menu lên trên cùng */
     left: 0; /* Gắn menu vào bên trái */
     padding: 20px; /* Khoảng cách bên trong menu */
-    color: black; /* Màu chữ đen cho menu */
+    /* color: black; */
     border-right: 5px solid #603F26; /* Viền phải menu có màu nâu */
     border-top-right-radius: 30px; /* Bo góc trên bên phải */
-    z-index: 999; /* Đảm bảo menu nằm trên các phần tử khác */
+    z-index: 3; /* Đảm bảo menu nằm trên các phần tử khác */
     transition: width 0.3s; /* Hiệu ứng thay đổi chiều rộng khi hover */
 }
 
@@ -84,11 +95,12 @@ body {
     display: flex; /* Sử dụng flexbox để căn giữa các phần tử con */
     justify-content: center; /* Căn giữa nội dung */
     margin-bottom: 20px; /* Khoảng cách dưới mục lục */
+    align-items: center;
 }
 
 .leftmenu .mucluc img {
     width: 40px; /* Kích thước ảnh logo */
-    margin-right: 5px; /* Khoảng cách phải của ảnh logo */
+    margin-right: 12px; /* Khoảng cách phải của ảnh logo */
 }
 
 .leftmenu .mucluc .text {
@@ -103,19 +115,13 @@ body {
 .leftmenu ul li {
     display: flex; /* Sử dụng flexbox cho từng phần tử trong danh sách */
     border-bottom: 1px solid rgba(255, 255, 255, 0.4); /* Viền dưới mờ cho mỗi mục */
-    padding: 10px; /* Khoảng cách trong mỗi mục */
+    padding: 15px;
+    margin-left: -12px;
+    cursor: pointer;
 }
 
 .leftmenu ul li:hover {
     background: #DAB88B; /* Màu nền thay đổi khi hover vào mục */
-}
-
-.leftmenu ul li i {
-    width: 50px; /* Kích thước của icon */
-    height: 50px; /* Chiều cao của icon */
-    padding-left: 20px; /* Khoảng cách trái của icon */
-    margin-left: -30px; /* Di chuyển icon sang bên trái */
-    cursor: pointer;
 }
 
 /* Khi hover vào menu bên trái, thay đổi chiều rộng */
@@ -128,6 +134,10 @@ body {
     display: block; /* Hiển thị văn bản mục lục khi hover vào menu */
 }
 
+.leftmenu:hover ul li {
+    padding: 25px;
+}
+
 /* Ẩn các liên kết ban đầu */
 .leftmenu ul li a {
     font-weight: 600; /* Độ đậm của chữ trong các liên kết */
@@ -136,15 +146,27 @@ body {
     font-size: 14px; /* Kích thước chữ của liên kết */
     display: inline-block; /* Làm liên kết có thể chiếm không gian */
     width: calc(100% - 50px); /* Chiều rộng liên kết */
-    height: 50px; /* Chiều cao liên kết */
-    padding-left: 20px; /* Khoảng cách trái của chữ */
+    
+    margin-left: 20px;
     opacity: 0; /* Liên kết ban đầu ẩn đi */
-    cursor: pointer; 
 }
 
 .leftmenu:hover ul li a {
     opacity: 1; /* Làm liên kết hiển thị khi hover vào menu */
     transition-delay: 0.2s; /* Tạo độ trễ 0.2s trước khi liên kết hiển thị */
+}
+
+.btn-close-leftmenu {
+    height: 32px;
+    border: none;
+    background-color: #fff2d7;
+    right: 16px;
+    top: 12px;
+    font-size: 34px;
+    transform: rotate(45deg);
+    cursor: pointer;
+    position: absolute;
+    display: none;
 }
 
 /* Nội dung chính */
@@ -154,7 +176,7 @@ body {
     background: url('../image/hero.jpg'); /* Hình nền cho phần nội dung */
     flex-grow: 1; /* Làm nội dung chính chiếm phần còn lại của không gian */
     height: calc(100vh - 60px); /* Chiều cao của phần nội dung */
-    overflow-y: auto; /* Cho phép cuộn dọc nếu nội dung vượt quá chiều cao */
+    overflow: auto;
 }
 
 /* Đơn hàng */
@@ -315,11 +337,10 @@ body {
 
 /* Phân trang cho đơn hàng */
 .pagination-order {
-    margin-top: 30px; /* Khoảng cách trên của phân trang */
-    display: flex; /* Sử dụng flexbox để căn giữa các phần tử */
-    justify-content: center; /* Căn giữa phân trang */
+    display: flex;
+    justify-content: center;
     position: absolute;
-    bottom: 100px;
+    bottom: 132px;
     right: 50%;
 }
 
@@ -500,6 +521,7 @@ body {
     bottom: 0;
     background-color: rgba(102, 102, 102, 0.6);
     display: none;
+    overflow: auto;
 }
 
 .order-detail {
@@ -1030,13 +1052,14 @@ body {
     display: none; 
     flex-wrap: wrap;
     width: 100%; 
+    min-width: 920px;
 }
 
 
 .customer-list {
     border: 2px solid black; /* Viền đen xung quanh danh sách sản phẩm */
     width: 70%; /* Chiều rộng của phần này chiếm 70% chiều rộng của phần chứa */
-    float: left; /* Cho phần tử này nằm bên trái */
+    
     box-sizing: border-box; /* Bao gồm cả padding và border trong tổng chiều rộng */
     background-color: white; /* Màu nền của phần danh sách sản phẩm */
 }
@@ -1060,40 +1083,54 @@ body {
 .customer-list th,
 .customer-list td {
     border: 1px solid #ccc; /* Viền nhẹ cho các ô trong bảng */
-    padding: 8px; /* Khoảng cách trong các ô */
+    text-wrap: wrap;
     text-align: center; /* Căn giữa văn bản trong các ô */
+    padding: 10px;
 }
+
+.customer-list th:nth-child(5),
+.customer-list td:nth-child(5) {
+    display: none;
+}
+
+.customers--detail button {
+    border: 1px solid #333;
+    padding: 2px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.customers--detail button:first-child {
+    border: 1px solid #333;
+    width: 40px;
+}
+
+.customers--detail button:first-child:active {
+    background-color: #72ce75;
+}
+
+.customers--detail button:last-child {
+    margin-top: 6px;
+    width: 55px;
+}
+
+.customers--detail button:last-child:active {
+    background-color: rgb(224, 74, 74);
+}
+
+
 
 .pagination-customer{
     margin-top: 20px; /* Khoảng cách trên cùng của phân trang */
     display: flex; /* Dùng flexbox để căn chỉnh các nút phân trang */
     justify-content: center; /* Căn giữa các nút phân trang */
 }
-/* 
-#add--customer{
 
-  
-  margin-top: 20px;
-  margin-left: 100px;  
-
-} */
+.wrap-btn-search {
+    display: flex;
+}
  
 
-@media screen and (max-width: 1240px){
-    .customer-content{
-        flex-direction: column;
-    }
-    .right-column{
-        margin-top: 20px; 
-    }
-    .product-item td button{
-        width: 55%;
-    }
-    #editModal{
-        margin-left: -30px;
-    }
-
-}
     
    
 
@@ -1225,21 +1262,7 @@ body {
     z-index: 1000;
 }
 
-/* Responsive Design */
-@media (max-width: 576px) {
-    .modal-body {
-        width: 90%;
-        margin: 1rem;
-    }
-    
-    .modal-header {
-        padding: 1rem;
-    }
-    
-    .main-content {
-        padding: 1rem;
-    }
-}
+
 
 /* FORM EDIT CUA TINH NANG SAN PHAM */
 /* Modal content container */
@@ -1351,116 +1374,35 @@ body {
     cursor: pointer;
 }
 
-@media (max-width: 1020px) {
-    /* Reduce the left menu width by 10% */
-    #editModal{
-        position: fixed;
-        left: 250px;
-    }
-    .leftmenu {
-        width: 63px; /* 10% less than 70px */
+@media (max-width: 799px) {
+
+    .userInfo a {
+        margin-right: 60px;
     }
 
-    .leftmenu:hover {
-        width: 225px; /* Adjust based on reduced width */
-    }
-
-    .content {
-        margin-left: 63px; /* Adjust content margin accordingly */
-    }
-
-    /* order */
-    .order-content-main {
-        font-size: 12px;
-    }
-
-    .apply-filter-btn {
-        margin: auto -14px;
-    }
-
-    .order-detail {
-        width: 85%;
-        left: 55%;
-    }
-
-    /* Statistic */
-    .filter-date {
-        display: flex;
-        margin-top: 30px;
-        padding: 0 220px;
-        flex-direction: column;
-    }
-
-    .btn-accept-filter {
-        width: 83px;
-        height: 27px;
-    }
-
-    #start-date-filter,
-    #end-date-filter {
-        margin-bottom: 12px;
-        width: 110px;
-    }
-
-    .statistic-item {
-        margin: 60px 0 50px 35px;
-    }
-
-    .customer-detail {
-        width: 90%;
-    }
-    .product-item td button{
-        width: 100%;
-    }
-    .product-list{
-        width: 100%;
-    }
+    /* product */
     .product-content .right-column{
         width: 100%;
         height:30%;
+        margin-top: 20px;
     }
-}
-
-/* Tablet devices (768px and below) */
-
-
-/* Mobile devices (500px and below) */
-@media (max-width: 750px) {
-    /* Hide the left menu and header completely */
-    #header {
-        display: none;
-    }
-    .modal-content {
-        width: 90%;
-    }
-
-
-    /* Content takes full width and height */
-    .content {
-        width: 100%; /* Full width */
-        height: 100vh; 
-        margin-left: 42px;
-        
-        background-size: cover;
-    }
-
-    .product-content {
-        flex-direction: column;
-    }
-
+    
     .product-list {
         width: 100%;
-    }
-
-    .right-column {
-        width: 100%;
+        min-width: 666px;
     }
 
     /* order */
     .order-content-main {
         margin: 20px 8px;
         padding: 24px 24px 24px 12px;
-        min-height: 628px;
+        /* min-height: 628px; */
+        min-width: 666px;
+    }
+
+    .order-filter label,
+    .order-filter p{
+        font-size: 14px;
     }
 
     #district-filter {
@@ -1468,7 +1410,7 @@ body {
     }
 
     .apply-filter-btn {
-        width: 95px;
+        width: 83px;
     }
     
     .customer-id-filter {
@@ -1494,10 +1436,9 @@ body {
 
     .order-detail {
         margin: 50px auto;
-    }
-    
-    .wrap-orders {
-        min-height: 504px;
+        width: 80%;
+        top: 44%;
+        left: 54%;
     }
 
     .order-table th:nth-child(1), .order-table td:nth-child(1),
@@ -1507,13 +1448,27 @@ body {
     
 
     /* Statistic */
-    .filter-date{
-        padding: 0 105px;
+    .statistic-content {
+        margin: 10px 10px;
+    }
+
+    .statistic-main {
+        padding: 12px 0px;
+    }
+
+    .statistic-item {
+        margin-left: 60px;
+
+    }
+
+    .filter-date {
+        padding: 0;
+        margin: 30px auto 0 auto;
     }
 
     .statistic-table th:nth-child(1), .statistic-table td:nth-child(1),
     .statistic-table th:nth-child(3), .statistic-table td:nth-child(3) {
-        width: 12%;
+        width: 55px;
     }
 
     .statistic-table th {
@@ -1540,43 +1495,6 @@ body {
         left: 150px;
     }
 
-
-}
-@media (max-width: 600px) {
-    .content {
-        margin-left: 44px;
-    }
-
-    /* order */
-    .order-content-main {
-        margin: 20px 0px;
-    }
-
-    .address-filter {
-        margin-bottom: 38px;
-    }
-
-    .order-detail {
-        width: 85%;
-        left: 56.5%;
-    }
-
-
-    /* statistic */
-    .filter-date {
-        padding: 0;
-        margin: 30px auto 0 auto;
-    }
-
-    .statistic-table th:nth-child(1), .statistic-table td:nth-child(1),
-    .statistic-table th:nth-child(3), .statistic-table td:nth-child(3) {
-        width: 55px;
-    }
-
-    .statistic-content {
-        margin: 10px 10px;
-    }
-
     .pagination-order {
         bottom: 48px;
     }
@@ -1584,103 +1502,149 @@ body {
     .apply-filter-btn {
         width: 76px;
     }
-}
 
+    .wrap-statistic-type-detail,
+    .wrap-customer-detail {
+        overflow: auto;
+    }
 
+    .statistic-type-detail {
+        width: 80%;
+        left: 54%;
+    }
 
+    .customer-detail {
+        left: 53%;
+    }
+    
 
+    /* Người dùng */
+    .customer-content {
+        min-width: 0;
+    }
 
-@media (max-width: 768px) {
-    .customer-list, .right-column {
+    .customer-list {
         width: 100%;
-        display: block; /* Stack elements on smaller screens */
+    }
+
+    .customer-content .right-column {
+        width: 100%;
+    }
+
+    .customer-list th {
+        font-size: 14px;
+    }
+
+    .customer-list th:first-child,
+    .customer-list td:first-child {
+        max-width: 50px;
+    }
+
+    .customer-list th:nth-child(6),
+    .customer-list td:nth-child(6) {
+        max-width: 66px;
+    }
+
+    
+
+
+
+}
+
+
+@media (max-width:477px) {
+    .menu-mobile {
+        display: block;
+    }
+
+    .btn-close-leftmenu {
+        display: block;
+    }
+
+    .userInfo a {
+        margin-right: 0px;
+    }
+
+    .content {
+        margin: 0;
+        overflow: auto;
     }
     
-    .right-column {
-        margin-top: 20px; /* Space between stacked elements */
+    .leftmenu {
+        width: 210px;
+        left: -210px; /* Ban đầu menu ẩn ngoài màn hình */
+        transition: left 0.3s ease; /* Thêm hiệu ứng mượt mà */
     }
-    
-    .form-control {
-        width: 100%; /* Make input fields full width */
+
+
+    .leftmenu:hover {
+        width: 210px;
     }
-}
 
-
-
-
-
-@media screen and (max-width: 1240px) {
-    .role{
-        display: none;
-    }    
-    .email{
-        display: none;
+    .leftmenu ul li {
+        margin-left: -6px;
+        padding: 20px;
     }
-   .product-item td button{
-        width: 55%;
-    }
-    #editModal{
-        margin-left: -30px;
-    }
-}
 
-@media screen and (max-width: 650px){
-    .role{
-        display: none;
-    }    
-    .email{
+    .text {
         display: none;
     }
-    .status{
-        display: none; 
-    }
-    .product-item td button{
-        visibility: collapse;
-      
-    }
-    .fa-solid , .fa-solid {
-        visibility:visible;
-        font-size: 20px;
-        padding: 5px 10px;
-        margin-top: 5px;
-        border: solid 3px black;
-        margin-left: -10px;
-        border-radius: 10px;
-    }
-    .product-item .fa-solid:hover{
-        background-color: red;
-    }
-    .leftmenu ul li i{
-        border: none;
-    }
-   
-    .product-item td {
-        font-size: 12px;
-    }  
-     #editModal{
-        position: fixed;
-        left: 75px;
-    } 
-}
 
+    .leftmenu ul li a {
+        opacity: 1;
+        transition-delay: 0.2s;
+    }
 
-@media screen and (max-width: 542px){
-    .role{
-        display: none;
-    }    
-    .email{
+    .leftmenu:hover .mucluc .text {
         display: none;
     }
-    .status{
-        display: none; 
+
+    .leftmenu:hover ul li {
+        padding: 20px;
     }
-    .sdt{
-        display: none; 
+
+    .filter-date {
+        flex-direction: column;
     }
-    #editModal{
-        position: fixed;
-        left: 100px;
+
+    #start-date-filter {
+        margin-right: 0;
+    }
+
+    #start-date-filter,
+    #end-date-filter {
+        margin-bottom: 12px;
+    }
+
+    .btn-accept-filter {
+        height: 26px;
+    }
+
+    .customer-detail {
+        left: 50%;
+    }
+
+    .statistic-item {
+        margin: 30px 0 48px 39px;
+    }
+
+    .statistic-type-detail {
         width: 90%;
+        min-width: 500px;
     }
-}
 
+    .order-detail {
+        width: 70%;
+        min-width: 480px;
+        left: 50%;
+        top: 55%;
+    }
+
+    #editModal {
+        left: 45px;
+    }
+
+    
+
+
+}

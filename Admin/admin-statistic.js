@@ -467,9 +467,7 @@ document.querySelector('.btn-accept-filter').addEventListener('click', () => {
     else if(document.querySelector('.statistic-customer').style.display === 'block'){
         displayStatisticCustomer();
     }
-    else {
-
-    }
+    alert('Đã áp dụng lọc.');
 });
 
 // Thêm sự kiện hiển thị trang thống kê

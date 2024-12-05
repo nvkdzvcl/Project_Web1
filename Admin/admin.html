@@ -29,6 +29,9 @@
                     </a>
                 </li>
             </ul>
+            <div class="menu-mobile">
+                <i class="fa-solid fa-outdent"></i>
+            </div>
         </section>
     </div>
 
@@ -38,24 +41,25 @@
         <div class="mucluc">
             <img src="../image/30 Drinks.jpg" class="logo" alt="Logo">
             <span class="text">Mục Lục</span> <!-- Mục Lục chỉ hiển thị khi hover -->
+            <button class="btn-close-leftmenu">+</button>
         </div>
         <hr>
         <ul>
-            <li>
+            <li class="view-product">
                 <i class="fa-solid fa-martini-glass-citrus"></i>
-                <a href="#" class="view-product">Sản Phẩm</a>
+                <a>Sản Phẩm</a>
             </li>
-            <li>
+            <li class="view-order">
                 <i class="fa-solid fa-truck-fast"></i>
-                <a href="#" class="view-order">Đơn Hàng</a>
+                <a>Đơn Hàng</a>
             </li>
-            <li>
+            <li class = "view-customers">
                 <i class="fa-solid fa-users"></i>
-                <a href="#" class = "view-customers">Người dùng</a>
+                <a>Người dùng</a>
             </li>
-            <li>
+            <li class="view-statistic">
                 <i class="fa-solid fa-chart-simple"></i>
-                <a href="#" class="view-statistic">Thống kê</a>
+                <a>Thống kê</a>
             </li>
             <li>
                 <i class="fa-solid fa-door-open"></i>
@@ -507,9 +511,11 @@
                         <p id = "warning-name-valid">*Nhập đúng định dạng</p>
                         <p id = "warning-empty-search-customer">*Không được để trống tên tìm kiếm</p>
                         <br><br>
+                        <div class="wrap-btn-search">
+                            <button type="button" id = "timkiem">Tìm kiếm</button>
+                            <button type="button" id = "back">Quay lại</button>
 
-                        <button type="button" id = "timkiem">Tìm kiếm</button>
-                        <button type="button" id = "back">Quay lại</button>
+                        </div>
                     </form>
                 </div>
 
@@ -571,9 +577,9 @@
                         <div class="ranking-customer">
                             <label for="customer--role">Vai trò</label>
                             <select id="customer--role" name="role">
-                            <option value="Admin">Admin</option>
-                            <option value="Staff">Nhân viên</option>
-                            <option value="Customer">Khách hàng</option>
+                                <option value="Customer">Khách hàng</option>
+                                <option value="Staff">Nhân viên</option>
+                                <option value="Admin">Admin</option>
                             </select>
                         </div>
                         
@@ -587,18 +593,18 @@
                             </select>
                         </div>
                         <br>
-                        <div class="district-customer">
-                            <label for="customer--district">Quận</label>
-                            <input type="text" id = "customer--district"> 
-                            <p id = "warning-add-district">*Yêu cầu nhập đúng định dạng</p>
-                            <p id = "warning-empty-add-district">*Không được để trống quận</p>
-                        </div>
-                        <br>
                         <div class="province-customer">
                             <label for="customer--province">Thành phố/tỉnh</label>
                             <input type="text" id = "customer--province"> 
                             <p id = "warning-add-province">*Yêu cầu nhập đúng định dạng</p>
                             <p id = "warning-empty-add-province">*Không được để trống tỉnh/thành</p>
+                        </div>
+                        <br>
+                        <div class="district-customer">
+                            <label for="customer--district">Quận</label>
+                            <input type="text" id = "customer--district"> 
+                            <p id = "warning-add-district">*Yêu cầu nhập đúng định dạng</p>
+                            <p id = "warning-empty-add-district">*Không được để trống quận</p>
                         </div>
                         <br>
                         <div class="ward-customer">

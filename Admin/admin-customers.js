@@ -26,8 +26,8 @@ document.querySelector('.view-customers').addEventListener('click',()=>{
                 <td class = "role">${getRoleThroughId(customers2.customerId)}</td>
                 <td class = "status">${status}</td>
                 <td>
-                    <button>Edit-customer</button>
-                    <button>Delete-customer</button>
+                    <button>Edit</button>
+                    <button>Delete</button>
                 </td>
             </tr>
             `;
@@ -71,8 +71,8 @@ document.querySelector('.view-customers').addEventListener('click',()=>{
                 <td class = "role">${getRoleThroughId(customers2.customerId)}</td>
                 <td class = "status">${getStatusThroughId(customers2.customerId) === "true" ? "Active" : "Inactive"}</td>
                 <td>
-                    <button>Edit-customer</button>
-                    <button>Delete-customer</button>
+                    <button>Edit</button>
+                    <button>Delete</button>
                 </td>
             </tr>
             `;
@@ -140,8 +140,8 @@ document.getElementById('timkiem').addEventListener('click', ()=>{
                 <td class = "ranking">${getRoleThroughId(find.customerId)}</td>
                 <td class = "status">${getStatusThroughId(find.customerId) === "true" ? "Active" : "Inactive"}</td>
                 <td>
-                    <button>Edit-customer</button>
-                    <button>Delete-customer</button>
+                    <button>Edit</button>
+                    <button>Delete</button>
                 </td>
             </tr>
         `; 
@@ -179,8 +179,8 @@ document.getElementById('back').addEventListener('click',()=>{
             <td class = "role">${getRoleThroughId(customers2.customerId)}</td>
             <td class = "status">${status}</td>
             <td>
-                <button>Edit-customer</button>
-                <button>Delete-customer</button>
+                <button>Edit</button>
+                <button>Delete</button>
             </td>
         </tr>
         `;
@@ -501,7 +501,7 @@ document.getElementById('button-close').addEventListener('click',()=>{
 let customerId; 
 
 document.addEventListener('click', (e) => {
-    if (e.target && e.target.tagName === 'BUTTON' && e.target.textContent === 'Edit-customer') {
+    if (e.target && e.target.tagName === 'BUTTON' && e.target.textContent === 'Edit') {
         const row = e.target.closest('tr'); 
         
         customerId = parseInt(row.querySelector('td:first-child').textContent); 
@@ -539,11 +539,15 @@ document.addEventListener('click', (e) => {
 
 
 document.addEventListener('click',(e)=>{
-    if(e.target && e.target.tagName === 'BUTTON' && e.target.textContent === 'Delete-customer'){
+    if(e.target && e.target.tagName === 'BUTTON' && e.target.textContent === 'Delete'){
         console.log('hello'); 
         const row = e.target.closest('tr');
         const customerId = parseInt(row.querySelector('td:first-child').textContent);   
         console.log(customerId); 
+        if(!confirm('Bạn có chắc xóa khách hàng id: ' + customerId)) {
+            return;
+        }
+
         const storeData1 = JSON.parse(localStorage.getItem('customers')); 
         const storeData2 = JSON.parse(localStorage.getItem('address')); 
         const updatedCustomers = storeData1.filter(cus => parseInt(cus.id) !== customerId);

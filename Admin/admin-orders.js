@@ -306,3 +306,23 @@ orderFilterButton.addEventListener('click', () => {
     
 });
 
+
+// Thêm sự kiện cho nút menu mobile
+document.querySelector('.menu-mobile').addEventListener('click', () => {
+    document.querySelector('.leftmenu').style.left = '0px';
+});
+
+//Thêm sự kiện cho nút tắt left menu
+document.querySelector('.btn-close-leftmenu').addEventListener('click', () => {
+    document.querySelector('.leftmenu').style.left = '-210px';
+});
+
+window.addEventListener('resize', function () {
+    const leftMenu = document.querySelector('.leftmenu');
+    if (window.innerWidth >= 478) {
+        leftMenu.style.left = '0'; // Hiển thị lại menu
+    } else {
+        leftMenu.style.left = '-210px'; // Ẩn menu
+    }
+});
+

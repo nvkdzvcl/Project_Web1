@@ -189,6 +189,20 @@ function updatePagination(totalProducts) {
 
 function showProductModal(productId) {
     let products = JSON.parse(localStorage.getItem('products'));
+    // Nếu áp dụng bộ lọc giá, lọc theo khoảng giá
+    const minPrice = parseInt(minPriceInput.value) || 0;
+    const maxPrice = parseInt(maxPriceInput.value) || Infinity;
+    products = products.filter(p => {
+        p.sizes = p.sizes.filter(pSize => {
+            const price = pSize.price;
+            if(!maxPrice) {
+                return price >= minPrice;
+            }
+            
+            return price >= minPrice && price <= maxPrice;
+        });
+        return p.sizes.length > 0;
+    });
 
     let product = products.find(p => p.id === productId);
 
@@ -220,6 +234,7 @@ function showProductModal(productId) {
         <label for="size">Size:</label>
     `;
 
+    products 
     let modalProductSize = document.createElement('select');
     modalProductSize.id = 'modalProductSize';
     product.sizes.forEach(pSize => {
