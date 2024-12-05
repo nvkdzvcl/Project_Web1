@@ -115,6 +115,7 @@ body {
     height: 50px; /* Chiều cao của icon */
     padding-left: 20px; /* Khoảng cách trái của icon */
     margin-left: -30px; /* Di chuyển icon sang bên trái */
+    cursor: pointer;
 }
 
 /* Khi hover vào menu bên trái, thay đổi chiều rộng */
@@ -1645,10 +1646,6 @@ body {
         border: solid 3px black;
         margin-left: -10px;
         border-radius: 10px;
-    }
-    .fa-solid:hover , .fa-solid:hover {
-        background-color: red;
-        color:white;
     }
     .leftmenu ul li i{
         border: none;
