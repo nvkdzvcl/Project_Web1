@@ -529,11 +529,12 @@ document.addEventListener('click', (e) => {
         // document.getElementById('change-ranking').value = customerData.ranking; 
         document.getElementById('change-status').value = customerData.status;  
         document.getElementById('change-role').value = customerData.role;
-        document.getElementById('change-city').value = addressdata[customerId].province; 
-        document.getElementById('change-street').value = addressdata[customerId].street; 
-        document.getElementById('change-ward').value = addressdata[customerId].ward; 
 
-
+        const a=addressdata.find(a=>a.customerId===customerId);
+        document.getElementById('change-city').value =a.province;
+        document.getElementById('change-street').value =a.street;
+        document.getElementById('change-ward').value =a.ward;
+        document.getElementById('change-district').value=a.district;
     }
 });
 
@@ -575,6 +576,7 @@ document.getElementById("submit").addEventListener('click', (e) => {
     const ward = document.getElementById("change-ward").value;
     const status = document.getElementById("change-status").value; 
     const role = document.getElementById("change-role").value; 
+    const district=document.getElementById("change-district").value;
     // check // 
     if(!name){
         document.getElementById('modal-empty-change-name').style.display = 'block'; 
@@ -617,13 +619,19 @@ document.getElementById("submit").addEventListener('click', (e) => {
     }
     if(!ward){
         document.getElementById('modal-empty-change-ward').style.display = 'block'; 
-
+        return;
     }
     else{
         document.getElementById('modal-empty-change-ward').style.display = 'none'; 
 
     }
-
+    if(!district){
+        document.getElementById('modal-empty-change-district').style.display='block';
+        return;
+    }
+    else{
+        document.getElementById('modal-empty-change-district').style.display='none';
+    }
     if(!validateName(name)){
         document.getElementById('modal-invalid-change-name').style.display = 'block'; 
         return; 
@@ -675,6 +683,12 @@ document.getElementById("submit").addEventListener('click', (e) => {
     else{
         document.getElementById('modal-invalid-change-ward').style.display = 'none'; 
 
+    }
+    if(!validateDistrictName(district)){
+        document.getElementById('modal-invalid-change-district').style.display='block';
+    }
+    else{
+        document.getElementById('modal-invalid-change-district').style.display='none';
     }
 
     const row = e.target.closest('tr');
