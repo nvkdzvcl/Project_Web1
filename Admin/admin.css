@@ -1510,6 +1510,15 @@ body {
     .customer-list td:nth-child(6) {
         max-width: 66px;
     }
+  .customer-list {
+        width: 100%;
+        border: none;
+        margin-bottom: 10px;
+	    overflow: auto; 
+    }
+    .customer-list h1{
+        display: none;
+    }
 
     
 
