@@ -305,6 +305,7 @@ body {
     border-collapse: collapse; /* Gộp các viền của bảng lại */
     table-layout: fixed;
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
+    position: relative;
 }
 
 .order-table th {
@@ -315,7 +316,7 @@ body {
 .order-table th, 
 .order-table td {
     border: 1px solid #ccc; /* Viền của các ô bảng */
-    padding: 8px; /* Khoảng cách trong mỗi ô */
+    padding: 8px 4px; /* Khoảng cách trong mỗi ô */
     text-align: center;
 }
 
@@ -341,7 +342,7 @@ body {
     display: flex;
     justify-content: center;
     position: absolute;
-    bottom: 132px;
+    bottom: -50px;
     right: 50%;
 }
 
@@ -923,7 +924,7 @@ body {
 .product-list th,
 .product-list td {
     border: 1px solid #ccc; /* Viền nhẹ cho các ô trong bảng */
-    padding: 8px; /* Khoảng cách trong các ô */
+    padding: 5px 0; /* Khoảng cách trong các ô */
     text-align: center; /* Căn giữa văn bản trong các ô */
 }
 
@@ -1405,6 +1406,7 @@ body {
         width: 80%;
         top: 44%;
         left: 54%;
+        overflow: auto
     }
 
     .order-table th:nth-child(1), .order-table td:nth-child(1),
@@ -1461,12 +1463,9 @@ body {
         left: 150px;
     }
 
-    .pagination-order {
-        bottom: 48px;
-    }
-
-    .apply-filter-btn {
+    .order-filter-item .apply-filter-btn {
         width: 76px;
+        margin: auto -24px;
     }
 
     .wrap-statistic-type-detail,
@@ -1477,6 +1476,7 @@ body {
     .statistic-type-detail {
         width: 80%;
         left: 54%;
+        overflow: auto;
     }
 
     .customer-detail {
@@ -1603,10 +1603,11 @@ body {
     }
 
     .order-detail {
+        font-size: 11px;
         width: 70%;
         min-width: 480px;
         left: 50%;
-        top: 55%;
+        top: 46%;
     }
 
     #editModal {
@@ -1637,7 +1638,7 @@ body {
 
 
     .product-list th,
-     .product-list td {
+    .product-list td {
         padding: 5px;
     }
 
@@ -1650,4 +1651,15 @@ body {
         width: 50px;
     }
 
+    .sdt,
+    .email,
+    .role,
+    .status {
+        display: none;
+    }
+
+    .order-filter-item .apply-filter-btn {
+        width: 76px;
+        margin: auto -18px;
+    }
 }

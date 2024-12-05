@@ -109,6 +109,11 @@ function displayOrders(currentPageOrder) {
         `;;
     }
 
+    let pagi = document.createElement('div');
+    pagi.classList.add('pagination-order');
+
+    document.querySelector('.order-table').appendChild(pagi);
+
     // Thực hiện phân trang
     displayPagination(orders.length);
 }
