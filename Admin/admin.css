@@ -1674,9 +1674,10 @@ body {
     .sdt{
         display: none; 
     }
-      #editModal{
+    #editModal{
         position: fixed;
-        left: 50px;
+        left: 100px;
+        width: 90%;
     }
 }
 
