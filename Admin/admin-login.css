@@ -270,3 +270,8 @@
     font-size: 12px;
     display: none;  
 }
+#modal-invalid-change-district, #modal-empty-change-district{
+    color: red;
+    font-size: 12px;
+    display: none;  
+}
