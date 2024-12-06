@@ -1081,17 +1081,15 @@ footer .copyright {
     width: 100%;
     text-align: center;
     display: none;
+    overflow-x: auto;
+    margin-top: 20px;
+    min-width: 800px;
 }
 #orderList h2{
     font-size: 30px;
     padding: 10px 0;
 }
 
-#orderList{
-    /* giúp bảng trượt được */
-    overflow-x: auto;
-    margin-top: 20px;
-}
 #orderList table{
     width: 100%;
     border-collapse: collapse;
