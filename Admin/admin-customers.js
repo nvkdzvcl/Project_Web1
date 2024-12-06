@@ -491,12 +491,12 @@ document.addEventListener('click', (e) => {
         document.querySelector('.modal').style.display = 'flex';
         
         const customerData = {
-            id: customerId,
-            name: row.querySelector('td:nth-child(2)').textContent,
-            phone: row.querySelector('td:nth-child(3)').textContent,
-            email: row.querySelector('td:nth-child(4)').textContent,
-            role:  row.querySelector('td:nth-child(5)').textContent,
-            status: row.querySelector('td:nth-child(6)').textContent
+            id:customerId,
+            name:row.querySelector('td:nth-child(2)').textContent,
+            phone:row.querySelector('td:nth-child(3)').textContent,
+            email:row.querySelector('td:nth-child(4)').textContent,
+            role:row.querySelector('td:nth-child(5)').textContent,
+            status:row.querySelector('td:nth-child(6)').textContent
         };
 
         const addressdata = JSON.parse(localStorage.getItem('address')); 
@@ -520,10 +520,8 @@ document.addEventListener('click', (e) => {
 
 document.addEventListener('click',(e)=>{
     if(e.target && e.target.tagName === 'BUTTON' && e.target.textContent === 'Delete'){
-        console.log('hello'); 
         const row = e.target.closest('tr');
         const customerId = parseInt(row.querySelector('td:first-child').textContent);   
-        console.log(customerId); 
         if(!confirm('Bạn có chắc xóa khách hàng id: ' + customerId)) {
             return;
         }
@@ -531,8 +529,6 @@ document.addEventListener('click',(e)=>{
         const storeData1 = JSON.parse(localStorage.getItem('customers')); 
         const storeData2 = JSON.parse(localStorage.getItem('address')); 
         const updatedCustomers = storeData1.filter(cus => parseInt(cus.id) !== customerId);
-        
-        
         const updatedAddresses = storeData2.filter(cus => parseInt(cus.customerId) !== customerId);
 
         localStorage.setItem('customers', JSON.stringify(updatedCustomers));
@@ -556,7 +552,6 @@ document.getElementById("submit").addEventListener('click', (e) => {
     const status = document.getElementById("change-status").value; 
     const role = document.getElementById("change-role").value; 
     const district=document.getElementById("change-district").value;
-    // check // 
     if(!name){
         document.getElementById('modal-empty-change-name').style.display = 'block'; 
         return; 
@@ -679,12 +674,12 @@ document.getElementById("submit").addEventListener('click', (e) => {
     if (customerIndex !== -1) {
         addressData[customerIndex] = {
             ...addressData[customerIndex],
-            fullname: name || addressData[customerIndex].fullname,
-            phone: phone || addressData[customerIndex].phone,
-            email: email || addressData[customerIndex].email,
-            province: province || addressData[customerIndex].province,
-            street: street || addressData[customerIndex].street,
-            ward: ward || addressData[customerIndex].ward
+            fullname:name||addressData[customerIndex].fullname,
+            phone:phone||addressData[customerIndex].phone,
+            email:email||addressData[customerIndex].email,
+            province:province||addressData[customerIndex].province,
+            street:street||addressData[customerIndex].street,
+            ward:ward||addressData[customerIndex].ward
         };
         
         localStorage.setItem('address', JSON.stringify(addressData));
