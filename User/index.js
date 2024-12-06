@@ -282,7 +282,7 @@ function showProductModal(productId) {
 }
 
 const addToCartBtn = document.getElementById('addToCartBtn');
-    // Add to cart functionality
+    // hàm thêm sản phẩm vào giỏ hàng
 
 
 // Khởi tạo hiển thị lần đầu
@@ -634,13 +634,13 @@ document.getElementById('cart-back').addEventListener('click', () =>{
 document.addEventListener('DOMContentLoaded', () => {
 
 
-    // Close modal functionality
+    // hàm đóng modal
     const closeProductModal = document.getElementById('closeProductModal');
     closeProductModal.addEventListener('click', () => {
         productModal.style.display = 'none';
     });
 
-    // Logout button functionality
+    // đăng xuất
     document.getElementById('logoutButton').addEventListener('click', () => {
         localStorage.removeItem('accounts');
         document.getElementById('loginLink').innerText = 'Đăng nhập';
@@ -648,21 +648,21 @@ document.addEventListener('DOMContentLoaded', () => {
         islogin = false;
     });
 
-    // Cart visibility toggle
+    // hiển thị / ẩn giỏ hàng
     document.getElementById('lg-bag').addEventListener('click', () => {
         document.getElementById('shopping-cart').style.display = 'block';
-        populateCart(); // Update cart items dynamically
+        populateCart(); // cập nhật items
     });
 
     document.getElementById('cart-back').addEventListener('click', () => {
         document.getElementById('shopping-cart').style.display = 'none';
     });
 
-    // Function to populate the cart dynamically
+    // thêm sản phẩm vào giỏ hàng
     function populateCart() {
         const carts = JSON.parse(localStorage.getItem('carts')) || [];
         const cartTable = document.querySelector('#cart tbody');
-        cartTable.innerHTML = ''; // Clear existing items
+        cartTable.innerHTML = ''; // xóa các items tồn tại
 
         carts.forEach((item, index) => {
             const row = document.createElement('tr');
@@ -1178,14 +1178,14 @@ function showOrderDetail(orderId) {
         orderItemsBody.innerHTML += row;
     });
 
-     // tong tien
+     // tổng tiền
      const orderSummary = document.querySelector('.order-summary');
      orderSummary.innerHTML = '';
      orderSummary.innerHTML += `
          <p><strong>Tổng tiền:</strong> ${formatCurrencyVND(totalCost)}</p>
      `;
  
-     // hien thi chi tiet don hang
+     // hiển thị chi tiết đơn hàng
     document.querySelector('.wrap-order-detail').style.display = 'block';
 }
 
