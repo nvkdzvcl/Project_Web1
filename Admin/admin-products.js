@@ -19,7 +19,7 @@ function saveToLocalStorage(products) {
 // Render danh sách sản phẩm
 function renderProductList(products) {
     const container = document.querySelector('.product-detail');
-    container.innerHTML = '';  // Clear previous content
+    container.innerHTML = '';  // Xóa content trước 
 
     products.forEach(product => {
         const productElement = document.createElement('tr');
@@ -68,17 +68,17 @@ function handleAddProduct() {
     const priceM = parseInt(document.getElementById('price-m-input').value, 10);
     const priceL = parseInt(document.getElementById('price-l-input').value, 10);
 
-    // Get the value from the textarea for the product description
+    // lấy value của mô tả 
     const describe = document.getElementById('thongtin').value;
 
-    // Check if product name is empty
+    // Check nếu name trống không ?
     if (!name) {
         alert("Bạn chưa nhập tên sản phẩm.");
         document.getElementById('productname').focus();
-        return;  // Stop execution if the name is not provided
+        return;  // ngừng nếu ko có tên
     }
 
-    // Check if prices for selected sizes are valid
+    // Check price có valid không 
     if (document.getElementById('size-s').checked && isNaN(priceS)) {
         alert("Vui lòng nhập giá trị hợp lệ cho size S.");
         document.getElementById('price-s-input').focus();
@@ -98,19 +98,19 @@ function handleAddProduct() {
     const imageFile = document.getElementById('productimage').files[0];
     let imageBase64 = '';
 
-    // Check if image is selected
+    // Check ảnh được chọn ko 
     if (!imageFile) {
         alert("Bạn chưa chọn ảnh. Ảnh sẽ được để ảnh mặc định.");
-        imageBase64 = '/image/anhmacdinh.png';  // Use default image if no image is selected
+        imageBase64 = '/image/anhmacdinh.png';  // ảnh mặc định nếu ko có ảnh được chọn
     } else {
         const reader = new FileReader();
         reader.onloadend = function () {
             imageBase64 = reader.result; // This is the Base64 encoded string of the image
             alert("Sản phẩm đã được thêm");
-            saveProduct(imageBase64); // Call the save function after image is loaded
+            saveProduct(imageBase64); // gọi hàm save
         };
-        reader.readAsDataURL(imageFile); // This will trigger the onloadend function once conversion is done
-        return; // Return early to prevent proceeding until the image is processed
+        reader.readAsDataURL(imageFile); // Dòng này sẽ kích hoạt hàm onloadend khi việc chuyển đổi hoàn tất
+        return; // Dừng thực hiện sớm để ngừng tiến trình cho đến khi ảnh được xử lý
     }
    
     // If image is selected, proceed to save product
@@ -131,7 +131,7 @@ function handleAddProduct() {
             return;
         }
 
-        // Include the 'describe' field in the new product object
+        // Include the 'describe' field trong object mới
         const newProduct = { id: newProductId, name, type, sizes: selectedSizes, describe, image };
 
         products.push(newProduct);
@@ -216,10 +216,10 @@ function updateProduct() {
     const priceElements = document.querySelectorAll('.editProductPrice');  // Get all price fields
     const imageFile = document.getElementById('editProductImage').files[0];
 
-    // Get the value of 'thongtin' field (description)
+    // Lấy value of 'thongtin' field (description)
     const describe = document.getElementById('thongtin-update').value; 
 
-    // Check if all size and price fields are filled
+    
     const sizes = [];
     for (let i = 0; i < sizeElements.length; i++) {
         const size = sizeElements[i].value;
@@ -292,11 +292,11 @@ function openEditForm(productId) {
         // Điền dữ liệu vào form
         document.getElementById('editProductName').value = product.name;
         
-        // Clear existing size fields
+        // Clear existing size field - xóa trường size đang tồn tại 
         const sizeContainer = document.getElementById('size-fields-container');
-        sizeContainer.innerHTML = '';  // Clear previous size fields
+        sizeContainer.innerHTML = '';  // Clear size field trước đó
 
-        // Add size fields dynamically based on product sizes
+        // Add size fields dynamically based on product size - thêm size động 
         product.sizes.forEach((sizeInfo, index) => {
             const sizeField = document.createElement('div');
             sizeField.classList.add('size-field');
@@ -353,13 +353,13 @@ function closeModal() {
     document.getElementById('editModal').style.display = "none";
 }
 function handleFileSelect(event) {
-    const file = event.target.files[0];  // Get the first selected file
+    const file = event.target.files[0];  // Get the first selected file- lấy file từ input file
     if (file) {
-        const reader = new FileReader();  // Create a FileReader to read the file
+        const reader = new FileReader();  // Create a FileReader to read the file- tạo biến file reader
         
-        // Once the file is read, update the image source
+        // Once the file is read, update the image source- nếu file đã được đọc , cập nhật img source
         reader.onload = function(e) {
-            document.getElementById('previewImage').src = e.target.result;  // Set the src attribute of the image
+            document.getElementById('previewImage').src = e.target.result;  // Set the src attribute of the image 
         };
 
         // Read the file as a data URL (base64)
@@ -388,6 +388,6 @@ function handleImageSelect(event) {
     }
 }
 
-// Make sure the correct function name is used here
+
 document.getElementById('productimage').addEventListener('change', handleImageSelect);
 
