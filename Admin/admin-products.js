@@ -277,6 +277,8 @@ function updateProduct() {
             saveToLocalStorage(products);
             renderProductList(products); // Render the updated product list
             closeModal(); // Close modal after update
+            paginate(products).reload();
+
         }
     } else {
         alert("Không tìm thấy sản phẩm.");
