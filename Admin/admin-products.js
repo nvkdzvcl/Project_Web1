@@ -8,9 +8,7 @@ document.querySelector('.view-product').addEventListener('click', () => {
 
 // Lấy danh sách sản phẩm từ localStorage
 function getProducts() {
-    JSON.parse(localStorage.getItem('products')) || [];
-    products = products.filter(pro => pro.isDelete !== true);
-    return products;
+    return JSON.parse(localStorage.getItem('products')) || [];
 }
 
 // Lưu sản phẩm vào localStorage
@@ -187,7 +185,8 @@ function paginate(products) {
 
 // Hàm xử lý thay đổi trang khi nhấn vào nút "Prev" hoặc "Next"
 function changePage(direction) {
-    const products = getProducts();
+    let products = getProducts();
+    products = products.filter(pro => pro.isDelete !== true);
     const totalPages = Math.ceil(products.length / productsPerPage);
 
     if (direction === 'next' && currentPage < totalPages) {
@@ -210,7 +209,7 @@ document.getElementById('prev-page').addEventListener('click', () => changePage(
 document.getElementById('next-page').addEventListener('click', () => changePage('next'));
 
 // Ban đầu, hiển thị trang đầu tiên với danh sách tất cả sản phẩm
-paginate(getProducts());
+paginate(getProducts().filter(pro => pro.isDelete !== true) || []);
 
 // Hàm để mở modal chỉnh sửa khi nhấn nút "Delete"
 function updateProduct() {

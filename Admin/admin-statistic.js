@@ -405,12 +405,14 @@ function showCustomerDetail(customerId) {
         let totalCost = 0;
         order.orderItems.forEach(orderItem => {
             let product = products.find(p => p.id === orderItem.productId);
-            orderItem.sizes.forEach(size => {
-                quantity += size.quantity;
-                let pSize = product.sizes.find(pSize => pSize.size === size.size);
-                totalCost += size.quantity * pSize.price;
-                customerDetail.totalSpent += size.quantity * pSize.price;
-            });
+            if(product) {
+                orderItem.sizes.forEach(size => {
+                    quantity += size.quantity;
+                    let pSize = product.sizes.find(pSize => pSize.size === size.size);
+                    totalCost += size.quantity * pSize.price;
+                    customerDetail.totalSpent += size.quantity * pSize.price;
+                });
+            }
         });
 
         customerDetail.ords.push({
