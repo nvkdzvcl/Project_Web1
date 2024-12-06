@@ -31,6 +31,7 @@ function displayOrders(currentPageOrder) {
 
     // Lấy danh sách sản phẩm
     let products = JSON.parse(localStorage.getItem('products')) || [];
+    products = products.filter(pro => pro.isDelete !== true);
 
     // Lấy danh sách địa chỉ
     let address = JSON.parse(localStorage.getItem('address')) || [];
@@ -158,6 +159,7 @@ function showOrderDetail(orderId) {
     // Lấy các thông tin cần xử lý
     let orders = JSON.parse(localStorage.getItem('orders')) || [];
     const products = JSON.parse(localStorage.getItem('products')) || [];
+    products = products.filter(pro => pro.isDelete !== true);
     const address = JSON.parse(localStorage.getItem('address')) || [];
 
     // Tìm đúng đơn hàng với thông tin cần in

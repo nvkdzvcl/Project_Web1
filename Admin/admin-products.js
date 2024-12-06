@@ -8,7 +8,9 @@ document.querySelector('.view-product').addEventListener('click', () => {
 
 // Lấy danh sách sản phẩm từ localStorage
 function getProducts() {
-    return JSON.parse(localStorage.getItem('products')) || [];
+    JSON.parse(localStorage.getItem('products')) || [];
+    products = products.filter(pro => pro.isDelete !== true);
+    return products;
 }
 
 // Lưu sản phẩm vào localStorage
@@ -45,13 +47,15 @@ function deleteProduct(productId) {
     const confirmation = confirm("Bạn có muốn xóa sản phẩm này không ?");
     if (confirmation) {
         let products = getProducts();  // Lấy danh sách sản phẩm hiện tại
-        products = products.filter(product => product.id !== productId);  // Xóa sản phẩm có ID trùng với productId
+        let product = products.find(product => product.id === productId);
+        product.isDelete = true;
         saveToLocalStorage(products);  // Lưu lại danh sách sản phẩm mới vào LocalStorage
         alert("Sản phẩm đã bị xóa");  // Hiển thị thông báo đã xóa sản phẩm
+        products = products.filter(pro => pro.isDelete !== true);
         renderProductList(products);  // Render lại danh sách sản phẩm
 
         // Gọi paginate để cập nhật phân trang sau khi xóa sản phẩm
-         paginate(products).reload();  // Gọi hàm phân trang với danh sách sản phẩm mới
+        paginate(products).reload();  // Gọi hàm phân trang với danh sách sản phẩm mới
     } else {
         alert("Xóa sản phẩm đã bị hủy");  // Hiển thị thông báo nếu người dùng hủy xóa
     }
@@ -132,7 +136,7 @@ function handleAddProduct() {
         }
 
         // Include the 'describe' field trong object mới
-        const newProduct = { id: newProductId, name, type, sizes: selectedSizes, describe, image };
+        const newProduct = { id: newProductId, name, type, sizes: selectedSizes, describe, image , isDelete: false};
 
         products.push(newProduct);
         saveToLocalStorage(products);
@@ -269,6 +273,7 @@ function updateProduct() {
                 saveToLocalStorage(products);
                 renderProductList(products); // Render the updated product list
                 closeModal(); // Close modal after update
+                paginate(products);
             };
             reader.readAsDataURL(imageFile); // Convert the image file to Base64
         } else {

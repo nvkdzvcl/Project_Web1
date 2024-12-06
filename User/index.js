@@ -73,6 +73,7 @@ categorySelect.addEventListener('change', () => {
 function displayProducts(page) {
     // Lấy dữ liệu danh sách sản phẩm từ localStorage
     let products = JSON.parse(localStorage.getItem('products')) || [];
+    products = products.filter(pro => pro.isDelete !== true);
     
     // Lọc sản phẩm theo danh mục
     if (currentCategory !== 'Tất cả') {
@@ -189,6 +190,7 @@ function updatePagination(totalProducts) {
 
 function showProductModal(productId) {
     let products = JSON.parse(localStorage.getItem('products'));
+    products = products.filter(pro => pro.isDelete !== true);
 
     let product = products.find(p => p.id === productId);
 
@@ -305,6 +307,7 @@ function showSuggestions(query) {
     const lowercaseQuery = query.toLowerCase();
 
     let products = JSON.parse(localStorage.getItem('products'));
+    products = products.filter(pro => pro.isDelete !== true);
 
     // Tìm các sản phẩm phù hợp với từ khóa
     products.forEach(product => {
@@ -1036,6 +1039,7 @@ function displayOrders(customerId) {
 
             //Tính tổng tiền
             const products = JSON.parse(localStorage.getItem('products'));
+            products = products.filter(pro => pro.isDelete !== true);
             let totalCost = 0;
             order.orderItems.forEach(orderItem => {
                 let product = products.find(p => p.id === orderItem.productId);
@@ -1080,6 +1084,7 @@ function showOrderDetail(orderId) {
     // Lấy các thông tin cần xử lý
     let orders = JSON.parse(localStorage.getItem('orders')) || [];
     const products = JSON.parse(localStorage.getItem('products')) || [];
+    products = products.filter(pro => pro.isDelete !== true);
     const address = JSON.parse(localStorage.getItem('address')) || [];
 
     // Tìm đúng đơn hàng với thông tin cần in

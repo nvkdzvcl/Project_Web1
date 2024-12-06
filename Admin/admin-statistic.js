@@ -36,6 +36,7 @@ function displayStatisticType() {
     let orders = JSON.parse(localStorage.getItem('orders')) || [];
     // lấy danh sách sản phẩm
     const products = JSON.parse(localStorage.getItem('products')) || [];
+    products = products.filter(pro => pro.isDelete !== true);
 
     // lọc theo khoảng thời gian
     orders = filterOrdersByDate(orders);
@@ -110,6 +111,7 @@ let itemTypeDetailPerPage = 6;
 function showTypeDetail(type) {
     // lấy danh sách sản phẩm
     let products = JSON.parse(localStorage.getItem('products')) || [];
+    products = products.filter(pro => pro.isDelete !== true);
     // lọc sản phẩm theo mặt hàng
     products = products.filter(product => product.type === type);
     // lấy danh sách đơn hàng
@@ -269,6 +271,7 @@ function displayStatisticCustomer(){
     const customers = JSON.parse(localStorage.getItem('customers')) || [];
     const address = JSON.parse(localStorage.getItem('address')) || [];
     const products = JSON.parse(localStorage.getItem('products')) || [];
+    products = products.filter(pro => pro.isDelete !== true);
 
     // Lọc danh sách đơn theo khoảng thời gian
     orders = filterOrdersByDate(orders);
@@ -386,6 +389,7 @@ function showCustomerDetail(customerId) {
     let orders = JSON.parse(localStorage.getItem('orders')) || [];
     let address = JSON.parse(localStorage.getItem('address')) || [];
     let products = JSON.parse(localStorage.getItem('products')) || [];
+    products = products.filter(pro => pro.isDelete !== true);
     let customers = JSON.parse(localStorage.getItem('customers')) || [];
 
     let add = address.find(a => a.customerId === customerId);
