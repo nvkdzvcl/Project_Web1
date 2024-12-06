@@ -16,7 +16,6 @@ document.querySelector('.view-customers').addEventListener('click',()=>{
     
         customer2.forEach(customers2 => {
             const status = customer1.find(customers1 => customers1.id === customers2.customerId && customers1.status === "true") ? "Active" : "Inactive";
-            // const role = customer1.find(customer1 => customer1.id === customers2.customerId && customer1.role);  
             const newRow = `
             <tr>
                 <td>${customers2.customerId}</td> 
@@ -39,7 +38,6 @@ document.querySelector('.view-customers').addEventListener('click',()=>{
         });
         
         const tableBody = document.querySelector('.customers--detail'); 
-        // console.log(tableBody); 
         tableBody.innerHTML = html;    
     });
 
@@ -53,9 +51,7 @@ document.querySelector('.view-customers').addEventListener('click',()=>{
 
     function display(){
         const storeData2 = localStorage.getItem('address'); 
-        // const storeData1 = localStorage.getItem('customers'); 
         const customer2 = JSON.parse(storeData2); 
-        // const customer1 = JSON.parse(storeData1); 
 
         var html = ""; 
         
@@ -85,7 +81,6 @@ document.querySelector('.view-customers').addEventListener('click',()=>{
         
         
         const tableBody = document.querySelector('.customers--detail'); 
-        // console.log(tableBody); 
         tableBody.innerHTML = html;    
     }
 
@@ -95,14 +90,13 @@ document.querySelector('.view-customers').addEventListener('click',()=>{
         return find1.status; 
     }   
 
-    // check valid search name 
     function validateCustomerName(customerName) {
         const customerNameRegex = /^[\p{L}\s.,-]+$/u;
         return customerNameRegex.test(customerName);
     }
 
 
-document.getElementById('timkiem').addEventListener('click', ()=>{
+    document.getElementById('timkiem').addEventListener('click', ()=>{
     const username = document.getElementById('searchcustomername').value;
     if(!username){
         document.getElementById('warning-empty-search-customer').style.display = 'block'; 
@@ -124,11 +118,9 @@ document.getElementById('timkiem').addEventListener('click', ()=>{
     const tableBody = document.querySelector('.customers--detail'); 
     tableBody.innerHTML = ''; 
     
-    // console.log(storeData); 
 
     const find = storeData.filter(customers => customers.fullname.includes(username)); 
-    // console.log(getStatusThroughId(find.customerId)); 
-    // console.log(find); 
+    
     if(find){
         find.forEach(find=>{
             const newRow = `
@@ -168,8 +160,7 @@ document.getElementById('back').addEventListener('click',()=>{
 
     customer2.forEach(customers2 => {
         const status = customer1.find(customers1 => customers1.id === customers2.customerId && customers1.status === "true") ? "Active" : "Inactive";
-        // const role = customer1.find(customer1=>customer1.id === customer2.customerId); 
-        // console.log(role.role); 
+       
         const newRow = `
         <tr>
             <td>${customers2.customerId}</td> 
@@ -192,7 +183,6 @@ document.getElementById('back').addEventListener('click',()=>{
     });
     
     const tableBody = document.querySelector('.customers--detail'); 
-    // console.log(tableBody); 
     tableBody.innerHTML = html;    
 }); 
 
@@ -208,14 +198,6 @@ function validatePassword(password) {
 }
 
 // cho phép chữ hoa lẫn thường có thể có khoảng trắng giữa tên, không có số hoặc ký tự đặc biệt 
-// function validateName(name) {
-//     const nameRegex = /^[a-zA-Z' -]+$/; 
-//     return nameRegex.test(name);
-// }
-// function validateName(name) {
-//     const nameRegex = /^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÀÁÂÃÈÉÊÌÍÒÓÔÕĐÝÝ' -]+$/u; 
-//     return nameRegex.test(name);
-// }
 
 function validateName(name) {
     const nameRegex = /^[A-Za-zÀ-ỹ\s-]+$/;
@@ -241,7 +223,7 @@ function validateEmail(email) {
 //     return districtRegex.test(districtName);
 // }
 function validateDistrictName(districtName) {
-    const districtRegex = /^[\p{L}\s\d-]+$/u; // Added \d to include digits
+    const districtRegex = /^[\p{L}\s\d-]+$/u; 
     return districtRegex.test(districtName);
 }
 //  không được có số và ký tự đặc biệt 
@@ -274,7 +256,6 @@ document.getElementById('add--customer').addEventListener('click',()=>{
     const province = document.getElementById('customer--province').value.trim(); 
     const street = document.getElementById('customer--street').value.trim(); 
     const ward = document.getElementById('customer--ward').value.trim(); 
-    // confirm information 
     if(!username){
         document.getElementById('warning-empty-add-username').style.display = 'block'; 
         return; 
@@ -408,6 +389,7 @@ document.getElementById('add--customer').addEventListener('click',()=>{
 
     if(!validateStreetName(street)){
         document.getElementById('warning-add-street').style.display = 'block'; 
+        return;
     }
     else{
         document.getElementById('warning-add-street').style.display = 'none'; 
@@ -513,20 +495,17 @@ document.addEventListener('click', (e) => {
             name: row.querySelector('td:nth-child(2)').textContent,
             phone: row.querySelector('td:nth-child(3)').textContent,
             email: row.querySelector('td:nth-child(4)').textContent,
-            // ranking: row.querySelector('td:nth-child(5)').textContent,
             role:  row.querySelector('td:nth-child(5)').textContent,
             status: row.querySelector('td:nth-child(6)').textContent
         };
 
         const addressdata = JSON.parse(localStorage.getItem('address')); 
 
-        // console.log(customerId); 
-        // console.log(addressdata[customerId]); 
+       
         
         document.getElementById('change-name').value = customerData.name;
         document.getElementById('change-phone').value = customerData.phone;
         document.getElementById('change-email').value = customerData.email;
-        // document.getElementById('change-ranking').value = customerData.ranking; 
         document.getElementById('change-status').value = customerData.status;  
         document.getElementById('change-role').value = customerData.role;
 
@@ -686,16 +665,15 @@ document.getElementById("submit").addEventListener('click', (e) => {
     }
     if(!validateDistrictName(district)){
         document.getElementById('modal-invalid-change-district').style.display='block';
+        return; 
     }
     else{
         document.getElementById('modal-invalid-change-district').style.display='none';
     }
 
-    const row = e.target.closest('tr');
     const addressData = JSON.parse(localStorage.getItem('address'));
     const customersData = JSON.parse(localStorage.getItem('customers'));
 
-    // Update address data
     const customerIndex = addressData.findIndex(cust => parseInt(cust.customerId) === parseInt(customerId));
     const customerDataIndex = customersData.findIndex(cust => parseInt(cust.id) === parseInt(customerId));
     if (customerIndex !== -1) {
@@ -710,9 +688,6 @@ document.getElementById("submit").addEventListener('click', (e) => {
         };
         
         localStorage.setItem('address', JSON.stringify(addressData));
-
-        // console.log(customerDataIndex); 
-        // console.log(customersData[customerDataIndex]); 
 
         const updateStatus = status === "true" ? "true" : "false"; 
         var updateRole = ""; 
@@ -733,10 +708,7 @@ document.getElementById("submit").addEventListener('click', (e) => {
             username: customersData[customerDataIndex].username
         }; 
 
-        // console.log(customersData[customerDataIndex].role); 
-
-        // console.log(customersData[customerDataIndex]); 
-
+      
         localStorage.setItem('customers',JSON.stringify(customersData)); 
 
 
