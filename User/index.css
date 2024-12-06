@@ -137,17 +137,6 @@ body {
     color: #088178;
 }
 
-/* #hero button {
-    
-    background-image: url(); 
-    background-color: transparent;
-    color: #088178;
-    border: 0;
-    padding: 14px 80px 14px 65px;
-    background-repeat: no-repeat;
-    cursor: pointer;
-} */
-
 #hero button {
     border: solid 2px #088178;
     background-color: white;
@@ -157,14 +146,6 @@ body {
     font-size: 14px;
     font-weight: 600;
 }
-
-/* #feature .fe-box:nth-child(5) h6 {
-    background-color: #f6dbf6;
-}
-
-#feature .fe-box:nth-child(6) h6 {
-    background-color: #fff2e5;
-} */
 
 #product1 {
     text-align: center;
@@ -703,7 +684,7 @@ footer .copyright {
 
 .auth-form__header{
     display: flex;
-    /* chứa đăng kí và đăng nhập
+    /* chứa đăng ký và đăng nhập
     cho flex để lên cx dòng  */
     /*  sau lệnh flex thì 2 tk cx dòng nhưng bị so le 
     để ngang nhau dùng */
@@ -816,7 +797,7 @@ footer .copyright {
     top: 160%;
     right: 0;
 }
-/*  nút đăng suất */
+/*  nút đăng xuất */
 #logoutButton,
 #accoutFromBtn {
     width: 100%;
@@ -831,7 +812,7 @@ footer .copyright {
 
 
 
-/*  css giở hàng cart */
+/*  css giỏ hàng cart */
 /* cart page */
 
 #shopping-cart{
@@ -1081,15 +1062,17 @@ footer .copyright {
     width: 100%;
     text-align: center;
     display: none;
-    overflow-x: auto;
-    margin-top: 20px;
-    min-width: 800px;
 }
 #orderList h2{
     font-size: 30px;
     padding: 10px 0;
 }
 
+#orderList{
+    /* giúp bảng trượt được */
+    overflow-x: auto;
+    margin-top: 20px;
+}
 #orderList table{
     width: 100%;
     border-collapse: collapse;
@@ -1349,7 +1332,6 @@ footer .copyright {
 
 
 /* Số lượng sản phẩm */
-/* Quantity Wrapper */
 #quantityWrapper {
     display: flex;
     align-items: center;
@@ -1357,7 +1339,7 @@ footer .copyright {
     margin: 10px 0;
 }
 
-/* Button for Decrease/Increase Quantity */
+/* nút tăng giảm số lượng */
 .quantity-btn {
     width: 40px;
     height: 40px;
@@ -1377,7 +1359,7 @@ footer .copyright {
     color: #fff;
 }
 
-/* Quantity Input */
+/* số lượng nhập vào */
 #modalProductQuantity {
     width: 60px;
     height: 40px;
@@ -1675,7 +1657,6 @@ margin: 5px 0;
         text-align: start;
     }
 
-    /* single product */
     #prodetails {
         display: flex;
         flex-direction: column;
